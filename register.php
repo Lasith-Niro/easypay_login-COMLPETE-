@@ -52,7 +52,6 @@ if(Input::exists()){
 //                echo $user->data()->salt;
                 Session::flash('home', 'You have been registered and now log in!');
                 Redirect::to('index .php');
-
             }catch (Exception $e){
                 die($e->getMessage());
             }

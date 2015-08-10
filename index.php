@@ -25,6 +25,7 @@ if($user->isLoggedIn()) {
         <li><a href="logout.php">Log out</li>
         <li><a href="update.php">Update details</a></li>
         <li><a href="changepassword.php">Change password</a></li>
+        <li><a href="payment/payment.php">Payment</a></li>
     </ul>
 
     <?php
