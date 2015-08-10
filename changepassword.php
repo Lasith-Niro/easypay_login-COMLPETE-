@@ -67,7 +67,6 @@ if(Input::exists()){
         <label for="Password_new_again">New password again</label>
         <input type="password" name="password_new_again" id="password_new_again">
     </div>
-
     <input type="submit" value="Change">
     <input type="hidden" name="token" value="<?php echo Token::generate(); ?>">
 </form>

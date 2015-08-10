@@ -44,7 +44,7 @@ if(Input::exists()){
                     'phone'     => Input::get('phoneNo'),
                     'nic'       => Input::get('nic'),
                     'dob'       => Input::get('dob'),
-//                  'regNo'     => Input::get('regNo'),
+                    'regNo'     => Input::get('regNo'),
 //                  'course'  => Input::get('course'),
                     'year'      => Input::get('year'),
                     'group'     => 1
