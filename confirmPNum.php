@@ -7,7 +7,9 @@
  */
 
 require_once 'core/init.php';
+require 'SMS/sms.php';
 $user = new User();
+$notification = new notification();
 
 echo "Welcome to confirm your phone number!" . '<br />';
 //echo $_SESSION['old_number'] . '<br />';
@@ -16,11 +18,12 @@ echo "Welcome to confirm your phone number!" . '<br />';
 //echo gettype($rnd);
 $hiddenValue = Input::get('storeRandVal');
 $randomValue = rand(1000, 1500);
-echo $randomValue;
+//echo $randomValue;
 if(!$user->isLoggedIn()){
     Redirect::to('index.php');
 }
-
+$var = $notification->send("94712364452","770294331","phone number change code is " . $randomValue ,"6651");
+echo $var;
 if(Input::exists()){
     if(Token::check(Input::get('token'))) {
         $validate = new Validate();
@@ -33,6 +36,7 @@ if(Input::exists()){
         ));
         if($validation->passed()){
             $input = htmlspecialchars(trim(Input::get('rand_number')));
+
             if($input == $hiddenValue){
                 $user->update(array(
                     'phone' => $_SESSION['new_number']
