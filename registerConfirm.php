@@ -8,10 +8,6 @@
 
 require_once 'core/init.php';
 require 'SMS/sms.php';
-echo $_SESSION['username'] . '<br>';
-echo $_SESSION['password'] . '<br>';
-echo $_SESSION['fname'] . '<br>';
-echo $_SESSION['lname'] . '<br>';
 $notification = new notification();
 echo "To confirm your registration enter your registration code..." . '<br />';
 $hiddenValue = Input::get('storeRandVal');
