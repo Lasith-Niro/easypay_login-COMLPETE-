@@ -25,13 +25,14 @@ if(Input::exists()){
         ));
 
         if($validation->passed()){
-            if(Input::get($new_phone_number) == $old_phone_number ){
-                echo "You entered same phone number!";
+            $new_phone_number = Input::get('new_phone_number');
+            if($old_phone_number == $new_phone_number){
+                echo "You entered same phone number";
             } else {
-                Redirect::to('confirmPNum.php');
                 $_SESSION['old_number'] = $old_phone_number;
-                $_SESSION['new_number'] = Input::get($new_phone_number);
-            }
+                $_SESSION['new_number'] = $new_phone_number;
+                Redirect::to('confirmPNum.php');
+                }
         } else {
             foreach ($validation->errors() as $error) {
                 echo $error, '<br>';
@@ -47,7 +48,7 @@ if(Input::exists()){
     </div>
     <div class="field">
         <label for="new_phone_number">Enter your new phone number</label>
-        <input type="string" name="new_phone_number" id="new_phone_number">
+        <input type="text" name="new_phone_number" id="new_phone_number">
     </div>
     <input type="submit" value="Continue">
     <input type="hidden" name="token" value="<?php echo Token::generate(); ?>">

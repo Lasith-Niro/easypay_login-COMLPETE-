@@ -39,7 +39,6 @@ if(Input::exists()){
                 $user->update(array(
                    'password' => Hash::make(Input::get('password_new'))
                 ));
-
                 Session::flash('home', 'Your password has been changed.');
                 Redirect::to('index.php');
 
@@ -47,7 +46,7 @@ if(Input::exists()){
 
         } else {
             foreach ($validation->errors() as $error) {
-                echo $error, '<br>';
+                echo $error, '<br />';
             }
         }
     }

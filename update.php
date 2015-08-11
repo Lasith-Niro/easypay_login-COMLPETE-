@@ -23,10 +23,10 @@ if(Input::exists()){
                'min' => 2,
                'max' => 50
            ),
-            'phone' => array(
-                'required' => true,
-                'min' => 10,
-            ),
+//            'phone' => array(
+//                'required' => true,
+//                'min' => 10,
+//            ),
             'regNumber' => array(
               'required' => true,
               'min' => 9
@@ -68,7 +68,7 @@ if(Input::exists()){
                     'regNumber' => Input::get('regNumber'),
                     'fname' => Input::get('fname'),
                     'lname' => Input::get('lname'),
-                    'phone' => Input::get('phone'),
+//                    'phone' => Input::get('phone'),
                     'email' => Input::get('email'),
                     'nic' => Input::get('nic'),
                     'dob' => Input::get('dob'),
@@ -93,10 +93,10 @@ if(Input::exists()){
         <label for="name">User Name</label>
         <input type="text" name="name" value="<?php echo escape($user->data()->username); ?>">
     </div>
-    <div class="field">
-        <label for="phone">Phone number</label>
-        <input type="string" name="phone" value="<?php echo 0 . escape($user->data()->phone); ?>">
-    </div>
+<!--    <div class="field">-->
+<!--        <label for="phone">Phone number</label>-->
+<!--        <input type="string" name="phone" value="--><?php //echo 0 . escape($user->data()->phone); ?><!--">-->
+<!--    </div>-->
     <div class="field">
         <label for="regNumber">Registration Number</label>
         <input type="string" name="regNumber" value="<?php echo escape($user->data()->regNumber); ?>">
