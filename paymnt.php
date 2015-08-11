@@ -7,9 +7,10 @@
  */
 
 require_once 'core/init.php';
+require 'payment/encrypt.php';
+require 'payment/decrypt.php';
 
 $user = new User();
-
 if(!$user->isLoggedIn()){
     Redirect::to('index.php');
 }
@@ -43,8 +44,17 @@ if(Input::exists()){
 $phoneNumber = $user->data()->phone;
 $uID = $user->data()->id;
 
-echo $phoneNumber . "<br />";
-echo $uID;
+$transactionID = '0001';
+$merchantCode = "TESTMERACHANT";
+$transactionAmount = '100.00';
+$returnURL = 'http://easypaysl.com/url.php';
+$syntax = $merchantCode . "|" . $transactionID . "|" . $transactionAmount . "|" . $returnURL;
+echo $syntax;
+//$Invoice = new encrypt($merchantCode, $transactionID, $transactionAmount, $returnURL);
+
+
+//echo $phoneNumber . "<br />";
+//echo $uID;
 ?>
 
 <form action="" method="post">
@@ -54,9 +64,9 @@ echo $uID;
     </div>
     <div class="field">
         <label for="amount">Enter your amount </label>
-        <input type="String" name="amount" id="amount">
+        <input type="text" name="amount" id="amount">
     </div>
-
+    <input type="hidden" value="<%=Invoice%>" name="merchantInvoice">
     <input type="submit" value="Next">
     <input type="hidden" name="token" value="<?php echo Token::generate(); ?>">
 </form>
