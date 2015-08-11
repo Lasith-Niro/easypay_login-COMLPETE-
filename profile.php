@@ -8,8 +8,9 @@
 
 
 require_once 'core/init.php';
-
-echo $_SERVER['REQUEST_URI'];
+require 'pdf/convert.php';
+$html =  file_get_contents($_SERVER['REQUEST_URI']);
+$filename = 'file1';
 if(!$username = Input::get('user')){
     Redirect::to('index.php');
 }else{
@@ -26,5 +27,5 @@ if(!$username = Input::get('user')){
     <p>Phone number: <?php echo escape($data->phone); ?> </p>
     <?php
 }
-
+pdf_create($html, $filename, 'A4', 'portrait');
 ?>
