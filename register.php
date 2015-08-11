@@ -24,7 +24,12 @@ if(Input::exists()){
                 'phoneNo' => array(
                     'required' => true,
                     'min' => 10
+                ),
+                'nic' => array(
+                    'required' => true,
+                    'min' => 10
                 )
+
             )
         );
 
@@ -118,6 +123,9 @@ if(Input::exists()){
             </div>
             <div>
                 <input id="name2" type="text" name="name2" placeholder="Your last name" value="<?php echo escape(Input::get('name2')); ?>">
+            </div>
+            <div>
+                <input id="regNumber" type="text" name="regNumber" placeholder="UCSC registration number" value="<?php echo escape(Input::get('regNumber'));?>">
             </div>
             <div>
                 <input id="email" type="email" name="email" placeholder="email address" value="<?php echo escape(Input::get('email')); ?>">
