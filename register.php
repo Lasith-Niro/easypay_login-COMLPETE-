@@ -29,37 +29,23 @@ if(Input::exists()){
                     'required' => true,
                     'min' => 10
                 )
-
             )
         );
-
         if ($validation->passed()) {
-            $user = new User();
-//            $salt = Hash::salt(32); //improve the security  of the password
-//            echo $salt;
-//            die();
-            try{
-                $user->create(array(
-                    'username'  => Input::get('username'),
-                    'password'  => Hash::make(Input::get('password')),
-//                    'salt' => $salt,
-                    'fname'     => Input::get('name1'),
-                    'lname'     => Input::get('name2'),
-                    'email'     => Input::get('email'),
-                    'phone'     => Input::get('phoneNo'),
-                    'nic'       => Input::get('nic'),
-                    'dob'       => Input::get('dob'),
-                    'regNo'     => Input::get('regNo'),
-//                  'course'  => Input::get('course'),
-                    'year'      => Input::get('year'),
-                    'group'     => 1
-                ));
-//                echo $user->data()->salt;
-                Session::flash('home', 'You have been registered and now log in!');
-                Redirect::to('index .php');
-            }catch (Exception $e){
-                die($e->getMessage());
-            }
+            $_SESSION['username'] = Input::get('username');
+            $_SESSION['password'] = Hash::make(Input::get('password'));
+            $_SESSION['regNo']    = Input::get('regNumber');
+            $_SESSION['fname']    = Input::get('name1');
+            $_SESSION['lname']    = Input::get('name2');
+            $_SESSION['email']    = Input::get('email');
+            $_SESSION['phone']    = Input::get('phoneNo');
+            $_SESSION['nic']      = Input::get('nic');
+            $_SESSION['dob']      = Input::get('dob');
+
+//            $_SESSION['course']   = Input::get('course');
+            $_SESSION['year']     = Input::get('year');
+
+            Redirect::to('registerConfirm.php');
         } else {
             foreach ($validation->errors() as $error) {
                 echo $error, '<br>';
