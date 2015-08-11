@@ -47,8 +47,6 @@ echo $phoneNumber . "<br />";
 echo $uID;
 ?>
 
-
-
 <form action="" method="post">
     <div class="field">
         <label for="pin">Enter your ez-cash pin number </label>
