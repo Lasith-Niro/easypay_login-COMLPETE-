@@ -5,7 +5,7 @@
  * Date: 10/08/15
  * Time: 20:12
  */
-class dycrypt {
+class decrypt {
     public function __construct() {
         $decrypted = '';
         $encrypted = $_POST[' merchantReciept '];

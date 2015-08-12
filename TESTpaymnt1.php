@@ -7,8 +7,7 @@
  */
 
 require_once 'core/init.php';
-require 'payment/encrypt.php';
-require 'payment/decrypt.php';
+
 
 $user = new User();
 if(!$user->isLoggedIn()){
@@ -18,19 +17,23 @@ if(Input::exists()){
     if(Token::check(Input::get('token'))) {
         $validate = new Validate();
         $validation = $validate->check($_POST, array(
-            'pin' => array(
-                'required' => true,
-                'min' => 4
-            ),
             'amount' => array(
                 'required' => true,
                 'min' => 2,
             )
         ));
-
         if($validation->passed()){
+            $amount = Input::get('amount');
             Session::flash('home', 'Your password has been changed.');
-            Redirect::to('payment/ipg.php');
+//            Redirect::to('payment/ipg.php');
+            $transaction = new transaction();
+            $transactionID = '0002';
+            $merchantCode = "TESTMERACHANT";
+            $transactionAmount = $amount;
+            $returnURL = 'http://easypay.bitnamiapp.com/profile.php';
+            $str = $transaction->makeTransaction($transactionID, $merchantCode, $transactionAmount, $returnURL);
+            $url = 'https://ipg.dialog.lk/ezCashIPGExtranet/servlet_sentinal';
+            $transaction->send($url, $str);
         } else {
             foreach ($validation->errors() as $error) {
                 echo $error, '<br>';
@@ -39,15 +42,16 @@ if(Input::exists()){
 
     }
 }
+
 $phoneNumber = $user->data()->phone;
 $uID = $user->data()->id;
 
-$transactionID = '0001';
-$merchantCode = "TESTMERACHANT";
-$transactionAmount = '100.00';
-$returnURL = 'http://easypaysl.com/url.php';
-$syntax = $merchantCode . "|" . $transactionID . "|" . $transactionAmount . "|" . $returnURL;
-echo $syntax;
+//$transactionID = '0001';
+//$merchantCode = "TESTMERACHANT";
+//$transactionAmount = '100.00';
+//$returnURL = 'http://easypaysl.com/url.php';
+//$syntax = $merchantCode . "|" . $transactionID . "|" . $transactionAmount . "|" . $returnURL;
+//echo $syntax;
 //$Invoice = new encrypt($merchantCode, $transactionID, $transactionAmount, $returnURL);
 
 
@@ -56,10 +60,10 @@ echo $syntax;
 ?>
 
 <form action="" method="post">
-    <div class="field">
-        <label for="pin">Enter your ez-cash pin number </label>
-        <input type="password" name="pin" id="pin">
-    </div>
+<!--    <div class="field">-->
+<!--        <label for="pin">Enter your ez-cash pin number </label>-->
+<!--        <input type="password" name="pin" id="pin">-->
+<!--    </div>-->
     <div class="field">
         <label for="amount">Enter your amount </label>
         <input type="text" name="amount" id="amount">

@@ -25,12 +25,12 @@ SET time_zone = "+00:00";
 --
 -- Table structure for table `groups`
 --
-
 CREATE TABLE IF NOT EXISTS `groups` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(20) NOT NULL,
   `permissions` text NOT NULL,
   PRIMARY KEY (`id`)
+
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
