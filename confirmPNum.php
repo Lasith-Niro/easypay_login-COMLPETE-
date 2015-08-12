@@ -8,8 +8,11 @@
 
 require_once 'core/init.php';
 require 'SMS/sms.php';
+require 'Files/accessFile.php';
+
 $user = new User();
 $notification = new notification();
+$file = new accessFile();
 
 echo "Welcome to confirm your phone number!" . '<br />';
 //echo $_SESSION['old_number'] . '<br />';
@@ -17,13 +20,19 @@ echo "Welcome to confirm your phone number!" . '<br />';
 //echo $randomValue. '<br />';
 //echo gettype($rnd);
 $hiddenValue = Input::get('storeRandVal');
-$randomValue = rand(1000, 1500);
+$randomValue = rand(1000, 9999);
+$detailArray = $file->read('Files/RouterPhone');
+$messageArray = $file->read('Files/messages');
+
 //echo $randomValue;
+
 if(!$user->isLoggedIn()){
     Redirect::to('index.php');
 }
-$var = $notification->send("94712364452","770294331","phone number change code is " . $randomValue ,"6651");
-echo $var;
+
+$var = $notification->send($detailArray[0],$_SESSION['new_number'],$messageArray[1] . $randomValue ,"6651");
+echo $var;//for db(development)
+
 if(Input::exists()){
     if(Token::check(Input::get('token'))) {
         $validate = new Validate();
