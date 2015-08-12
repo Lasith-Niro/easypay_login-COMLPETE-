@@ -5,6 +5,8 @@
  * Date: 10/08/15
  * Time: 20:11
  */
+
+
 class encrypt{
     public function __construct($mcode, $tid, $tamount, $rurl) {
 //    $mcode = $_POST['merchantCode']; //merchant code

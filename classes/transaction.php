@@ -27,6 +27,7 @@ class transaction{
 
         curl_exec($channel);
 
+
         curl_close($channel);
     }
 }
