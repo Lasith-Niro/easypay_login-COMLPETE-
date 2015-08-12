@@ -8,12 +8,21 @@
 
 require_once 'core/init.php';
 require 'SMS/sms.php';
+require 'Files/accessFile.php';
+
 $notification = new notification();
 echo "To confirm your registration enter your registration code..." . '<br />';
 $hiddenValue = Input::get('storeRandVal');
 $randomValue = rand(1000, 2500);
 echo $randomValue;
-$var = $notification->send("94712364452","770294331","phone number change code is " . $randomValue ,"6651");
+$file = new accessFile();
+$detailArray = $file->read('Files/RouterPhone');
+$messageArray = $file->read('Files/messages');
+$from = $detailArray[0];
+$to = $_SESSION['phone'];
+$pass = $detailArray[1];
+$message = $messageArray[0];
+$var = $notification->send($from,$to,$message . $randomValue ,$pass);
 echo $var;
 if(Input::exists()){
     if(Token::check(Input::get('token'))) {

@@ -30,7 +30,6 @@ if(Input::exists()){
         ));
 
         if($validation->passed()){
-
             Session::flash('home', 'Your password has been changed.');
             Redirect::to('payment/ipg.php');
         } else {
