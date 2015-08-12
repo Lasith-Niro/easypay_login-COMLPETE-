@@ -17,15 +17,26 @@ if(Token::check(Input::get('token'))) {
             'required' => true
         )
     ));
-
+    $uname = Input::get('name');
     if($validation->passed()){
-        $user = new User('name');
-        if($user->find()){
+        $user = new User();
+        if($user->find($uname)){
             echo "User exist";
+        ?>
+            <p> <a href="forgetpassEnterCode.php?>"> <?php echo escape($user->data()->username); ?> </a> </p>
+        <?php
+            $_SESSION['phone'] = $user->data()->phone;
+
         } else {
-            echo "No User!";
+            echo "User Not Found";
         }
 
+
+
+    } else {
+        foreach ($validation->errors() as $er) {
+            echo $er, '<\ br>';
+        }
     }
 
     }

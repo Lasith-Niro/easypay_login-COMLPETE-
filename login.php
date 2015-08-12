@@ -20,18 +20,12 @@ if(Input::exists()){
                 'required' => true
             ),
         ));
-
-
-
         if($validation->passed()){
             $user = new User();
-
             $remember = (Input::get('remember') === 'on') ? true : false;
 //            $pass = Input::get('password');
             $login = $user->login(Input::get('username'), Input::get('password'), $remember);
-
             if($login){
-
                 Redirect::to('index.php');
             } else {
                 ?>
