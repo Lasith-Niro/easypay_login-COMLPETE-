@@ -5,17 +5,23 @@
  * Date: 5/23/2015
  * Time: 1:43 PM
  */
-
 require_once 'core/init.php';
+//$_SESSION['uname'] = Input::get('username');
 
 if(Input::exists()){
     if(Token::check(Input::get('token'))) {
 
         $validate = new Validate();
         $validation = $validate->check($_POST, array(
-           'username' => array('required' => true),
-            'password' => array('required' => true),
+           'username' => array(
+               'required' => true
+            ),
+            'password' => array(
+                'required' => true
+            ),
         ));
+
+
 
         if($validation->passed()){
             $user = new User();
@@ -99,15 +105,13 @@ if(Input::exists()){
             <div>
                 <input id="loginButton" type="submit" value="Sign in" name="signin"/>
             </div>
-            <div id="forgotPassword">  <a href="http://www.google.com" title="To recover your password, click here " >Forgot password?</a></div>
+            <div id="forgotPassword">  <a href="forgetpass.php" title="To recover your password, click here " >Forgot password?</a></div>
             <hr id="hr">
 
             <input type="hidden" name="token" value="<?php echo Token::generate(); ?>">
         </form>
         <a href="register.php"><button id="signupButton">Sign up</button></a>
-
     </div>
-
 </div>
 </body>
 </html>

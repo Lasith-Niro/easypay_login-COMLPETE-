@@ -23,6 +23,10 @@ class DB{
         }
     }
 
+    public function connect2db($db1, $db2) {
+
+    }
+
     public static function getInstance() {
         if (!isset(self::$_instance)) {
             self::$_instance = new DB();

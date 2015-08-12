@@ -13,7 +13,8 @@ $GLOBALS['config'] = array(
         'host' => '127.0.0.1',
         'username' => 'root',
         'password' => '',
-        'db' => 'easypay_db'
+        'db' => 'easypay_db',
+        'db2' => 'educationDept_db'
     ),
     'remember' => array(
         'cookie_name' => 'hash',
