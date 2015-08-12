@@ -5,8 +5,8 @@
  * Date: 12/08/15
  * Time: 08:38
  */
-require 'encrypt.php';
-require 'decrypt.php';
+require '../payment/encrypt.php';
+require '../payment/decrypt.php';
 
 class payment{
     public function makePayment(){

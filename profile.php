@@ -8,7 +8,7 @@
 
 
 require_once 'core/init.php';
-require 'pdf/converter.php';
+require 'PDF/phpToPDF.php';
 if(!$username = Input::get('user')){
     Redirect::to('index.php');
 }else{
@@ -19,15 +19,22 @@ if(!$username = Input::get('user')){
         $data = $user->data();
     }
 ?>
-
     <h3><?php echo escape($data->username); ?> </h3>
     <p>First name: <?php echo escape($data->fname); ?> </p>
     <p>Phone number: <?php echo escape($data->phone); ?> </p>
     <?php
 }
-$html = file_get_contents('profile.php');
-$filename = 'file1';
-$h2p = new html2pdf();
-$h2p->pdf_create($html, $filename, 'letter', 'portrait');
-//pdf_create($html, $filename, 'letter', 'portrait');
+
+//$myurl = 'http://localhost:63342/easypay_login-COMLPETE-/' . basename($_SERVER['PHP_SELF']) . "?" . $_SERVER['QUERY_STRING'];
+//echo $myurl;
+//$html = file_get_contents($myurl);
+//$pdf_options = array(
+//    "source_type" => 'html',
+//    "source" => $html,
+//    "action" => 'save',
+//    "save_directory" => 'my_pdfs',
+//    "file_name" => 'my_filename.pdf');
+//phptopdf($pdf_options);
+
+
 ?>
