@@ -58,9 +58,6 @@ if(Input::exists()){
                 'min' => 1
             )
         ));
-
-
-
         if($validation->passed()){
             try{
                 $user->update(array(

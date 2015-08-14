@@ -27,13 +27,14 @@ if(Input::exists()){
             Session::flash('home', 'Your password has been changed.');
 //            Redirect::to('payment/ipg.php');
             $transaction = new transaction();
-            $transactionID = '0002';
+            $transactionID = '0003';
             $merchantCode = "TESTMERACHANT";
             $transactionAmount = $amount;
-            $returnURL = 'http://easypay.bitnamiapp.com/profile.php';
+            $returnURL = 'http://localhost:63342/easypay_login-COMLPETE-/TESTpayment_returnURL.php';
             $str = $transaction->makeTransaction($transactionID, $merchantCode, $transactionAmount, $returnURL);
             $url = 'https://ipg.dialog.lk/ezCashIPGExtranet/servlet_sentinal';
             $transaction->send($url, $str);
+
         } else {
             foreach ($validation->errors() as $error) {
                 echo $error, '<br>';
@@ -47,17 +48,6 @@ if(Input::exists()){
 $phoneNumber = $user->data()->phone;
 $uID = $user->data()->id;
 
-//$transactionID = '0001';
-//$merchantCode = "TESTMERACHANT";
-//$transactionAmount = '100.00';
-//$returnURL = 'http://easypaysl.com/url.php';
-//$syntax = $merchantCode . "|" . $transactionID . "|" . $transactionAmount . "|" . $returnURL;
-//echo $syntax;
-//$Invoice = new encrypt($merchantCode, $transactionID, $transactionAmount, $returnURL);
-
-
-//echo $phoneNumber . "<br />";
-//echo $uID;
 ?>
 
 <form action="" method="post">

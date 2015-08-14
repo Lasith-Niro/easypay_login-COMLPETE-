@@ -9,6 +9,8 @@
 
 require_once 'core/init.php';
 require 'PDF/phpToPDF.php';
+$userName = $_SESSION['user'];
+//echo $username;
 if(!$username = Input::get('user')){
     Redirect::to('index.php');
 }else{
