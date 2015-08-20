@@ -16,10 +16,6 @@ if(Input::exists()){
     if(Token::check(Input::get('token'))) {
         $validate = new Validate();
         $validation = $validate->check($_POST, array(
-            'password_current' => array(
-                'required' => true,
-                'min' => 6
-            ),
             'password_new' => array(
                 'required' => true,
                 'min' => 6
@@ -53,10 +49,6 @@ if(Input::exists()){
 ?>
 
 <form action="" method="post">
-    <div class="field">
-        <label for="Password_current">Current password</label>
-        <input type="password" name="password_current" id="password_current" value="<?php echo $user->data()->pass ?>">
-    </div>
     <div class="field">
         <label for="Password_new">New password</label>
         <input type="password" name="password_new" id="password_new">

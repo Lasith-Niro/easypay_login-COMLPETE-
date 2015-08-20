@@ -24,8 +24,8 @@ echo $randomValue;
 if(!$user->isLoggedIn()){
     Redirect::to('index.php');
 }
-//$var = $notification->send($detailArray[0],$pNum,$messageArray[2] . $randomValue ,$detailArray[1]);
-//echo $var;      //for db(development)
+$var = $notification->send($detailArray[0],$pNum ,$messageArray[2] . $randomValue ,$detailArray[1]);
+echo $var;      //for db(development)
 
 if(Input::exists()){
     if(Token::check(Input::get('token'))) {
@@ -40,12 +40,9 @@ if(Input::exists()){
         if($validation->passed()){
             $input = htmlspecialchars(trim(Input::get('rand_number')));
             if($input == $hiddenValue){
+                Session::flash('home', 'Your phone number has been changed.');
                 Redirect::to('forgetpassCheckPoint2.php');
-
-//                Session::flash('home', 'Your phone number has been changed.');
-//                Redirect::to('index.php');
             } elseif ($randomValue != $hiddenValue) {
-//                echo "error";
                 Session::flash('home', 'you enter wrong key code.');
                 Redirect::to('index.php');
             }
@@ -61,13 +58,17 @@ if(Input::exists()){
 
 <form action="" method="post">
     <div class="field">
-        <label for="old_phone_number">Your phone number is *******<?php echo substr($pNum,7 , 9); ?></label>
-
+        <label for="phone_number">Your phone number is *******<?php echo substr($pNum,7 , 9); ?></label>
     </div>
+
     <div class="field">
         <label for="code">Enter your verification </label>
+        <input type="number" name="rand_number" id="rand_number">
+
     </div>
+
     <input type="hidden" name="storeRandVal" value="<?php echo $randomValue; ?>">
     <input type="submit" value="Change">
     <input type="hidden" name="token" value="<?php echo Token::generate(); ?>">
+
 </form>
