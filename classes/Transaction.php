@@ -8,22 +8,32 @@
 require 'payment/encrypt.php';
 require 'payment/decrypt.php';
 
-class transaction{
-    public function makeTransaction($transactionID, $merchantCode, $transactionAmount, $returnURL){
-        $encrpt = new encrypt($transactionID, $merchantCode, $transactionAmount, $returnURL);
-        return $encrpt;
+class Transaction{
+
+    public function makeTransactionCode($transactionID, $merchantCode, $transactionAmount, $returnURL){
+        $encrpt = new encrypt();
+        $item = $encrpt->encode($merchantCode, $transactionID, $transactionAmount, $returnURL);
+        return $item;
     }
+
     public function getTransaction(){
         $decrpt = new decrypt();
         return $decrpt;
     }
-//    public function send($url, $data){
-//        $sendingString = http_build_query($data);
-//        $channel = curl_init($url);
-//        curl_setopt($channel, CURLOPT_POST, true);
-//        curl_setopt($channel, CURLOPT_POSTFIELDS, $sendingString);
-//        curl_setopt($channel, CURLOPT_RETURNTRANSFER, true);
-//        curl_exec($channel);
-//        curl_close($channel);
-//    }
+
+    public function getData($URL){
+////        $url = "someplace.com/products.php?page=12";
+////        $parts = parse_url($url);
+////        $output = [];
+////        parse_str($parts['query'], $output);
+////        echo $query['page'];
+//        print $_SESSION['data'];
+
+        //Open a stream in READ mode
+        $handle = fopen ($URL, "r");
+
+//Read the content of the URL and manipulate it.
+        $key = str_replace(' ', '%20',fread($handle, 1000000));
+        print $key;
+    }
 }

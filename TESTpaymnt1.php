@@ -13,53 +13,31 @@ $user = new User();
 if(!$user->isLoggedIn()){
     Redirect::to('index.php');
 }
-if(Input::exists()){
-    if(Token::check(Input::get('token'))) {
-        $validate = new Validate();
-        $validation = $validate->check($_POST, array(
-            'amount' => array(
-                'required' => true,
-                'min' => 2,
-            )
-        ));
-        if($validation->passed()){
-            $amount = Input::get('amount');
-            Session::flash('home', 'Your password has been changed.');
-//            Redirect::to('payment/ipg.php');
-            $transaction = new transaction();
-            $transactionID = '0003';
-            $merchantCode = "TESTMERACHANT";
-            $transactionAmount = $amount;
-            $returnURL = 'http://localhost:63342/easypay_login-COMLPETE-/TESTpayment_returnURL.php';
-            $str = $transaction->makeTransaction($transactionID, $merchantCode, $transactionAmount, $returnURL);
-            $url = 'https://ipg.dialog.lk/ezCashIPGExtranet/servlet_sentinal';
-            $transaction->send($url, $str);
+$transactionID = 'easy_0100';
+$merchantCode = 'TESTMERCHANT';
+$transactionAmount = '10.00';
+$returnURL = 'http://easypay.bitnamiapp.com/payment/ipg.php';
+$url = 'https://ipg.dialog.lk/ezCashIPGExtranet/servlet_sentinal';
 
-        } else {
-            foreach ($validation->errors() as $error) {
-                echo $error, '<br>';
-            }
-        }
-
-
-    }
-}
-
-$phoneNumber = $user->data()->phone;
-$uID = $user->data()->id;
-
+$sensitiveData = $merchantCode.'|'.$transactionID.'|'.$transactionAmount.'|'.$returnURL;
+//echo $sensitiveData;
+$publicKey = <<<EOD
+-----BEGIN PUBLIC KEY-----
+MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCW8KV72IMdhEuuEks4FXTiLU2o
+bIpTNIpqhjgiUhtjW4Si8cKLoT7RThyOvUadsgYWejLg2i0BVz+QC6F7pilEfaVS
+L/UgGNeNd/m5o/VoX9+caAIyu/n8gBL5JX6asxhjH3FtvCRkT+AgtTY1Kpjb1Btp
+1m3mtqHh6+fsIlpH/wIDAQAB
+-----END PUBLIC KEY-----
+EOD;
+$encrypted = '';
+if (!openssl_public_encrypt($sensitiveData, $encrypted, $publicKey))
+    die('Failed to encrypt data');
+$Invoice = base64_encode($encrypted); // encoded encrypted query string
 ?>
-
-<form action="" method="post">
-<!--    <div class="field">-->
-<!--        <label for="pin">Enter your ez-cash pin number </label>-->
-<!--        <input type="password" name="pin" id="pin">-->
-<!--    </div>-->
+<form action="https://ipg.dialog.lk/ezCashIPGExtranet/servlet_sentinal" method="post">
     <div class="field">
-        <label for="amount">Enter your amount </label>
-        <input type="text" name="amount" id="amount">
+        <input type="submit" value="Pay via eZcash" name="submit">
+        <input type="hidden" value='<?php echo $Invoice; ?>' name="merchantInvoice">
+        <input type="hidden" >
     </div>
-    <input type="hidden" value="<%=Invoice%>" name="merchantInvoice">
-    <input type="submit" value="Next">
-    <input type="hidden" name="token" value="<?php echo Token::generate(); ?>">
 </form>

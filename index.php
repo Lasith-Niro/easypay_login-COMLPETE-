@@ -14,16 +14,17 @@ if(Session::exists('home')){
 }
 $user = new User();
 if($user->isLoggedIn()) {
-    $_SESSION['user'] = $user->data()->username;
+//    $_SESSION['user'] = $user->data()->username;
 
     ?>
-    <p>Hello <a href="profile.php?user=<?php echo escape($user->data()->username); ?>"> <?php echo escape($user->data()->username); ?> </a> ! </p>
+<!--    <p>Hello <a href="profile.php?user=--><?php //echo escape($user->data()->username); ?><!--"> --><?php //echo escape($user->data()->username); ?><!-- </a> ! </p>-->
     <ul>
-        <li><a href="logout.php">Log out</li>
+        <li><a href="profile.php">My profile </a> </li>
         <li><a href="update.php">Update details</a></li>
         <li><a href="changepassword.php">Change password</a></li>
         <li><a href="TESTpaymnt1.php">Payment</a></li>
         <li><a href="changephonenumber.php">Change Phone Number</a> </li>
+        <li><a href="logout.php">Log out </a></li>
 
     </ul>
 
