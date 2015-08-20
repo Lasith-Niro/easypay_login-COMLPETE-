@@ -13,7 +13,8 @@ $user = new User();
 if(!$user->isLoggedIn()){
     Redirect::to('index.php');
 }
-$transactionID = 'easy_0100';
+
+$transactionID = 'easy_0102';
 $merchantCode = 'TESTMERCHANT';
 $transactionAmount = '10.00';
 $returnURL = 'http://easypay.bitnamiapp.com/payment/ipg.php';

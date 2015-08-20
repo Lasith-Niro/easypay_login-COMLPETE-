@@ -23,7 +23,7 @@ if(Token::check(Input::get('token'))) {
         if($user->find($uname)){
             echo "User exist";
         ?>
-            <p> <a href="forgetpassEnterCode.php?>"> <?php echo escape($user->data()->username); ?> </a> </p>
+            <p> <a href="forgetpassCheckPoint.php?>"> <?php echo escape($user->data()->username); ?> </a> </p>
         <?php
             $_SESSION['phone'] = $user->data()->phone;
 
