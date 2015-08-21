@@ -9,21 +9,16 @@
 
 require_once 'core/init.php';
 //require 'PDF/phpToPDF.php';
-echo "profile.php";
+//echo "profile.php";
 $user = new User();
+
 if(!$user->isLoggedIn()){
     Redirect::to('index.php');
 }
-if(Token::check(Input::get('token'))){
-        echo "sdsd";
-//        $name = $user->data()->fname;
-//        echo '$name';
-    ?>
-    <!--    <h3>--><?php //echo escape($user->$data->username); ?><!-- </h3>-->
-    <!--    <p>First name: --><?php //echo escape($user->$data->fname); ?><!-- </p>-->
-    <!--    <p>Phone number: --><?php //echo escape($user->$data->phone); ?><!-- </p>-->
-    <!--        <input type="hidden" name="token" value="--><?php //echo Token::generate(); ?><!--">-->
-    <!--    --><?php
+if(Input::exists()){
+    if(Token::check(Input::get('token'))){
+    echo $_SESSION['user_name'];
+    }
 }
 
 //$myurl = 'http://localhost:63342/easypay_login-COMLPETE-/' . basename($_SERVER['PHP_SELF']) . "?" . $_SERVER['QUERY_STRING'];
@@ -37,6 +32,6 @@ if(Token::check(Input::get('token'))){
 //    "file_name" => 'my_filename.pdf');
 //phptopdf($pdf_options);
 ?>
-    <form action="" method="post" xmlns="http://www.w3.org/1999/html">
-        <input type="hidden" name="token" value="--><?php echo Token::generate(); ?>
+    <form action="" method="post">
+        <input type="hidden" name="token" value="<?php echo Token::generate(); ?>">
     </form>
