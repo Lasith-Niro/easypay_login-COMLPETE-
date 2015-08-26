@@ -8,7 +8,7 @@
 class decrypt {
     public function decode() {
         $decrypted = '';
-        $encrypted = $_POST[' merchantReciept '];
+        $encrypted = $_POST['merchantReciept'];
         $privateKey = <<<EOD
 -----BEGIN PRIVATE KEY-----
 MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAJuIUgSzNuWm3US8
@@ -30,7 +30,11 @@ EOD;
         $encrypted = base64_decode($encrypted); // decode the encrypted query string
         if (!openssl_private_decrypt($encrypted, $decrypted, $privateKey))
             die('Failed to decrypt data');
-        echo "Decrypted value: ". $decrypted;
+//        echo "Decrypted value: ". $decrypted;
+//        return $decrypted;
+        $arr = explode('|', $decrypted);
+        return $arr;
+
     }
 }
 ?>

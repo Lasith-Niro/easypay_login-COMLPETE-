@@ -2,9 +2,10 @@
 /**
  * Created by PhpStorm.
  * User: lasith-niro with surangi-edirisinghe
- * Date: 10/08/15
+ * Date: 22/08/15
  * Time: 19:50
  */
+require_once 'core/init.php';
 require 'payment/encrypt.php';
 require 'Files/accessFile.php';
 
@@ -14,13 +15,18 @@ if(!$user->isLoggedIn()){
 }
 $encryptObject = new encrypt();
 $fileObject = new accessFile();
-
+//private function getLastIndex(){
+//
+//}
 $amountArray = $fileObject->read('Files/amount');
 //data
-$transactionID = 'easy_0111';
+$prefix = 'ept_';
+$sufix = 1;
+
+$transactionID = 'easy_0121';
 $merchantCode = 'TESTMERCHANT';
 $transactionAmount = $amountArray[0]; //Rs.10.00 for test payment
-$returnURL = 'http://easypay.bitnamiapp.com/payment/ipg.php';
+$returnURL = 'www.easypaysl.com/ipgResponse.php';
 $Invoice = $encryptObject->encode($merchantCode, $transactionID, $transactionAmount, $returnURL);
 //echo $Invoice;
 ?>

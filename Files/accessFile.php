@@ -1,5 +1,10 @@
  <?php
-
+ /**
+  * Created by PhpStorm.
+  * User: nadeesh-dilanga
+  * Date: 10/08/15
+  * Time: 21:46
+  */
 
  class accessFile{
 	function read($file){
@@ -21,17 +26,8 @@
 	}
 } 
 
- /*
- $x = new file;
- print_r ($x->read('file2.txt'));
- 
- $y = new file;
- $y -> write('qwe.txt','asdasdasdasdasda');
- 
- $fw = new file;
- $fw->writearray('newdoc.txt',array('a','aaa','aasdad','amdsh','ayuydthsdf',));
-*/
-?>
+
+ ?>
  
  
  
