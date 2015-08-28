@@ -6,9 +6,6 @@
  * Time: 08:38
  */
 
-require 'payment/encrypt.php';
-require 'payment/decrypt.php';
-
 class Transaction{
     private $_Tdb,
             $_Tdata;
@@ -24,4 +21,11 @@ class Transaction{
         }
     }
 
+    public function data(){
+        return $this->_Tdata;
+    }
+
+    public function getTransactionID(){
+        return $this->_Tdata->transactionID;
+    }
 }

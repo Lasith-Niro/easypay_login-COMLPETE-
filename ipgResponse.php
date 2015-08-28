@@ -14,14 +14,15 @@ $user = new User();
 $dec = new decrypt();
 $transaction = new Transaction();
 
-$encrypted = $_POST['merchantReciept'];
+//$encrypted = $_POST['merchantReciept'];
 //$decryptObject = $dec->decode($encrypted);
+//$decArray = explode('|',$decryptObject);
 
 if(!$user->isLoggedIn()){
     Redirect::to('index.php');
 }
 
-//$decArray = explode('|',$decryptObject);
+
 /*
 $transactionID     = $decArray[0];
 $statusCode        = $decArray[1];
