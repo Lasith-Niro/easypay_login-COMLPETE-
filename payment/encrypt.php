@@ -6,7 +6,6 @@
  * Time: 20:11
  */
 
-
 class encrypt{
     public function encode($merchantCode, $transactionID, $transactionAmount, $returnURL) {
         $sensitiveData = $merchantCode.'|'.$transactionID.'|'.$transactionAmount.'|'.$returnURL; // query string

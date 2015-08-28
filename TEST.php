@@ -1,40 +1,62 @@
 <?php
-//require_once 'core/init.php';
-//require 'payment/encrypt.php';
-//require 'Files/accessFile.php';
-//
-//$user = new User();
-//if(!$user->isLoggedIn()){
-//    Redirect::to('index.php');
-//}
-//$encryptObject = new encrypt();
-//$fileObject = new accessFile();
-//
-//$amountArray = $fileObject->read('Files/amount');
-////data
-//$transactionID = 'easy_0111';
-//$merchantCode = 'TESTMERCHANT';
-//$transactionAmount = $amountArray[0]; //Rs.10.00 for test payment
-//$returnURL = 'http://easypay.bitnamiapp.com/payment/ipgResponse.php';
-//$Invoice = $encryptObject->encode($merchantCode, $transactionID, $transactionAmount, $returnURL);
-////echo $Invoice;
-//?>
-<!--<form action="https://ipg.dialog.lk/ezCashIPGExtranet/servlet_sentinal" method="post">-->
-<!--    <div class="field">-->
-<!--        <input type="submit" value="Pay via eZcash" name="submit">-->
-<!--        <input type="hidden" value='--><?php //echo $Invoice; ?><!--' name="merchantInvoice">-->
-<!--    </div>-->
-<!--</form>-->
-<!---->
+$statusCode = 2;
+$transactionID     = 'trans001';
+$statusDescription = 'test transaction';
+$transactionAmount = '10.00';
+$merchantCode      = 'TESTMERCHANT';
+$walletReferenceID = '1221515548';
 
-<?php
-//echo sha1(md5(time()));
-$pre = 'epTID';
-$suf = 1;
-//$str = $pre . (string)$suf;
-//echo str_pad($input, 10);                      // produces "Alien     "
 
-//echo str_pad($pre, 8, "0" ,STR_PAD_LEFT);  // produces "-=-=-Alien"
-//echo str_pad($input, 10, "_", STR_PAD_BOTH);   // produces "__Alien___"
-echo str_pad($pre, 6 , $suf);               // produces "Alien_"
+
+switch($statusCode){
+    case 2: //Completed transaction
+        //Type success code here
+        echo "Success";
+        break;
+    case 3: //Failed
+        echo "Transaction failed";
+        break;
+    case 4: //System error
+        echo "System error";
+        break;
+    case 5: //Invalid customer
+        echo "tho horek";
+        break;
+    case 6: //invalid customer status
+        echo "Customer status invalid";
+        break;
+    case 7: //customer account lock
+        echo "Your ezcash account is locked";
+        break;
+    case 8: //Invalid transaction type
+        echo "Transaction type invalid";
+        break;
+    case 9: //Unothorized transaction type
+        echo "Transaction type unothorized";
+        break;
+    case 10: //Invalid agent
+        echo "Agent invalid";
+        break;
+    case 11: //Invalid agent status
+        echo "Agent status invalid";
+        break;
+    case 12: //Entered amount is not in between max or min limits
+        echo "Entered amount is not in between max or min limits";
+        break;
+    case 13: //eMoney transaction failure
+        echo "eMoney transaction failed";
+        break;
+    case 14: //Transaction committing failure
+        echo "Failed transaction committing";
+        break;
+    case 15: //Customer account blocked due to invalid PIN retries
+        echo "Your account is blocked due to invalid PIN retries";
+        break;
+    case 16: //Active session expired
+        echo "Active session expired";
+        break;
+    //    default:
+    //        echo "Transaction failed";
+}
+
 ?>

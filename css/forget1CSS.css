@@ -1,0 +1,86 @@
+*{
+	margin:0px;
+	padding:0px;
+}
+body{
+	width:100%;
+	display:-webkit-box;
+	-webkit-box-pack:center;
+	background: #ccc url(../images/2.jpg)repeat fixed;
+}
+#mainWrapper{
+	max-width:1000px;
+	margin:20px 0px;
+	display:-webkit-box;
+	-webkit-box-orient:vertical;
+	-webkit-box-flex:1;
+	background-size:100% 100%;
+	
+	
+}
+
+
+#ucscLogo{
+	width:80px;
+	height:75px;
+	margin:20px;
+	float:left;
+}
+#easypayLogo{
+	margin:20px;
+	float:right;
+	width:180px;
+	height:80px;
+}
+#ForgotPassword{
+	text-align:center;
+	width:40%;
+	border:10px ;
+	margin:20px;
+	margin-left:90px;
+	margin-right:auto;
+	margin-top:250px;
+	padding:20px;
+	border-radius:5px;
+	background:#F7F9FA;
+	background-color:rgba(250,250,250,0.4);
+}
+
+
+#verification{
+	height:30px;
+	width:250px;
+	font-size:16px;
+	margin:10px;
+	border-radius:5px;
+
+}
+
+}
+#nextButton{
+	height:135px;
+	width:255px;
+	margin:10px;
+	border-radius:25px;
+	font-weight:bold;
+}
+#nextButton a{
+	text-decoration:none;
+}
+#rf{
+	display:inline-block;
+}
+
+	
+}
+/*#forgotPassword{
+	margin:10px;
+	
+	display:inline;
+	text-align:left;
+	margin-left:-125px;
+	margin-bottom:150px;
+	text-decoration:none; */
+	
+	
+}

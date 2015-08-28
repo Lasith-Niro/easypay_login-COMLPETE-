@@ -9,6 +9,11 @@
 require_once 'core/init.php';
 require 'SMS/sms.php';
 require 'Files/accessFile.php';
+
+if(!$user->isLoggedIn()){
+    Redirect::to('index.php');
+}
+
 if(Input::exists()){
 if(Token::check(Input::get('token'))) {
     $validate = new Validate();

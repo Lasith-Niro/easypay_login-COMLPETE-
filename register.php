@@ -41,7 +41,6 @@ if(Input::exists()){
             $_SESSION['phone']    = Input::get('phoneNo');
             $_SESSION['nic']      = Input::get('nic');
             $_SESSION['dob']      = Input::get('dob');
-
 //            $_SESSION['course']   = Input::get('course');
             $_SESSION['year']     = Input::get('year');
 

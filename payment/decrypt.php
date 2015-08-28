@@ -31,10 +31,9 @@ EOD;
         if (!openssl_private_decrypt($encrypted, $decrypted, $privateKey))
             die('Failed to decrypt data');
 //        echo "Decrypted value: ". $decrypted;
-//        return $decrypted;
-        $arr = explode('|', $decrypted);
-        return $arr;
-
+        return $decrypted;
+//        $arr = explode('|', $decrypted);
+//        return $arr;
     }
 }
 ?>
