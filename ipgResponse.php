@@ -11,21 +11,25 @@ require_once 'core/init.php';
 require 'payment/decrypt.php';
 
 $user = new User();
-$decrypt = new decrypt();
+$dec = new decrypt();
 $transaction = new Transaction();
-$decryptObject = $decrypt->decode();
+
+$encrypted = $_POST['merchantReciept'];
+//$decryptObject = $dec->decode($encrypted);
 
 if(!$user->isLoggedIn()){
     Redirect::to('index.php');
 }
 
-$decArray = explode('|',$decryptObject);
-/*$transactionID     = $decArray[0];
+//$decArray = explode('|',$decryptObject);
+/*
+$transactionID     = $decArray[0];
 $statusCode        = $decArray[1];
 $statusDescription = $decArray[2];
 $transactionAmount = $decArray[3];
 $merchantCode      = $decArray[4];
-$walletReferenceID = $decArray[5];*/
+$walletReferenceID = $decArray[5];
+*/
 
 $transactionID     = '001';
 $statusCode        = 2;

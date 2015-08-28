@@ -6,9 +6,9 @@
  * Time: 20:12
  */
 class decrypt {
-    public function decode() {
+    public function decode($encrypted) {
         $decrypted = '';
-        $encrypted = $_POST['merchantReciept'];
+//        $encrypted = $_POST['merchantReciept'];
         $privateKey = <<<EOD
 -----BEGIN PRIVATE KEY-----
 MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAJuIUgSzNuWm3US8
