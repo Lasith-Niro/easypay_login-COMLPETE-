@@ -5,8 +5,6 @@
  * Date: 26/08/15
  * Time: 09:10
  */
-
-
 require_once 'core/init.php';
 require 'payment/decrypt.php';
 
@@ -15,20 +13,24 @@ $dec = new decrypt();
 $transaction = new Transaction();
 
 $encrypted = $_POST['merchantReciept'];
+//For testing
+//$encrypted = 'safsf5dg5dfg5dd45665hdfh6vdfdfd53dd5df53bdfb3dfb1df53b1dfb531f53b1fb56fgerger564s53bg4n3f534v3sdv3db14d53c1b53df1b53df3'
 $decryptObject = $dec->decode($encrypted);
 $decArray = explode('|',$decryptObject);
 
 if(!$user->isLoggedIn()){
     Redirect::to('index.php');
 }
-
-
+//Declare and assign values to variables
 $transactionID     = $decArray[0];
 $statusCode        = $decArray[1];
 $statusDescription = $decArray[2];
 $transactionAmount = $decArray[3];
 $merchantCode      = $decArray[4];
 $walletReferenceID = $decArray[5];
+$userId            = $user->data()->id;
+$curDate           = date("Y-m-d");
+$curTime           = date("h:i:sa");
 
 /* TEST DATA
 $transactionID     = '001';
@@ -39,9 +41,6 @@ $merchantCode      = "TESTMERCHANT";
 $walletReferenceID = '5001';
 */
 
-$userId = $user->data()->id;
-$curDate = date("Y-m-d");
-$curTime = date("h:i:sa");
 if(Input::exists()){
     if(Token::check(Input::get('token'))){
         $transaction->create(array(
