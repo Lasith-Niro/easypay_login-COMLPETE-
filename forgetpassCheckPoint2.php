@@ -9,9 +9,11 @@
 require_once 'core/init.php';
 
 $user = new User();
-if(!$user->isLoggedIn()){
-    Redirect::to('index.php');
-}
+
+$id = $_SESSION['id'];
+//if(!$user->isLoggedIn()){
+//    Redirect::to('index.php');
+//}
 if(Input::exists()){
     if(Token::check(Input::get('token'))) {
         $validate = new Validate();
@@ -28,7 +30,7 @@ if(Input::exists()){
         ));
 
         if($validation->passed()){
-            $user->update(array(
+            $user->update($id, array(
                 'password' => Hash::make(Input::get('password_new'))
                 ));
             Session::flash('home', 'Your password has been changed.');

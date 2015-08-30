@@ -32,22 +32,10 @@ if(Input::exists()){
             )
         );
         if ($validation->passed()) {
-            $_SESSION['username'] = Input::get('username');
-            $_SESSION['password'] = Hash::make(Input::get('password'));
-            $_SESSION['regNo']    = Input::get('regNumber');
-            $_SESSION['fname']    = Input::get('name1');
-            $_SESSION['lname']    = Input::get('name2');
-            $_SESSION['email']    = Input::get('email');
-            $_SESSION['phone']    = Input::get('phoneNo');
-            $_SESSION['nic']      = Input::get('nic');
-            $_SESSION['dob']      = Input::get('dob');
-//            $_SESSION['course']   = Input::get('course');
-            $_SESSION['year']     = Input::get('year');
-
             Redirect::to('registerConfirm.php');
         } else {
             foreach ($validation->errors() as $error) {
-                echo $error, '<br>';
+                echo $error, '<br />';
             }
         }
     }
@@ -83,7 +71,7 @@ if(Input::exists()){
             <li><a href="http://www.ucsc.cmb.ac.lk/" >UCSC</a></li>
             <li><a href="#">About</a></li>
             <li><a href="#">contact</a></li>
-            <li><a href="loginPage.html">Sign in</a></li>
+            <li><a href="login.php">Sign in</a></li>
 
         </ul>
     </div>

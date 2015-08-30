@@ -72,6 +72,7 @@ if(Input::exists()){
         }
     }
 }
+session_unset();
 ?>
 
 <form action="" method="post">

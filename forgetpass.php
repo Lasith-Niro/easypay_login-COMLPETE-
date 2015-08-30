@@ -10,18 +10,14 @@ require_once 'core/init.php';
 require 'SMS/sms.php';
 require 'Files/accessFile.php';
 
-if(!$user->isLoggedIn()){
-    Redirect::to('index.php');
-}
-
 if(Input::exists()){
-if(Token::check(Input::get('token'))) {
-    $validate = new Validate();
-    $validation = $validate->check($_POST, array(
-        'name' => array(
-            'required' => true
-        )
-    ));
+    if(Token::check(Input::get('token'))) {
+        $validate = new Validate();
+        $validation = $validate->check($_POST, array(
+            'name' => array(
+                'required' => true
+            )
+        ));
 
     $uname = Input::get('name');
     if($validation->passed()){
@@ -29,7 +25,7 @@ if(Token::check(Input::get('token'))) {
         if($user->find($uname)){
 //            echo "User exist";
         ?>
-            <p> <a href="forgetpassCheckPoint.php?>"> <?php echo escape($user->data()->username); ?> </a> </p>
+            <p> <a href="forgetpassCheckPoint.php"> <?php echo escape($user->data()->username); ?> </a> </p>
         <?php
             $_SESSION['phone'] = $user->data()->phone;
         } else {

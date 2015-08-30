@@ -91,7 +91,7 @@ elseif($yourbrowser=="Internet Explorer"){
             <div>
                 <input id="loginButton" type="submit" value="Sign in" name="signin"/>
             </div>
-            <div id="forgotPassword">  <a href="http://www.google.com" title="To recover your password, click here " >Forgot password?</a></div>
+            <div id="forgotPassword">  <a href="forgetpass.php" title="To recover your password, click here " >Forgot password?</a></div>
             <hr id="hr">
 
             <input type="hidden" name="token" value="<?php echo Token::generate(); ?>">
