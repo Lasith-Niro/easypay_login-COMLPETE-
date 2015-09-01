@@ -23,10 +23,7 @@ class Validate {
                 $item = escape($item);
 
                 if($rule === 'required' && empty($value)){
-                    ?>
-                    <script type="text/javascript">alert("required")</script>
-<?php
-//                    $this->addError("{$item} is required <br> ");
+                   $this->addError("{$item} is required <br> ");
                 } else if(!empty($value)) {
                     switch($rule){
                         case 'min':

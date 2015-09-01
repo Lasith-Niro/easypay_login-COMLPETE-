@@ -12,7 +12,6 @@ require 'browser/browserconnect.php';
 
 if(Input::exists()){
     if(Token::check(Input::get('token'))) {
-
         $validate = new Validate();
         $validation = $validate->check($_POST, array(
            'username' => array(
@@ -40,7 +39,6 @@ if(Input::exists()){
             foreach ($validation->errors() as $er) {
                 echo $er, '<\ br>';
             }
-
         }
     }
 }

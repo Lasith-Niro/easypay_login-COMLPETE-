@@ -64,6 +64,13 @@ class user{
         return false;
     }
 
+//    public function findAll($user = null){
+//        if($user) {
+//            $fields = (is_numeric($user)) ? 'id' : 'username';
+//            $data =
+//        }
+//    }
+
     public function login($username=null, $password=null, $remember = false){
         if(!$username && !$password && $this->exists()) {
             //log user in

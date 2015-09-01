@@ -13,8 +13,6 @@ $dec = new decrypt();
 $transaction = new Transaction();
 
 $encrypted = $_POST['merchantReciept'];
-//For testing
-//$encrypted = 'safsf5dg5dfg5dd45665hdfh6vdfdfd53dd5df53bdfb3dfb1df53b1dfb531f53b1fb56fgerger564s53bg4n3f534v3sdv3db14d53c1b53df1b53df3'
 $decryptObject = $dec->decode($encrypted);
 $decArray = explode('|',$decryptObject);
 
@@ -32,15 +30,6 @@ $userId            = $user->data()->id;
 $curDate           = date("Y-m-d");
 $curTime           = date("h:i:sa");
 
-/* TEST DATA
-$transactionID     = '001';
-$statusCode        = 2;
-$statusDescription = "test payment";
-$transactionAmount = 10.00;
-$merchantCode      = "TESTMERCHANT";
-$walletReferenceID = '5001';
-*/
-
 if(Input::exists()){
     if(Token::check(Input::get('token'))){
         $transaction->create(array(
@@ -52,7 +41,6 @@ if(Input::exists()){
             'statusDescription' => $statusDescription,
             'amount' => $transactionAmount
         ));
-
         switch($statusCode){
             case 2: //Completed transaction
                 //Type success code here

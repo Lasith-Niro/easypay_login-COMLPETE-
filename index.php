@@ -7,7 +7,6 @@
  */
 require_once 'core/init.php';
 
-//var_dump(Config::get('localhost'));
 
 if(Session::exists('home')){
     echo '<p>' . Session::flash('home') . '</p>';

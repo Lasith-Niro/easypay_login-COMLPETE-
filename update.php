@@ -23,40 +23,36 @@ if(Input::exists()){
                'min' => 2,
                'max' => 50
            ),
-//            'phone' => array(
-//                'required' => true,
-//                'min' => 10,
-//            ),
-            'regNumber' => array(
+           'regNumber' => array(
               'required' => true,
               'min' => 9
             ),
-            'fname' => array(
+           'fname' => array(
                 'required' => true,
                 'min' => 2,
                 'max' => 20
             ),
-            'lname' => array(
+           'lname' => array(
                 'required' => true,
                 'min' => 2,
                 'max' => 20
             ),
-            'email' => array(
+           'email' => array(
                 'required' => true,
                 'min' => 2,
                 'max' => 100
             ),
-            'nic' => array(
+           'nic' => array(
                 'required' => true,
                 'min' => 10
             ),
-            'dob' => array(
+           'dob' => array(
                 'required' => true,
             ),
-            'year' => array(
+           'year' => array(
                 'required' => true,
                 'min' => 1
-            )
+           )
         ));
         if($validation->passed()){
             try{
@@ -78,7 +74,10 @@ if(Input::exists()){
             }
         } else {
             foreach ($validation->errors() as $er) {
-                echo $er, '<br />';
+//                echo $er, '<br />';
+                ?>
+                <script type="text/javascript"> alert(" Sorry, Update failed. <?php echo $er ,'<br />';?>")</script>
+ <?php
             }
         }
     }

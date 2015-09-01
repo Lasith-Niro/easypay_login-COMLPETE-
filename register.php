@@ -31,11 +31,11 @@ if(Input::exists()){
                 )
             )
         );
-        if ($validation->passed()) {
+        if($validation->passed()) {
             Redirect::to('registerConfirm.php');
         } else {
             foreach ($validation->errors() as $error) {
-                echo $error, '<br />';
+                echo $error, '</ br>';
             }
         }
     }
