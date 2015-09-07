@@ -28,4 +28,8 @@ class Transaction{
     public function getTransactionID(){
         return $this->_Tdata->transactionID;
     }
+
+    public function getLastTransactionID($fields = array()) {
+        return $this->_Tdb->getLastIndex('SELECT', $fields);
+    }
 }

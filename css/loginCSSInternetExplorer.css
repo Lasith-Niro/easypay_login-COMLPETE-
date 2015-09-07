@@ -38,10 +38,10 @@ body{
 	display:inline-block;
 }*/
 #ucscLogo{
-	width:80px;
-	height:75px;
+	width:100px;
+	height:95px;
 	margin:20px;
-	float:left;
+	float:center;
 }
 #easypayLogo{
 	margin:20px;

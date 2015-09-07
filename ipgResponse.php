@@ -41,6 +41,7 @@ if(Input::exists()){
             'statusDescription' => $statusDescription,
             'amount' => $transactionAmount
         ));
+
         switch($statusCode){
             case 2: //Completed transaction
                 //Type success code here

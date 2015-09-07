@@ -13,7 +13,7 @@ require 'Files/accessFile.php';
 $notification = new notification();
 echo "To confirm your registration enter your registration code..." . '<br />';
 $hiddenValue = Input::get('storeRandVal');
-$randomValue = rand(1000, 2500);
+$randomValue = rand(1000, 9999);
 echo $randomValue;
 $file = new accessFile();
 $detailArray = $file->read('Files/RouterPhone');
@@ -23,7 +23,7 @@ $to = $_SESSION['phone'];
 $pass = $detailArray[1];
 $message = $messageArray[0];
 $var = $notification->send($from,$to,$message . $randomValue ,$pass);
-echo $var;
+//echo $var;
 if(Input::exists()){
     if(Token::check(Input::get('token'))) {
         $validate = new Validate();
@@ -57,7 +57,7 @@ if(Input::exists()){
                     Session::flash('home', 'You are registered!');
                     Redirect::to('index.php');
                 }catch (Exception $e){
-                die($e->getMessage());
+                    die($e->getMessage());
                 }
 
             } elseif ($randomValue != $hiddenValue) {
@@ -67,12 +67,12 @@ if(Input::exists()){
             }
         } else {
             foreach ($validation->errors() as $error) {
-                echo $error, '<br />';
+                echo $error, '</ br>';
             }
         }
     }
 }
-session_unset();
+//session_unset();
 ?>
 
 <form action="" method="post">

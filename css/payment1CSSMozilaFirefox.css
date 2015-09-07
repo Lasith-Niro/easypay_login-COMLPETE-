@@ -11,8 +11,11 @@ body{
 	background-size:cover;
 }
 #mainWrapper{
-	max-width:850px;
-	margin:0px 0px;
+	/*max-width:1200px;
+	margin:0px 0px;*/
+	max-width:800px;
+	margin:0 auto;
+	
 	display:-webkit-box;
 	-webkit-box-orient:vertical;
 	-webkit-box-flex:1;
@@ -31,24 +34,34 @@ body{
 	display:inline-block;
 }
 #ucscLogo{
-	margin:2px;
-	margin-right:-80px;
+	margin:-100px;
 	float:right;
+	height:120px;
+	width:120px;
+	margin-right:-160px;
+	
 }
 #easypayLogo{
-	margin:20px;
+	margin:30px;
 	float:right;
 }
-#regForm{
+#bt{
 	text-align:center;
+}
+#a{
+	text-align:center;
+}
+#paymentForm{
+	
 	/*width:40%;*******************************/
-	width:50%;
+	width:55%;
 	
 	border-radius:5px;
 	/*margin:20px;****************************/
 	margin:50px;
 	margin-left:auto;
 	margin-right:auto;
+	margin-top:150px;
 	padding:20px;
 	background:#F7F9FA;
 	background-color:rgba(250,250,250,0.25);
@@ -57,77 +70,24 @@ body{
 	margin:10px;
 }
 
-#username{
+#dropdown{
+	height:30px;
+	width:295px;
+	font-size:16px;
+	margin:10px;
+	border-radius:5px;
+	text-align:center;
+	}
+#amount{
 	height:30px;
 	width:295px;
 	font-size:16px;
 	margin:10px;
 	border-radius:5px;
 }
-#password{
-	height:30px;
-	width:295px;
-	font-size:16px;
-	margin:10px;
-	border-radius:5px;
+
 }
-#password_again{
-    height:30px;
-    width:295px;
-    font-size:16px;
-    margin:10px;
-    border-radius:5px;
-}
-#name1{
-    height:30px;
-    width:295px;
-    font-size:16px;
-    margin:10px;
-    border-radius:5px;
-}
-#name2{
-    height:30px;
-    width:295px;
-    font-size:16px;
-    margin:10px;
-    border-radius:5px;
-}
-#email{
-    height:30px;
-    width:295px;
-    font-size:16px;
-    margin:10px;
-    border-radius:5px;
-}
-#phoneNo{
-    height:30px;
-    width:295px;
-    font-size:16px;
-    margin:10px;
-    border-radius:5px;
-}
-#nic{
-    height:30px;
-    width:295px;
-    font-size:16px;
-    margin:10px;
-    border-radius:5px;
-}
-#dob{
-    height:30px;
-    width:295px;
-    font-size:16px;
-    margin:10px;
-    border-radius:5px;
-    color: darkgray;
-}
-#year{
-    height:30px;
-    width:295px;
-    font-size:16px;
-    margin:10px;
-    border-radius:5px;
-}
+
 #next{
 	font-weight:bold;
 	height:35px;
@@ -151,6 +111,7 @@ body{
 	margin-left:0px;
 	
 }
+
 #navBar a{
 	font-family: Trebuchet MS, sans-serif;
 	display: block;

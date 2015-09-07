@@ -73,6 +73,21 @@ class DB{
         return false;
     }
 
+    public function getLastIndex($action, $item = array()){
+//        return $this->action('SELECT ', $table, $where);
+        $table  = $item[0];
+        $column = $item[1];
+        $value  = $item[2];
+
+        //(SELECT Id FROM TableA t ORDER BY t.Id DESC LIMIT 1)+1
+        $sql    = "{$action} {$column} FROM {$table} ORDER BY {$column} DESC LIMIT 1";
+
+        if(!$this->query($sql, array($value))->error()){
+            return true;
+        }
+        return false;
+    }
+
     public function get($table, $where)
     {
         return $this->action('SELECT * ', $table, $where);

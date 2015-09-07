@@ -41,7 +41,7 @@ if(Input::exists()){
         if($validation->passed()){
             $input = htmlspecialchars(trim(Input::get('rand_number')));
             if($input == $hiddenValue){
-                Session::flash('home', 'Your phone number has been changed.');
+                Session::flash('home', 'Your password has been changed.');
                 Redirect::to('forgetpassCheckPoint2.php');
             } elseif ($randomValue != $hiddenValue) {
                 Session::flash('home', 'you enter wrong key code.');

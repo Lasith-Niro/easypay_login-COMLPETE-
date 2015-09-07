@@ -6,7 +6,7 @@
  * Time: 17:29
  */
 class notification{
-    //var $password="2235";
+//    var $password="6651";
     function send($from,$to,$message,$password){
         $text = urlencode($message);
         $baseurl ="http://www.textit.biz/sendmsg";

@@ -22,17 +22,8 @@ body{
 	/*border:1px solid black;*/
 	
 }
-#header{
-	background:#f1f1f1;
-	/*border:3px solid black;*/
-	height:150px;
-	margin:20px;
-	display:-webkit-box;
-	-webkit-box-orient:vertical;
-	position:relative;
-	background-color:rgba(250,250,250,0.5);
-	border-radius:15px;
-}
+
+
 #welcome{
 	font-size:50px;
 	margin:20px;
@@ -40,15 +31,24 @@ body{
 	display:inline-block;
 }
 #ucscLogo{
-	margin:20px;
-	float:left;
+	margin:15px;
+	float:right;
+	height:150px;
+	width:150px;
+	
 }
 #easypayLogo{
-	margin:20px;
+	margin:30px;
 	float:right;
 }
-#paymentForm{
+#bt{
 	text-align:center;
+}
+#a{
+	text-align:center;
+}
+#paymentForm{
+	
 	/*width:40%;*******************************/
 	width:40%;
 	
@@ -57,6 +57,7 @@ body{
 	margin:50px;
 	margin-left:auto;
 	margin-right:auto;
+	margin-top:70px;
 	padding:20px;
 	background:#F7F9FA;
 	background-color:rgba(250,250,250,0.25);
@@ -71,6 +72,7 @@ body{
 	font-size:16px;
 	margin:10px;
 	border-radius:5px;
+	text-align:center;
 	}
 #amount{
 	height:30px;
@@ -81,6 +83,7 @@ body{
 }
 
 }
+
 #next{
 	font-weight:bold;
 	height:35px;
@@ -104,6 +107,7 @@ body{
 	margin-left:0px;
 	
 }
+
 #navBar a{
 	font-family: Trebuchet MS, sans-serif;
 	display: block;

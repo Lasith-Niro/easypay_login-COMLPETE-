@@ -37,10 +37,12 @@ body{
 	display:inline-block;
 }*/
 #ucscLogo{
-	width:120px;
-	height:115px;
+	width:100px;
+	height:105px;
 	margin-top:10px;
-	margin-left:-260px;
+	margin-left:0px;
+	allign:center;
+
 	
 }
 #easypayLogo{
@@ -54,12 +56,12 @@ body{
 #loginForm{
 	text-align:center;
 	/*width:40%;**********************************/
-	width:45%;
+	width:50%;
 	border:10px ;
 	margin:20px;
 	margin-left:auto;
 	margin-right:auto;
-	margin-top:150px;
+	margin-top:90px;
 	/*margin-top:150px;*/
 	padding:20px;
 	border-radius:5px;
