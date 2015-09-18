@@ -53,6 +53,34 @@ class DB{
         }
         return $this;
     }
+    /* try to new
+    public function findLast($action, $table, $field1, $field2,$value) {
+        $sql = "{$action} {$field1} FROM {$table} ORDER BY {$table}.{$field2} DESC";
+
+        if(!$this->query($sql, array($value))->error()){
+            return $this->first();
+        }
+        return false;
+    }
+
+    public function returnLast($table, $field1, $field2, $where){
+        $finals = $this->findLast('SELECT', $table, $field1, $field2, $where);
+        return $finals;
+    }
+    */
+
+    public function getLast($table, $where) {
+        return $this->getAll('SELECT *', $table, $where);
+    }
+
+    public function getAll($action, $table, $value){
+        $sql = "{$action} FROM {$table} ";
+
+        if(!$this->query($sql, array($value))->error()){
+            return $this;
+        }
+        return false;
+    }
 
     public function action($action, $table, $where = array()) {
         if (count($where) === 3) {
@@ -73,20 +101,6 @@ class DB{
         return false;
     }
 
-    public function getLastIndex($action, $item = array()){
-//        return $this->action('SELECT ', $table, $where);
-        $table  = $item[0];
-        $column = $item[1];
-        $value  = $item[2];
-
-        //(SELECT Id FROM TableA t ORDER BY t.Id DESC LIMIT 1)+1
-        $sql    = "{$action} {$column} FROM {$table} ORDER BY {$column} DESC LIMIT 1";
-
-        if(!$this->query($sql, array($value))->error()){
-            return true;
-        }
-        return false;
-    }
 
     public function get($table, $where)
     {
@@ -117,6 +131,7 @@ class DB{
         }
         return false;
     }
+
 
     public function update($table, $id,  $fields){
         $set = '';

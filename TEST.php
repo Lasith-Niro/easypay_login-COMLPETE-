@@ -1,5 +1,19 @@
 <?php
 require_once 'core/init.php';
+$tra = new Transaction();
+
+echo "I'm ready" . '</ br>';
+
+$newID = (string)$tra->lastID();
+
+
+$data = 0;
+echo $newID;
+
+
+
+
+/*
 $statusCode = 2;
 $transactionID     = 'trans001';
 $statusDescription = 'test transaction';
@@ -10,7 +24,7 @@ $userId = 1;
 $curDate = date("Y-m-d");
 $curTime = date("h:i:sa");
 
-$tra = new Transaction();
+
 
 $tra->create(array(
     'payeeID' => $userId,
@@ -75,5 +89,5 @@ switch($statusCode){
 }
     Session::flash('home', $str);
     Redirect::to('index.php');
-
+*/
 ?>

@@ -5,6 +5,14 @@
  * Date: 22/08/15
  * Time: 19:50
  */
+/*
+     ######    ##     ####    #   #  #####     ##     #   #   ####   #
+     #        #  #   #         # #   #    #   #  #     # #   #       #
+     #####   #    #   ####      #    #    #  #    #     #     ####   #
+     #       ######       #     #    #####   ######     #         #  #
+     #       #    #  #    #     #    #       #    #     #    #    #  #
+     ######  #    #   ####      #    #       #    #     #     ####   ######
+ */
 require_once 'core/init.php';
 require 'payment/encrypt.php';
 require 'Files/accessFile.php';
@@ -14,17 +22,18 @@ $user = new User();
 if(!$user->isLoggedIn()){
     Redirect::to('index.php');
 }
-static $i = 5;
 $encryptObject = new encrypt();
 $fileObject = new accessFile();
 $tra = new Transaction();
 
 $amountArray = $fileObject->read('Files/amount');
+
 $prefix = 'easyID_';
-//$newID = $tra->getLastTransactionID(array('transaction','transactionID',''));
-$newID  = $i;
-//variables for transaction
-$transactionID = selectZero($prefix, $newID);
+$dblastID = (integer)$tra->lastID();
+$newID = $dblastID + 1;
+
+
+$transactionID = $tra->easyID($prefix, $newID);
 //echo $transactionID . '</ br >';
 $merchantCode = 'TESTMERCHANT';
 $transactionAmount = $amountArray[0]; //Rs.10.00 for test payment
@@ -32,24 +41,8 @@ $returnURL = 'www.easypaysl.com/ipgResponse.php';
 $Invoice = $encryptObject->encode($merchantCode, $transactionID, $transactionAmount, $returnURL);
 //echo $Invoice;
 
-function selectZero($pre, $str){
-    $num = strlen((string)$str);
-    switch($num){
-        case 1:
-            return $pre . '000' . $str;
-            break;
-        case 2:
-            return $pre . '00' . $str;
-            break;
-        case 3:
-            return $pre . '0' . $str;
-            break;
-        case 4:
-            return $pre . $str;
-            break;
-        }
-}
-$i++;
+
+
 $ua=getBrowser();
 $yourbrowser= $ua['name'];
 $temp_var;
