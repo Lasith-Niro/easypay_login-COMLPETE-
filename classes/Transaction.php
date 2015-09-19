@@ -23,6 +23,12 @@ class Transaction{
         }
     }
 
+    public function createTEMP($fields = array()) {
+        if(!$this->_Tdb->insert('transaction_TEMP', $fields)){
+            throw new Exception('There was a problem creating an transaction.');
+        }
+    }
+
     public function data(){
         return $this->_Tdata;
     }
@@ -32,7 +38,7 @@ class Transaction{
     }
 
     public function lastID(){
-        $data = $this->_Tdb->getLast('transaction', 'ss');
+        $data = $this->_Tdb->getLast('transaction_TEMP', 'ss');
         return $data->count();
     }
 

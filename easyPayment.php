@@ -31,14 +31,18 @@ $amountArray = $fileObject->read('Files/amount');
 $prefix = 'easyID_';
 $dblastID = (integer)$tra->lastID();
 $newID = $dblastID + 1;
-
-
 $transactionID = $tra->easyID($prefix, $newID);
+
+
 //echo $transactionID . '</ br >';
 $merchantCode = 'TESTMERCHANT';
 $transactionAmount = $amountArray[0]; //Rs.10.00 for test payment
 $returnURL = 'www.easypaysl.com/ipgResponse.php';
 $Invoice = $encryptObject->encode($merchantCode, $transactionID, $transactionAmount, $returnURL);
+$tra->createTEMP(array(
+    'userID' => $user->data()->id
+    ));
+
 //echo $Invoice;
 
 
