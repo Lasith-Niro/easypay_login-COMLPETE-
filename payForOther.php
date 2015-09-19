@@ -28,7 +28,7 @@ if(Input::exists()){
         );
         if($validation->passed()) {
 //            Redirect::to('registerConfirm.php');
-            echo "Getting otherperson's details ok (validation)";
+            echo "Getting other person's details ok (validation)";
         } else {
             foreach ($validation->errors() as $error) {
                 echo $error, '</ br>';
