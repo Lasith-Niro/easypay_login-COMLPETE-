@@ -1,18 +1,53 @@
 <?php
 require_once 'core/init.php';
-$tra = new Transaction();
-
-echo "I'm ready" . '</ br>';
-
-$newID = (string)$tra->lastID();
-
-
-$data = 0;
-echo $newID;
-
-
+$db = DB::getInstance();
+$result = $db->getAll('SELECT username','users', '')->results();
+//$result = mysql_query($sql);
+echo "<select name='usernameCMB'>";
+foreach ($result as $row) {
+    echo "<option value='" . $row['username'] . "'>" . $row['username'] . "</option>";
+}
+echo "</select>";
+?>
 
 
+
+
+
+
+
+
+<?
+//require_once 'core/init.php';
+//
+//if(isset($_POST['search']))
+//{
+//
+//    $makerValue = $_POST['Make']; // make value
+//
+//    $maker = mysql_real_escape_string($_POST['selected_text']); // get the selected text
+//    echo $maker;
+//}
+
+?>
+<!---->
+<!--<form method="POST" >-->
+<!--    <label for="Manufacturer"> Manufacturer : </label>-->
+<!--    <select id="cmbMake" name="Make"     onchange="document.getElementById('selected_text').value=this.options[this.selectedIndex].text">-->
+<!--        <option value="0">Select Manufacturer</option>-->
+<!--        <option value="1">--Any--</option>-->
+<!--        <option value="2">Toyota</option>-->
+<!--        <option value="3">Nissan</option>-->
+<!--    </select>-->
+<!--    <input type="hidden" name="selected_text" id="selected_text" value="" />-->
+<!--    <input type="submit" name="search" value="Search"/>-->
+<!--</form>-->
+
+
+
+
+
+<?php
 /*
 $statusCode = 2;
 $transactionID     = 'trans001';

@@ -20,7 +20,7 @@ $randomValue = rand(1000, 9999);
 $detailArray = $file->read('Files/RouterPhone');
 $messageArray = $file->read('Files/messages');
 
-echo $randomValue;
+//echo $randomValue;
 
 //if(!$user->isLoggedIn()){
 //    Redirect::to('index.php');
@@ -49,7 +49,7 @@ if(Input::exists()){
             }
         } else {
             foreach ($validation->errors() as $error) {
-                echo $error, '<br />';
+                echo $error . '<br />';
             }
         }
     }

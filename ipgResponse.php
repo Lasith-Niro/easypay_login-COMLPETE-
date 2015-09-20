@@ -5,6 +5,14 @@
  * Date: 26/08/15
  * Time: 09:10
  */
+
+/*
+ * transaction type codes
+ * 1 : UCSC registration fee
+ * 2 : New academic year fee
+ * 3 : Repeat exam fee
+ */
+
 require_once 'core/init.php';
 require 'payment/decrypt.php';
 

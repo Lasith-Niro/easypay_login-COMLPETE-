@@ -24,6 +24,22 @@ $pass = $detailArray[1];
 $message = $messageArray[0];
 $var = $notification->send($from,$to,$message . $randomValue ,$pass);
 //echo $var;
+
+$var1 = $_SESSION['username'];
+$var2 = Hash::make($_SESSION['password']);
+$var3 = $_SESSION['regNo'];
+$var4 = $_SESSION['name1'];
+$var5 = $_SESSION['name2'];
+$var6 = $_SESSION['email'];
+$var7 = $_SESSION['phoneNo'];
+$var8 = $_SESSION['nic'];
+$var9 = $_SESSION['dob'];
+$var10 = $_SESSION['year'];
+
+
+
+
+
 if(Input::exists()){
     if(Token::check(Input::get('token'))) {
         $validate = new Validate();
@@ -40,23 +56,24 @@ if(Input::exists()){
                 $user = new User();
                 try{
                     $user->create(array(
-                        'username'  => $_SESSION['username'],
-                        'password'  => $_SESSION['password'],
+                        'username'  => $var1,
+                        'password'  => $var2,
     //                    'salt' => $salt,
-                        'regNumber' => $_SESSION['regNo'],
-                        'fname'     => $_SESSION['fname'],
-                        'lname'     => $_SESSION['lname'],
-                        'email'     => $_SESSION['email'],
-                        'phone'     => $_SESSION['phone'],
-                        'nic'       => $_SESSION['nic'],
-                        'dob'       => $_SESSION['dob'],
+                        'regNumber' => $var3,
+                        'fname'     => $var4,
+                        'lname'     => $var5,
+                        'email'     => $var6,
+                        'phone'     => $var7,
+                        'nic'       => $var8,
+                        'dob'       => $var9,
     //                  'course'  => Input::get('course'),
-                        'year'      => $_SESSION['year'],
+                        'year'      => $var10,
                         'group'     => 1
                     ));
                     Session::flash('home', 'You are registered!');
                     Redirect::to('index.php');
                 }catch (Exception $e){
+//                    Redirect::to('index.php');
                     die($e->getMessage());
                 }
 

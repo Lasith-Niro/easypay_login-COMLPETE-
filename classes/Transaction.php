@@ -10,7 +10,7 @@ class Transaction{
     private $_Tdb,
             $_Tdata;
 
-    public $id;
+//    public $id;
 
     public function __construct($Transaction = null){
         $this->_Tdb = DB::getInstance();

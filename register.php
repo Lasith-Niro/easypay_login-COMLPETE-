@@ -32,6 +32,16 @@ if(Input::exists()){
             )
         );
         if($validation->passed()) {
+            $_SESSION['username'] = Input::get('username');
+            $_SESSION['password'] = Input::get('password');
+            $_SESSION['regNo']    = Input::get('regNumber');
+            $_SESSION['name1']    = Input::get('name1');
+            $_SESSION['name2']    = Input::get('name2');
+            $_SESSION['email']    = Input::get('email');
+            $_SESSION['phoneNo']    = Input::get('phoneNo');
+            $_SESSION['nic']      = Input::get('nic');
+            $_SESSION['dob']      = Input::get('dob');
+            $_SESSION['year']     = Input::get('year');
             Redirect::to('registerConfirm.php');
         } else {
             foreach ($validation->errors() as $error) {

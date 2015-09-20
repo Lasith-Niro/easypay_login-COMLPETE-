@@ -24,12 +24,12 @@ if(!$user->isLoggedIn()){
     <li><a href="easyPayment.php">Payment</a></li>
     <li><a href="changephonenumber.php">Change Phone Number</a> </li>
     <li><a href="logout.php">Log out </a></li>
-    <link rel="shortcut icon" href="icon/ucsc.ico">
+    <link rel="shortcut icon" href="images/icon/ucsc.ico">
 </ul>
 <div class="row-fluid">
     <div class="col-md-5 col-md-offset-1">
         <h4><span id=tick2>
-				</span>&nbsp;|
+				</span>&nbsp;
             <script>
                 function show2(){
                     if (!document.all&&!document.getElementById)
@@ -55,12 +55,12 @@ if(!$user->isLoggedIn()){
                     setTimeout("show2()",1000)
                 }
                 window.onload=show2
-                //-->
             </script>
             <?php
                 $date = new DateTime();
                 echo $date->format('l, F jS, Y');
-            ?></h4>>
+            ?>
+        </h4>
     </div>
     </div>
 </body>
