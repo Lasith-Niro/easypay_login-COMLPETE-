@@ -44,6 +44,8 @@ if(Input::exists()){
 <head>
     <meta charset="UTF-8">
     <title>Pay For Other</title>
+    <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="js/functions.js"></script>
 </head>
 <body>
 <div>
@@ -51,6 +53,10 @@ if(Input::exists()){
         <h1>Pay for another person</h1>
         <h3>Please enter the other person's details</h3>
         <form action="" method="post">
+
+            <input type="checkbox" id="cb1"> He/She is registered with Easypay<br>
+            <div id="cb1_feedback"></div>
+
             <div>
                 <input type="text" name="name" placeholder="Name with initials" value="<?php echo Input::get('name'); ?>">
             </div>
