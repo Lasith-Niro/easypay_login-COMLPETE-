@@ -19,6 +19,12 @@ class Transaction{
 
     public function createNewAcademicYear($fields = array()) {
         if(!$this->_Tdb->insert('New_Academic_Year', $fields)){
+            throw new Exception('There was a problem creating an data.');
+        }
+    }
+
+    public function createUCSCRegistration($fields = array()) {
+        if(!$this->_Tdb->insert('UCSC_Registration', $fields)){
             throw new Exception('There was a problem creating an transaction.');
         }
     }
@@ -54,7 +60,7 @@ class Transaction{
         return $data->count();
     }
 
-    public function easyID($pre, $str){
+    public function encodeEasyID($pre, $str){
         $num = strlen((string)$str);
         $item = '';
         switch($num){
@@ -72,6 +78,12 @@ class Transaction{
                 break;
         }
         return $pre . $item . $str;
+    }
+
+    public function decodeEasyID($str){
+        $zeros = substr_count($str, '0');
+        $id = '';
+
     }
     /* try
     public function getLastID(){

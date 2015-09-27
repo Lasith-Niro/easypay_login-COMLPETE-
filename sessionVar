@@ -1,0 +1,10 @@
+
+
+Sessions are significantly safer than, say, cookies. But it is still possible to steal a session and thus the hacker will have total access to whatever is in that session. Some ways to avoid this are IP Checking (which works pretty well, but is very low fi and thus not reliable on its own), and using a nonce. Typically with a nonce, you have a per-page "token" so that each page checks that the last page's nonce matches what it has stored.
+
+In either security check, there is a loss of usability. If you do IP checking and the user is behind a intranet firewall (or any other situation that causes this) which doesn't hold a steady IP for that user, they will have to re-authenticate every time they lose their IP. With a nonce, you get the always fun "Clicking back will cause this page to break" situation.
+
+But with a cookie, a hacker can steal the session simply by using fairly simple XSS techniques. If you store the user's session ID as a cookie, they are vulnerable to this as well. So even though the session is only penetrable to someone who can do a server-level hack (which requires much more sophisticated methods and usually some amount of privilege, if your server is secure), you are still going to need some extra level of verification upon each script request. You should not use cookies and AJAX together, as this makes it a tad easier to totally go to town if that cookie is stolen, as your ajax requests may not get the security checks on each request. For example, if the page uses a nonce, but the page is never reloaded, the script may only be checking for that match. And if the cookie is holding the authentication method, I can now go to town doing my evilness using the stolen cookie and the AJAX hole.
+
+
+http://stackoverflow.com/questions/1181105/how-safe-are-php-session-variables

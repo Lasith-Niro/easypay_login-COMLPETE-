@@ -32,7 +32,7 @@ if(!$user->isLoggedIn()){
 $prefix = 'easyID_';
 $lastID = (integer)$tra->lastID();
 $newID = $lastID + 1;
-$transactionID = $tra->easyID($prefix, $newID);
+$transactionID = $tra->encodeEasyID($prefix, $newID);
 echo $transactionID;
 //$merchantCode = 'TESTMERCHANT';
 //$transactionAmount = $amountArray[0];
@@ -68,9 +68,8 @@ $tra->createNewAcademicYear(array(
     'status' => 0
 ));
 
+
 ?>
-
-
 <form action="https://ipg.dialog.lk/ezCashIPGExtranet/servlet_sentinal" method="post">
 
     <input type="submit" value="Pay via eZcash">

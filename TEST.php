@@ -1,22 +1,47 @@
 <?php
-require_once 'core/init.php';
-$db = DB::getInstance();
-$result = $db->getAll('SELECT username','users', '')->results();
-//$result = mysql_query($sql);
-echo "<select name='usernameCMB'>";
-foreach ($result as $row) {
-    echo "<option value='" . $row['username'] . "'>" . $row['username'] . "</option>";
-}
-echo "</select>";
+/**
+ * Created by PhpStorm.
+ * User: lasith-niro
+ * Date: 13/09/15
+ * Time: 23:28
+ */
+/*
+     ######    ##     ####    #   #  #####     ##     #   #   ####   #
+     #        #  #   #         # #   #    #   #  #     # #   #       #
+     #####   #    #   ####      #    #    #  #    #     #     ####   #
+     #       ######       #     #    #####   ######     #         #  #
+     #       #    #  #    #     #    #       #    #     #    #    #  #
+     ######  #    #   ####      #    #       #    #     #     ####   ######
+*/
+
+
+$strFull = "easyID_1221";
+//echo $str . "<br>";
+$str = trim($strFull,"easyID_");
+echo $str . '<br />';
+$count = substr_count($str, '0');
+echo $count . '<br />';
+$final = substr_replace($str,'',0,$count);
+echo $final;
+//$final = substr_replace('0','z',$str,$count);
+//echo $final;
+
 ?>
 
 
 
-
-
-
-
-
+<?
+//require_once 'core/init.php';
+//$db = DB::getInstance();
+//$result = $db->getAll('SELECT username','users', '')->results();
+////$result = mysql_query($sql);
+//echo "<select name='usernameCMB'>";
+//foreach ($result as $row) {
+//    echo "<option value='" . $row['username'] . "'>" . $row['username'] . "</option>";
+//}
+//echo "</select>";
+//
+?>
 <?
 //require_once 'core/init.php';
 //
@@ -42,11 +67,6 @@ echo "</select>";
 <!--    <input type="hidden" name="selected_text" id="selected_text" value="" />-->
 <!--    <input type="submit" name="search" value="Search"/>-->
 <!--</form>-->
-
-
-
-
-
 <?php
 /*
 $statusCode = 2;
