@@ -8,27 +8,54 @@
 
 require_once 'core/init.php';
 
+$user = new User();
+if(!$user->isLoggedIn()){
+    Redirect::to('index.php');
+}
+
 if(Input::exists()){
     if(Token::check(Input::get('token'))) {
         $validate = new Validate();
         $validation = $validate->check($_POST, array(
-                'name' => array(
-                    'required' => true,
-                    'min' => 2,
-                    'max' => 20
-                ),
-                'nic' => array(
-                    'required' => true,
-                    'min' => 10
-                ),
-                'regNo' => array(
+                'username' => array(
                     'required' => true
                 )
             )
         );
-        if($validation->passed()) {
-//            Redirect::to('registerConfirm.php');
-            echo "Getting other person's details ok (validation)";
+        if($validation->passed()){
+            //Redirect::to('payForOtherSuccess.php');
+
+            ////Checking if username exists or not////
+            $userId = $user->data()->id;
+            $username = Input::get('username');
+            if(!$username== null){
+                $user = new User();
+                if($user->find($username)){
+                    //echo 'User exists<br>';
+                    ////getting other person's userId////
+                    $opUserId = $user ->data()->id;
+                    //echo '<br>'.$opUserId;
+                    $tempdb = DB::getInstance();
+                    if($tempdb->insert('transaction',array('payerID'=>$userId,'payeeID'=>$opUserId))){
+                        echo 'userId insertion to transaction table completed.' ;
+                    }else{
+                        echo 'userId insertion to transaction table failed.' ;
+                    }
+
+
+
+                }else{
+                    //echo 'Not exists<br>';
+                    echo'<script type="text/javascript">
+                        alert("Username does not exists");
+                    </script>';
+                    //Redirect::to('payForOther.php');
+                }
+            }
+            //echo 'checking completed<br>';
+
+
+
         } else {
             foreach ($validation->errors() as $error) {
                 echo $error, '</ br>';
@@ -36,6 +63,7 @@ if(Input::exists()){
         }
     }
 }
+
 
 ?>
 
@@ -53,21 +81,11 @@ if(Input::exists()){
         <h1>Pay for another person</h1>
         <h3>Please enter the other person's details</h3>
         <form action="" method="post">
-
-            <input type="checkbox" id="cb1"> He/She is registered with Easypay<br>
-            <div id="cb1_feedback"></div>
-
-            <div>
-                <input type="text" name="name" placeholder="Name with initials" value="<?php echo Input::get('name'); ?>">
+            <div id="f1">
+                <input type="text" name="username" placeholder="Username" <?php echo Input::get('username')?>>
             </div>
             <div>
-                <input type="text" name="nic" placeholder="NIC Number" value="<?php echo Input::get('nic'); ?>">
-            </div>
-            <div>
-                <input type="text" name="regNo" placeholder="UCSC Registration Number" value="<?php echo Input::get('regNo'); ?>">
-            </div>
-            <input type="hidden" name="token" value="<?php echo Token::generate(); ?>" >
-            <div>
+                <input type="hidden" name="token" value="<?php echo Token::generate(); ?>" >
                 <input type="submit" value="Submit">
             </div>
         </form>
