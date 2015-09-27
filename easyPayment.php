@@ -31,7 +31,7 @@ $amountArray = $fileObject->read('Files/amount');
 $prefix = 'easyID_';
 $dblastID = (integer)$tra->lastID();
 $newID = $dblastID + 1;
-$transactionID = $tra->easyID($prefix, $newID);
+$transactionID = $tra->encodeEasyID($prefix, $newID);
 
 
 //echo $transactionID . '</ br >';

@@ -34,7 +34,7 @@ if(!$user->isLoggedIn()){
 $prefix = 'easyID_';
 $lastID = (integer)$tra->lastID();
 $newID = $lastID + 1;
-$transactionID = $tra->easyID($prefix, $newID);
+$transactionID = $tra->encodeEasyID($prefix, $newID);
 echo $transactionID . '<br />';
 //$merchantCode = 'TESTMERCHANT';
 //$transactionAmount = $amountArray[0];

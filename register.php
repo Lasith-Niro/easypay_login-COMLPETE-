@@ -122,8 +122,20 @@ if(Input::exists()){
             <div>
                 <input id="dob" type="date" name="dob" placeholder="date of birth" value="<?php echo escape(Input::get('dob')); ?>">
             </div>
-            <div>
-                <input id="year" type="number" name="year" placeholder="Current Academic year" value="<?php echo escape(Input::get('year')); ?>">
+            <div class="field">
+<!--                <input id="year" type="number" name="year" placeholder="Current Academic year" value="--><?php //echo escape(Input::get('year')); ?><!--">-->
+                <label for="Syear" >First year</label>
+                <input id="year" type="radio" name="year" value="<?php echo escape("1"); ?>">
+
+                <label for="Syear" >Second year</label>
+                <input id="year" type="radio" name="year" value="<?php echo escape("2"); ?>">
+
+                <label for="Syear" >Third year</label>
+                <input id="year" type="radio" name="year" value="<?php echo escape("3"); ?>">
+
+                <label for="Syear" >Fourth year</label>
+                <input id="year" type="radio" name="year" value="<?php echo escape("4"); ?>">
+
             </div>
 
             <div>

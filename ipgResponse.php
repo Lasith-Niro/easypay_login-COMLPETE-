@@ -45,6 +45,7 @@ $paymentType = $_SESSION['type'];
 
 if(Token::check(Input::get('token'))){
         $transaction->create(array(
+
             'payeeID' => $userId,
             'date' => $curDate,
             'time' => $curTime,
@@ -58,11 +59,16 @@ if(Token::check(Input::get('token'))){
             case 2: //Completed transaction
                 //Type success code here
                 $str = "transaction success";
+                if($paymentType === 1){
 
-                if($paymentType === 2){
+                }
+                elseif($paymentType === 2){
                     $transaction->updateStatus('New_Academic_Year',array(
                         'status' => 1
                     ), $transactionID);
+                }
+                elseif($paymentType === 3){
+                    //code here
                 }
 
                 break;
