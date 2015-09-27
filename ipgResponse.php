@@ -6,16 +6,15 @@
  * Time: 09:10
  */
 
+require_once 'core/init.php';
+require 'payment/decrypt.php';
+
 /*
  * transaction type codes
  * 1 : UCSC registration fee
  * 2 : New academic year fee
  * 3 : Repeat exam fee
  */
-
-require_once 'core/init.php';
-require 'payment/decrypt.php';
-
 $user = new User();
 $dec = new decrypt();
 $transaction = new Transaction();
@@ -28,6 +27,7 @@ if(!$user->isLoggedIn()){
     Redirect::to('index.php');
 }
 //Declare and assign values to variables
+//data from ezcash server
 $transactionID     = $decArray[0];
 $statusCode        = $decArray[1];
 $statusDescription = $decArray[2];
@@ -35,11 +35,15 @@ $transactionAmount = $decArray[3];
 $merchantCode      = $decArray[4];
 $walletReferenceID = $decArray[5];
 $userId            = $user->data()->id;
+
 $curDate           = date("Y-m-d");
 $curTime           = date("h:i:sa");
 
-if(Input::exists()){
-    if(Token::check(Input::get('token'))){
+//data from user
+$paymentType = $_SESSION['type'];
+
+
+if(Token::check(Input::get('token'))){
         $transaction->create(array(
             'payeeID' => $userId,
             'date' => $curDate,
@@ -54,6 +58,13 @@ if(Input::exists()){
             case 2: //Completed transaction
                 //Type success code here
                 $str = "transaction success";
+
+                if($paymentType === 2){
+                    $transaction->updateStatus('New_Academic_Year',array(
+                        'status' => 1
+                    ), $transactionID);
+                }
+
                 break;
             case 3: //Failed
                 $str = "Transaction failed";
@@ -102,9 +113,7 @@ if(Input::exists()){
         }
         Session::flash('home', $str);
         Redirect::to('index.php');
-    }
 }
-
 ?>
 
 <form action="https://ipg.dialog.lk/ezCashIPGExtranet/servlet_sentinal" method="POST">

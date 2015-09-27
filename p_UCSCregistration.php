@@ -41,8 +41,6 @@ $transactionID = $tra->easyID($prefix, $newID);
 //$tra->createTEMP(array(
 //    'userID' => $user->data()->id
 //));
-
-
 $uNIC = $user->data()->nic;
 echo "Your registration number is " . $uNIC . '<br />';
 $uRegID = $user->data()->regNumber;

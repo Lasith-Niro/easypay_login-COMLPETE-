@@ -103,6 +103,14 @@ body{
     margin:10px;
     border-radius:5px;
 }
+#regNumber{
+	height:30px;
+    width:295px;
+    font-size:16px;
+    margin:10px;
+    border-radius:5px;
+
+}
 #email{
     height:30px;
     width:295px;

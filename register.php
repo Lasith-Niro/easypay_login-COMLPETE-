@@ -126,6 +126,10 @@ if(Input::exists()){
                 <input id="year" type="number" name="year" placeholder="Current Academic year" value="<?php echo escape(Input::get('year')); ?>">
             </div>
 
+            <div>
+            <input type="checkbox" name="accept">
+            I agree to the <a href="">Terms and Conditions</a> and <a href="">Privacy Policy</a>
+            </div>
             <input type = "hidden" name="token" value="<?php echo Token::generate(); ?>">
             <input id="next" type="submit" value="Next">
         </form>

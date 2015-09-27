@@ -64,11 +64,6 @@ $_SESSION['reg'] = $uRegID;
 $_SESSION['type'] = 3;
 
 
-
-?>
-
-
-<?
 /*
  * index number
  * name with initials
@@ -77,26 +72,29 @@ $_SESSION['type'] = 3;
  * Subject code + Subject name + Assignment complete + Grades obtained (prev)
  *
  */
-
 ?>
 
 <form action="https://ipg.dialog.lk/ezCashIPGExtranet/servlet_sentinal" method="post">
+    <div class="field">
+        <label for="intro" >Please tick on the appropriate exam <br> </label>
+    </div>
+
     <?php
     if((integer)date('m') < 6){
     ?>
     <div class="field">
-        <label for="intro" >Please tick on the appropriate exam <br> </label>
         <label for="firstYear_sem1">First year - Semester I</label>
         <label for="FYS1"></label><input type="radio" name="exam" id="FYS1" value="FYS1">
-        <label for="firstYear_sem2">First year - Semester II</label>
-        <label for="FYS2"></label><input type="radio" name="exam" id="FYS2" value="FYS2">  <br>
+        <label for="secondYear_sem1">Second year - Semester I</label>
+        <label for="SYS1"></label><input type="radio" name="exam" id="SYS1" value="SYS1">
     </div>
     <?
     } else {
     ?>
     <div class="field">
-        <label for="secondYear_sem1">Second year - Semester I</label>
-        <label for="SYS1"></label><input type="radio" name="exam" id="SYS1" value="SYS1">
+        <label for="firstYear_sem2">First year - Semester II</label>
+        <label for="FYS2"></label><input type="radio" name="exam" id="FYS2" value="FYS2">
+
         <label for="secondYear_sem1">Second year - Semester II</label>
         <label for="SYS2"></label><input type="radio" name="exam" id="SYS2" value="SYS2">
     </div>
@@ -137,7 +135,7 @@ $_SESSION['type'] = 3;
 <!--    Subject code + Subject name + Assignment complete + Grades obtained (prev)-->
     <div class="field">
         <label for="details">Details <br> </label>
-
+        <label for="subIndex" >1</label>
         <label for="subjectCode">Subject code</label>
         <label>
             <input type="text" name="subjectCode" value="<?php echo Input::get('subjectCode'); ?>">
@@ -174,7 +172,7 @@ $_SESSION['type'] = 3;
         </label>
 
     </div>
-
+<hr>
 
 
 
