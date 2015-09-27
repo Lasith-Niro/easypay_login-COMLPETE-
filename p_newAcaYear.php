@@ -50,16 +50,23 @@ echo "You have {$dayLimit} days for this payment." . '<br />';
 
 $uID = $user->data()->id;
 $uRegID = $user->data()->regNumber;
+
 if(!$uRegID){
     echo "You have not submitted your registration number." . '<br />';
+//    echo $uRegID . '<br />';
 } else {
     echo "Your registration number is " . $uRegID . '<br />';
 }
 echo "You have to pay Rs.600 for register." . '<br />';
 
-$_SESSION['uID'] = $uID;
-$_SESSION['reg'] = $uRegID;
 $_SESSION['type'] = 2;
+
+$acaYear = date("Y");
+$tra->createNewAcademicYear(array(
+    'transactionID' => $transactionID,
+    'acaYear' => $acaYear,
+    'status' => 0
+));
 
 ?>
 

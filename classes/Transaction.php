@@ -17,6 +17,12 @@ class Transaction{
 
     }
 
+    public function createNewAcademicYear($fields = array()) {
+        if(!$this->_Tdb->insert('New_Academic_Year', $fields)){
+            throw new Exception('There was a problem creating an transaction.');
+        }
+    }
+
     public function create($fields = array()) {
         if(!$this->_Tdb->insert('transaction', $fields)){
             throw new Exception('There was a problem creating an transaction.');
@@ -26,6 +32,12 @@ class Transaction{
     public function createTEMP($fields = array()) {
         if(!$this->_Tdb->insert('transaction_TEMP', $fields)){
             throw new Exception('There was a problem creating an transaction.');
+        }
+    }
+
+    public function updateStatus($tblName,$fields = array(), $transactioID=null){
+        if(!$this->_Tdb->update($tblName, $transactioID, $fields)) {
+            throw new Exception('There was a problem updating..');
         }
     }
 

@@ -45,13 +45,12 @@ body{
 
 	
 }
-#easypayLogo{
-	margin:20px;
-	float:center;
-	width:220px;
-	height:60px;
-	background-color:#E0ECF8
+#img{
 	
+	float:left;
+	background-color:rgba(250,250,250,0.35);
+	border-radius:5px;
+	margin-top:5px;
 }
 #loginForm{
 	text-align:center;
@@ -61,7 +60,7 @@ body{
 	margin:20px;
 	margin-left:auto;
 	margin-right:auto;
-	margin-top:90px;
+	margin-top:150px;
 	/*margin-top:150px;*/
 	padding:20px;
 	border-radius:5px;

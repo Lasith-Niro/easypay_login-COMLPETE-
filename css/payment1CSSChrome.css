@@ -1,7 +1,6 @@
-{
+*{
 	margin:0px;
 	padding:0px;
-	
 }
 body{
 	width:100%;
@@ -12,142 +11,126 @@ body{
 	background-size:cover;
 }
 #mainWrapper{
-	max-width:1200px;
-	margin:5px 0px;
+	/*max-width:1200px;
+	margin:0px 0px;*/
+	max-width:800px;
+	margin:0 auto;
+	
 	display:-webkit-box;
 	-webkit-box-orient:vertical;
 	-webkit-box-flex:1;
 	background-size:100% 100%;
 	
 	
-	/*background-color:#959999;*/
+	/*border:1px solid black;*/
+	
 }
 
-#ucscLogo{
-	width:120px;
-	height:135px;
+
+#welcome{
+	font-size:50px;
 	margin:20px;
-	float:left;
-}
-#easypayLogo{
-	margin-right:-1100px;
-	margin-top:30px;
-	float:right;
-	width:200px;
-	height:70px;
-	
-}
-#loginForm{
 	text-align:center;
-	/*width:40%;**********************************/
-	width:50%;
-	border:10px ;
-	margin-left:130px;
-	
-	margin-top:150px;
-	/*margin-top:150px;*/
-	padding:100px;
-	border-radius:10px;
-	background:#F7F9FA;
-	background-color:rgba(250,250,250,0.4);
-	
-	
-}
-
-/*#signin{
-	margin:10px;
-}*/
-#username{
-	height:30px;
-	width:250px;
-	font-size:16px;
-	margin:10px;
-	border-radius:5px;
-}
-#password{
-	height:30px;
-	width:250px;
-	font-size:16px;
-	margin:10px;
-	border-radius:5px;
-}
-#loginButton{
-	color:white;
-	font-weight:bold;
-	background-color:#007eff;
-	height:35px;
-	width:255px;
-	margin:10px;
-	border-radius:5px;
-}
-#signupButton{
-	height:35px;
-	width:255px;
-	margin:10px;
-	border-radius:5px;
-	font-weight:bold;
-}
-#signupButton a{
-	text-decoration:none;
-}
-#rf{
 	display:inline-block;
 }
-#remember{
-	/*margin:10px;*/
-	margin-left:75px;
-	/*margin-bottom:10px;*/
-	text-align:left;
+#ucscLogo{
+	
+	float:right;
+	height:100px;
+	width:100px;
+	margin-right:-400px;
 	
 }
-#forgotPassword{
+
+#bt{
+	text-align:center;
+}
+#a{
+	text-align:center;
+}
+#paymentForm{
+	
+	/*width:40%;*******************************/
+	width:110%;
+	
+	border-radius:5px;
+	/*margin:20px;****************************/
+	margin:50px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:40px;
+	padding:20px;
+	background:#F7F9FA;
+	background-color:rgba(250,250,250,0.25);
+}
+#signup{
 	margin:10px;
-	/*margin-right:150px;*/
-	display:inline;
+}
+
+#dropdown{
+	height:30px;
+	width:295px;
+	font-size:16px;
+	margin:10px;
+	border-radius:5px;
+	text-align:center;
+	}
+#amount{
+	height:30px;
+	width:295px;
+	font-size:16px;
+	margin:10px;
+	border-radius:5px;
+}
+
+}
+
+#next{
+	font-weight:bold;
+	height:35px;
+	width:100px;
+	margin-top:20px;
+	margin-left:195px;
+	border-radius:5px;
+}
+#navBar{
+	/*position:absolute;*/
+	margin-left:40px;
+	bottom:0px;
+	
+}
+#navBar ul{
+	list-style:none;
+	margin:0;
+}
+#navBar li{
+	float: left;
+	margin-left:0px;
+	
+}
+
+#navBar a{
+	font-family: Trebuchet MS, sans-serif;
+	display: block;
+	color:white;
+	text-decoration: none;
+	padding:0 15px 0 30px;
+	margin-right:10px;
 	text-align:left;
-	margin-left:-125px;
-	margin-bottom:150px;
-	text-decoration:none;
-	
-	
+	line-height:25px;
+	background: url(../images/icon.ico) -128px -128px;
+	border:none;
+	border-radius:5px;
 }
-#hr { 
-    display: block;
-    margin-top: 1em;
-    margin-bottom: 0.5em;
-    margin-left: 72px;
-    margin-right: 72px;
-    
-    border-width: 1px;
-	
+#navBar a:hover{
+background-position: -186px -200px;
+color: #f8b449;
 }
-a{
-	color: #fff;
-	text-decoration:none;
-	text-shadow: 0px 1px 0px #999, 0px 2px 0px #888, 0px 3px 0px #777, 0px 4px 0px #666, 0px 5px 0px #555, 0px 6px 0px #444, 0px 7px 0px #333, 0px 8px 7px #001135;
-	font: 45px 'ChunkFiveRegular';
-}
-a:link {
-    color: #fff;
-}
-
-/* visited link */
-a:visited {
-    color: #551A8B;
-}
-
-/* mouse over link */
-a:hover {
-    color: #B8B8B8   ;
-}
-
-/* selected link */
-a:active {
-    color: #FF0000 ;
-}
-#test{
-	border : 1px solid #000;
-	border-radius: 10px;
-	padding:60px;
-	margin:1px;
+#topic{
+	font-size:20px;
+	float:left;
+	margin-top:20px;
+	margin-bottom:10px;
+	color:black;
+	font-weight:bold;
 }

@@ -41,13 +41,12 @@ body{
 	display:inline-block;
 }
 #ucscLogo{
-	margin:20px;
-	float:left;
-}
-#easypayLogo{
-	margin:20px;
+	margin:-100px;
 	float:right;
+	margin-right:-140px;
+	
 }
+
 #regForm{
 	text-align:center;
 	/*width:40%;*******************************/
@@ -55,7 +54,8 @@ body{
 	
 	border-radius:5px;
 	/*margin:20px;****************************/
-	margin:70px;
+	
+	margin-top:150px;
 	margin-left:auto;
 	margin-right:auto;
 	padding:20px;
@@ -100,6 +100,14 @@ body{
     font-size:16px;
     margin:10px;
     border-radius:5px;
+}
+#regNumber{
+	height:30px;
+    width:295px;
+    font-size:16px;
+    margin:10px;
+    border-radius:5px;
+
 }
 #email{
     height:30px;
