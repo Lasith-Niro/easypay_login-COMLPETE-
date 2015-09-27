@@ -35,12 +35,14 @@ if(Input::exists()){
                     ////getting other person's userId////
                     $opUserId = $user ->data()->id;
                     //echo '<br>'.$opUserId;
-                    $tempdb = DB::getInstance();
-                    if($tempdb->insert('transaction',array('payerID'=>$userId,'payeeID'=>$opUserId))){
-                        echo 'userId insertion to transaction table completed.' ;
-                    }else{
-                        echo 'userId insertion to transaction table failed.' ;
-                    }
+                    $_SESSION['payeeID'] = $opUserId;
+
+//                    $tempdb = DB::getInstance();
+//                    if($tempdb->insert('transaction',array('payerID'=>$userId,'payeeID'=>$opUserId))){
+//                        echo 'userId insertion to transaction table completed.' ;
+//                    }else{
+//                        echo 'userId insertion to transaction table failed.' ;
+//                    }
 
 
 
