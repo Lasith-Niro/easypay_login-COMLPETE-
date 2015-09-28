@@ -33,7 +33,9 @@ $prefix = 'easyID_';
 $lastID = (integer)$tra->lastID();
 $newID = $lastID + 1;
 $transactionID = $tra->encodeEasyID($prefix, $newID);
-echo $transactionID;
+//echo $transactionID . '<br />';
+
+
 //$merchantCode = 'TESTMERCHANT';
 //$transactionAmount = $amountArray[0];
 //$returnURL = 'www.easypaysl.com/ipgResponse.php';
@@ -60,10 +62,11 @@ if(!$uRegID){
 echo "You have to pay Rs.600 for register." . '<br />';
 
 $_SESSION['type'] = 2;
-
 $acaYear = date("Y");
+$de_transactionID = $tra->decodeEasyID($transactionID);
+//echo $de_transactionID;
 $tra->createNewAcademicYear(array(
-    'transactionID' => $transactionID,
+    'transactionID' => $de_transactionID,
     'acaYear' => $acaYear,
     'status' => 0
 ));

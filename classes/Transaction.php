@@ -17,15 +17,21 @@ class Transaction{
 
     }
 
+    public function createRepeatExam($fields = array()) {
+        if(!$this->_Tdb->insert('Repeat_Exam', $fields)){
+            throw new Exception('There was a problem in connection');
+        }
+    }
+
     public function createNewAcademicYear($fields = array()) {
         if(!$this->_Tdb->insert('New_Academic_Year', $fields)){
-            throw new Exception('There was a problem creating an data.');
+            throw new Exception('There was a problem in connection');
         }
     }
 
     public function createUCSCRegistration($fields = array()) {
         if(!$this->_Tdb->insert('UCSC_Registration', $fields)){
-            throw new Exception('There was a problem creating an transaction.');
+            throw new Exception('There was a problem in connection');
         }
     }
 
@@ -37,12 +43,12 @@ class Transaction{
 
     public function createTEMP($fields = array()) {
         if(!$this->_Tdb->insert('transaction_TEMP', $fields)){
-            throw new Exception('There was a problem creating an transaction.');
+            throw new Exception('There was a problem in connection');
         }
     }
 
-    public function updateStatus($tblName,$fields = array(), $transactioID=null){
-        if(!$this->_Tdb->update($tblName, $transactioID, $fields)) {
+    public function updateStatus($tblName,$fields = array(), $transactionID=null){
+        if(!$this->_Tdb->update($tblName, $transactionID, $fields)) {
             throw new Exception('There was a problem updating..');
         }
     }
@@ -80,10 +86,11 @@ class Transaction{
         return $pre . $item . $str;
     }
 
-    public function decodeEasyID($str){
+    public function decodeEasyID($string){
+        $str = trim($string,"easyID_");
         $zeros = substr_count($str, '0');
-        $id = '';
-
+        $decodedID = substr_replace($str, '', 0, $zeros);
+        return $decodedID;
     }
     /* try
     public function getLastID(){

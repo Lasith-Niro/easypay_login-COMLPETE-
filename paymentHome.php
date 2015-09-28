@@ -34,10 +34,10 @@ require_once 'browser/browserconnect.php';
     <div id="loginForm">
         <form action="login.php" method="POST">
           <div id="test" >
-		   <a href="www.google.com"> Pay for me <br></a>
+		   <a href="payforme.php"> Pay for me <br></a>
 		   <br>
 		   <br>
-		   <a href="www.google.com"> Pay for other person </a>
+		   <a href="payForOther.php"> Pay for other person </a>
             
             
             

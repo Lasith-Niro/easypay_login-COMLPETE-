@@ -38,7 +38,7 @@ if(Input::exists()){
             $_SESSION['name1']    = Input::get('name1');
             $_SESSION['name2']    = Input::get('name2');
             $_SESSION['email']    = Input::get('email');
-            $_SESSION['phoneNo']    = Input::get('phoneNo');
+            $_SESSION['phone']    = Input::get('phoneNo');
             $_SESSION['nic']      = Input::get('nic');
             $_SESSION['dob']      = Input::get('dob');
             $_SESSION['year']     = Input::get('year');

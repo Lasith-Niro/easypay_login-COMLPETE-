@@ -39,14 +39,16 @@ $userId            = $user->data()->id;
 $curDate           = date("Y-m-d");
 $curTime           = date("h:i:sa");
 
-//data from user
+//data from the session
 $paymentType = $_SESSION['type'];
-
+$de_transactionID = $transaction->decodeEasyID($transactionID);
+$payeeID = $_SESSION['payeeID'];
 
 if(Token::check(Input::get('token'))){
         $transaction->create(array(
-
-            'payeeID' => $userId,
+            'transactionID' => $de_transactionID,
+            'payeeID' => $payeeID,
+            'payerID' => $userId,
             'date' => $curDate,
             'time' => $curTime,
             'statusCode' => $statusCode,
@@ -60,17 +62,24 @@ if(Token::check(Input::get('token'))){
                 //Type success code here
                 $str = "transaction success";
                 if($paymentType === 1){
-
+                    //payment type = UCSC registration fee
+                    $transaction->updateStatus('UCSC_Registration',array(
+                        'status' => 1
+                    ),$de_transactionID);
                 }
                 elseif($paymentType === 2){
+                    //payment type = New academic year fee
                     $transaction->updateStatus('New_Academic_Year',array(
                         'status' => 1
-                    ), $transactionID);
+                    ), $de_transactionID);
                 }
                 elseif($paymentType === 3){
-                    //code here
+                    //payment type = Repeat exam fee
+                    $transaction->updateStatus('Repeat_Exam',array(
+                       'status' => 1
+                    ), $de_transactionID);
                 }
-
+                Redirect::to('index.php');
                 break;
             case 3: //Failed
                 $str = "Transaction failed";

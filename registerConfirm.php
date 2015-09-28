@@ -37,9 +37,6 @@ $var9 = $_SESSION['dob'];
 $var10 = $_SESSION['year'];
 
 
-
-
-
 if(Input::exists()){
     if(Token::check(Input::get('token'))) {
         $validate = new Validate();

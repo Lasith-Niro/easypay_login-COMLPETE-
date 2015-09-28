@@ -29,12 +29,12 @@ if(!$user->isLoggedIn()){
     Redirect::to('index.php');
 }
 if($user->data()->year == 1){
-
     $prefix = 'easyID_';
     $lastID = (integer)$tra->lastID();
     $newID = $lastID + 1;
     $transactionID = $tra->encodeEasyID($prefix, $newID);
-//    $transactionID = 1;
+
+
     //$merchantCode = 'TESTMERCHANT';
     //$transactionAmount = $amountArray[0];
     //$returnURL = 'www.easypaysl.com/ipgResponse.php';
@@ -42,11 +42,13 @@ if($user->data()->year == 1){
     //$tra->createTEMP(array(
     //    'userID' => $user->data()->id
     //));
+
+
     $uNIC = $user->data()->nic;
     $regYear = date("Y") + 1;
     $_SESSION['type'] = 1;
 
-    echo "Your registration number is " . $uNIC . '<br />';
+    echo "Your registration number is " . $uNIC . '<br /><br />';
     $uRegID = $user->data()->regNumber;
     if(!$uRegID){
         echo "You have not submitted your registration number." . '<br />';
@@ -61,8 +63,9 @@ if($user->data()->year == 1){
 
 
 
+    $en_transactionID = $tra->decodeEasyID($transactionID);
     $tra->createUCSCRegistration(array(
-        'transactionID' => $transactionID,
+        'transactionID' => $en_transactionID,
         'regYear' => $regYear,
         'status' => 0
     ))

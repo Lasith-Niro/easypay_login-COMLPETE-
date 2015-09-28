@@ -21,7 +21,7 @@ if(!$user->isLoggedIn()){
     <!--        <li><a href="profile.php">My profile </a> </li>-->
     <li><a href="update.php">Update details</a></li>
     <li><a href="changepassword.php">Change password</a></li>
-    <li><a href="easyPayment.php">Payment</a></li>
+    <li><a href="paymentHome.php">Payment</a></li>
     <li><a href="changephonenumber.php">Change Phone Number</a> </li>
     <li><a href="logout.php">Log out </a></li>
     <link rel="shortcut icon" href="images/icon/ucsc.ico">
