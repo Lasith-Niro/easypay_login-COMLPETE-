@@ -48,7 +48,7 @@ if($user->data()->year == 1){
     $regYear = date("Y") + 1;
     $_SESSION['type'] = 1;
 
-    echo "Your registration number is " . $uNIC . '<br /><br />';
+    echo "Your nic number is " . $uNIC . '<br /><br />';
     $uRegID = $user->data()->regNumber;
     if(!$uRegID){
         echo "You have not submitted your registration number." . '<br />';
