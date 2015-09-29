@@ -1,5 +1,6 @@
 <?php
 require_once 'core/init.php';
+require_once 'browser/browserconnect.php';
 //var_dump — Dumps information about a variable
 //var_dump(Token::check(Input::get('token')));
 
@@ -32,13 +33,13 @@ if(Input::exists()){
             )
         );
         if($validation->passed()) {
-            $_SESSION['username'] = Input::get('username');
+			$_SESSION['username'] = Input::get('username');
             $_SESSION['password'] = Input::get('password');
             $_SESSION['regNo']    = Input::get('regNumber');
             $_SESSION['name1']    = Input::get('name1');
             $_SESSION['name2']    = Input::get('name2');
             $_SESSION['email']    = Input::get('email');
-            $_SESSION['phone']    = Input::get('phoneNo');
+            $_SESSION['phoneNo']    = Input::get('phoneNo');
             $_SESSION['nic']      = Input::get('nic');
             $_SESSION['dob']      = Input::get('dob');
             $_SESSION['year']     = Input::get('year');
@@ -51,40 +52,98 @@ if(Input::exists()){
     }
 }
 ?>
+<?php
+	$ua=getBrowser();
+	$yourbrowser= $ua['name'];
+	$temp_var;
+	if ($yourbrowser=="Google Chrome"){
+		$temp_var="css/regCSSChrome.css";
+	}
+	elseif($yourbrowser=="Mozilla Firefox"){
+		$temp_var="css/regCSSFirefox.css";
+	}
+	elseif($yourbrowser=="Internet Explorer"){
+		$temp_var="css/regCSSInternetExplorer.css";
+	}
+	
+	?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <title>Register | page</title>
-    <link rel="stylesheet" href="css/regCSS.css">
+    <link rel="stylesheet" href=<?php echo $temp_var?>>
+	<link href="home/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <link href="home/css/full-width-pics.css" rel="stylesheet">
 </head>
 
 <body>
 
 <div id="mainWrapper">
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" >
 
-    <div id="header">
+            <div class="container" >
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+    			<a href="home page.html">
+    			<img id="img" src="images/logo.png" alt="" width="150px" >
+				</a>
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+                    <ul class="nav navbar-nav">
+
+    					<li>
+                            <a href="index.php">HOME</a>
+                        </li>
+    					<li>
+                            <a href="#">UCSC</a>
+                        </li>
+                        <li>
+                            <a href="#">ABOUT</a>
+                        </li>
+
+                        <li>
+                            <a href="#">SERVICES</a>
+                        </li>
+                        <li>
+                            <a href="#">CONTACT</a>
+                        </li>
+    					<li>
+                            <a href="login.php">LOGIN</a>
+                        </li>
+    					<li>
+                            <a href="register.php">REGISTER</a>
+                        </li>
+                    </ul>
+
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container -->
+        </nav>
+
+    
         <header>
-
+	
             <img id="ucscLogo" src="images/ucsc.png" height="100px"/>
             <!--<h1 id="welcome">Welcome to Easypay</h1>-->
-            <img id="easypayLogo" src="images/logo.png" height="100px"/>
+            
 
         </header>
 
-    </div>
-    <div id="navBar">
-        <!--Unordered list-->
-        <ul>
-            <!--List items-->
-            <li><a href="#" class="current">Home</a></li>
-            <li><a href="http://www.ucsc.cmb.ac.lk/" >UCSC</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">contact</a></li>
-            <li><a href="login.php">Sign in</a></li>
-
-        </ul>
-    </div>
+    
+    
 
 
     <div id="regForm">
@@ -120,25 +179,20 @@ if(Input::exists()){
                 <input id="nic" type="text" name="nic" placeholder="NIC number" value="<?php echo escape(Input::get('nic')); ?>">
             </div>
             <div>
-                <input id="dob" type="date" name="dob" placeholder="date of birth" value="<?php echo escape(Input::get('dob')); ?>">
+                <input id="dob" type="date" name="dob" placeholder="Date of birth" value="<?php echo escape(Input::get('dob')); ?>">
             </div>
             <div class="field">
-<!--                <input id="year" type="number" name="year" placeholder="Current Academic year" value="--><?php //echo escape(Input::get('year')); ?><!--">-->
+                <!--                <input id="year" type="number" name="year" placeholder="Current Academic year" value="--><?php //echo escape(Input::get('year')); ?><!--">-->
                 <label for="Syear" >First year</label>
                 <input id="year" type="radio" name="year" value="<?php echo escape("1"); ?>">
-
                 <label for="Syear" >Second year</label>
                 <input id="year" type="radio" name="year" value="<?php echo escape("2"); ?>">
-
                 <label for="Syear" >Third year</label>
                 <input id="year" type="radio" name="year" value="<?php echo escape("3"); ?>">
-
                 <label for="Syear" >Fourth year</label>
                 <input id="year" type="radio" name="year" value="<?php echo escape("4"); ?>">
-
             </div>
-
-            <div>
+			 <div>
             <input type="checkbox" name="accept">
             I agree to the <a href="">Terms and Conditions</a> and <a href="">Privacy Policy</a>
             </div>

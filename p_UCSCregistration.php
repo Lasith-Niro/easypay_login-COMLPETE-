@@ -35,13 +35,13 @@ if($user->data()->year == 1){
     $transactionID = $tra->encodeEasyID($prefix, $newID);
 
 
-    //$merchantCode = 'TESTMERCHANT';
-    //$transactionAmount = $amountArray[0];
-    //$returnURL = 'www.easypaysl.com/ipgResponse.php';
-    //$Invoice = $encryptObject->encode($merchantCode, $transactionID, $transactionAmount, $returnURL);
-    //$tra->createTEMP(array(
-    //    'userID' => $user->data()->id
-    //));
+    $merchantCode = 'TESTMERCHANT';
+    $transactionAmount = $amountArray[0];
+    $returnURL = 'www.easypaysl.com/ipgResponse.php';
+    $Invoice = $encryptObject->encode($merchantCode, $transactionID, $transactionAmount, $returnURL);
+    $tra->createTEMP(array(
+        'userID' => $user->data()->id
+    ));
 
 
     $uNIC = $user->data()->nic;
@@ -57,7 +57,6 @@ if($user->data()->year == 1){
     }
     echo "You pay for {$regYear}." . '<br />';
     echo "You have to pay Rs.2500 for register." . '<br />';
-    //
     //$_SESSION['nic'] = $uNIC;
     //$_SESSION['reg'] = $uRegID;
 

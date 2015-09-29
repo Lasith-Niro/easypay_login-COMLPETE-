@@ -31,10 +31,10 @@ if(!$user->isLoggedIn()) {
     Redirect::to('index.php');
 }
 
-//$prefix = 'easyID_';
-//$lastID = (integer)$tra->lastID();
-//$newID = $lastID + 1;
-//$transactionID = $tra->encodeEasyID($prefix, $newID);
+$prefix = 'easyID_';
+$lastID = (integer)$tra->lastID();
+$newID = $lastID + 1;
+$transactionID = $tra->encodeEasyID($prefix, $newID);
 
 echo "You have to pay Rs.20.00 to this payment.";
 
@@ -42,13 +42,13 @@ $transactionID = $_SESSION['tId'];
 echo $transactionID . '<br />';
 
 
-//$merchantCode = 'TESTMERCHANT';
-//$transactionAmount = $amountArray[0];
-//$returnURL = 'www.easypaysl.com/ipgResponse.php';
-//$Invoice = $encryptObject->encode($merchantCode, $transactionID, $transactionAmount, $returnURL);
-//$tra->createTEMP(array(
-//    'userID' => $user->data()->id
-//));
+$merchantCode = 'TESTMERCHANT';
+$transactionAmount = $amountArray[0];
+$returnURL = 'www.easypaysl.com/ipgResponse.php';
+$Invoice = $encryptObject->encode($merchantCode, $transactionID, $transactionAmount, $returnURL);
+$tra->createTEMP(array(
+    'userID' => $user->data()->id
+));
 
 
 

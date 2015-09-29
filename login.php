@@ -14,8 +14,8 @@ if(Input::exists()){
     if(Token::check(Input::get('token'))) {
         $validate = new Validate();
         $validation = $validate->check($_POST, array(
-           'username' => array(
-               'required' => true
+            'username' => array(
+                'required' => true
             ),
             'password' => array(
                 'required' => true
@@ -61,13 +61,63 @@ elseif($yourbrowser=="Internet Explorer"){
 <html lang="en">
 <head>
     <header>
-        <img id="ucscLogo" src="images/ucsc.png" />
+
     </header>
     <title>Login | page</title>
     <link rel="stylesheet" href=<?php echo $temp_var?> >
+    <link href="home/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 <div id="mainWrapper">
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" >
+        <div class="container" >
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <a href="home page.html">
+                    <img id="img" src="images/logo.png" alt="" width="150px" >
+                </a>
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+                <ul class="nav navbar-nav">
+
+                    <li>
+                        <a href="home page.html">HOME</a>
+                    </li>
+                    <li>
+                        <a href="#">UCSC</a>
+                    </li>
+                    <li>
+                        <a href="#">ABOUT</a>
+                    </li>
+
+                    <li>
+                        <a href="#">SERVICES</a>
+                    </li>
+                    <li>
+                        <a href="#">CONTACT</a>
+                    </li>
+                    <li>
+                        <a href="login.php">LOGIN</a>
+                    </li>
+                    <li>
+                        <a href="register.php">REGISTER</a>
+                    </li>
+                </ul>
+
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
 
 
 
@@ -77,7 +127,7 @@ elseif($yourbrowser=="Internet Explorer"){
                 <h1 id="signin">Sign in</h1>
             </div> -->
 
-            <img id="easypayLogo" src="images/logo.png" height="100px"/>
+            <img id="ucscLogo" src="images/ucsc.png" height="100px"/>
             <div>
                 <input required id="username" type="text" name="username" autocomplete="off" placeholder="Enter username" size="25" maxlength="20"/>
             </div>
