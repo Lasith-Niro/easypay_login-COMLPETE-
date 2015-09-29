@@ -36,13 +36,13 @@ $transactionID = $tra->encodeEasyID($prefix, $newID);
 //echo $transactionID . '<br />';
 
 
-//$merchantCode = 'TESTMERCHANT';
-//$transactionAmount = $amountArray[0];
-//$returnURL = 'www.easypaysl.com/ipgResponse.php';
-//$Invoice = $encryptObject->encode($merchantCode, $transactionID, $transactionAmount, $returnURL);
-//$tra->createTEMP(array(
-//    'userID' => $user->data()->id
-//));
+$merchantCode = 'TESTMERCHANT';
+$transactionAmount = $amountArray[0];
+$returnURL = 'www.easypaysl.com/ipgResponse.php';
+$Invoice = $encryptObject->encode($merchantCode, $transactionID, $transactionAmount, $returnURL);
+$tra->createTEMP(array(
+    'userID' => $user->data()->id
+));
 
 $date1 = strtotime('2015-08-19');
 $date2 = time();

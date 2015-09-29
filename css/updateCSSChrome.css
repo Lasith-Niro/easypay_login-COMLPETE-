@@ -7,9 +7,11 @@ body{
 	display:-webkit-box;
 	-webkit-box-pack:center;
 	background: #ccc url(../images/2.jpg)repeat fixed;
+	/*background-size****************************/
+	background-size:cover;
 }
 #mainWrapper{
-	max-width:1000px;
+	max-width:850px;
 	margin:0px 0px;
 	display:-webkit-box;
 	-webkit-box-orient:vertical;
@@ -20,17 +22,8 @@ body{
 	/*border:1px solid black;*/
 	
 }
-#header{
-	background:#f1f1f1;
-	/*border:3px solid black;*/
-	height:150px;
-	margin:20px;
-	display:-webkit-box;
-	-webkit-box-orient:vertical;
-	position:relative;
-	background-color:rgba(250,250,250,0.5);
-	border-radius:15px;
-}
+
+
 #welcome{
 	font-size:50px;
 	margin:20px;
@@ -39,17 +32,18 @@ body{
 }
 #ucscLogo{
 	margin:20px;
+	margin-left:950px;
 	float:left;
 }
-#easypayLogo{
-	margin:20px;
-	float:right;
-}
-#regForm{
+
+#updateForm{
 	text-align:center;
-	width:40%;
+	/*width:40%;*******************************/
+	width:100%;
+	
 	border-radius:5px;
-	margin:20px;
+	/*margin:20px;****************************/
+	margin-top:1px;
 	margin-left:auto;
 	margin-right:auto;
 	padding:20px;
@@ -94,6 +88,14 @@ body{
     font-size:16px;
     margin:10px;
     border-radius:5px;
+}	
+#regNumber{
+	height:30px;
+    width:295px;
+    font-size:16px;
+    margin:10px;
+    border-radius:5px;
+
 }
 #email{
     height:30px;
@@ -139,38 +141,8 @@ body{
 	margin-left:195px;
 	border-radius:5px;
 }
-#navBar{
-	/*position:absolute;*/
-	margin-left:40px;
-	bottom:0px;
-	
-}
-#navBar ul{
-	list-style:none;
-	margin:0;
-}
-#navBar li{
-	float: left;
-	margin-left:0px;
-	
-}
-#navBar a{
-	font-family: Trebuchet MS, sans-serif;
-	display: block;
-	color:white;
-	text-decoration: none;
-	padding:0 15px 0 30px;
-	margin-right:10px;
-	text-align:left;
-	line-height:25px;
-	background: url(../images/icon.ico) -128px -128px;
-	border:none;
-	border-radius:5px;
-}
-#navBar a:hover{
-background-position: -186px -200px;
-color: #f8b449;
-}
+
+
 #topic{
 	font-size:20px;
 	float:left;
@@ -178,4 +150,19 @@ color: #f8b449;
 	margin-bottom:10px;
 	color:black;
 	font-weight:bold;
+}
+
+label {
+    display: inline-block;
+    cursor: pointer;
+    position: relative;
+    padding-left: 25px;
+    margin-right: 15px;
+    font-size: 13px;
+}
+li label, li input {
+  display: inline-block;
+}
+li label {
+  min-width: 80px;
 }
