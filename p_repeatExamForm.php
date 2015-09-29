@@ -93,7 +93,7 @@ if(Input::exists()){
 
 <form action="" method="post">
     <div class="field">
-        <label for="intro" >Please tick on the appropriate exam <br> </label>
+        <label for="intro" >Please tick on the appropriate exam <br> <br></label>
     </div>
 
     <?php
@@ -110,12 +110,11 @@ if(Input::exists()){
         ?>
         <div class="field">
             <label for="firstYear_sem2">First year - Semester II</label>
-            <label for="FYS2"></label><input type="radio" name="exam" id="FYS2" value="<?php echo escape("FYS2"); ?>">
+            <label for="FYS2"></label><input type="radio" name="examSem" id="FYS2" value="<?php echo escape("FYS2"); ?>">
 
             <label for="secondYear_sem1">Second year - Semester II</label>
-            <label for="SYS2"></label><input type="radio" name="exam" id="SYS2" value="<?php echo escape("SYS2"); ?>">
+            <label for="SYS2"></label><input type="radio" name="examSem" id="SYS2" value="<?php echo escape("SYS2"); ?>">
         </div>
-        <br> <br> <br> <br>
     <?}
     ?>
     <div class="field">
@@ -136,6 +135,7 @@ if(Input::exists()){
             <input type="text" name="fullName" value="<?php echo Input::get('fullName'); ?>">
         </label>
     </div>
+    <br>
     <div class="field">
         <label for="contact">Contacts<br ></label>
         <label for="Mobile number">Mobile number</label>
@@ -147,12 +147,12 @@ if(Input::exists()){
             <input type="text" name="fixedNo" value="<?php echo Input::get('fixedNo'); ?>">
         </label>
     </div>
-    <br> <br>
-
+    <br>
     <!--    Subject code + Subject name + Assignment complete + Grades obtained (prev)-->
     <div class="field">
         <label for="details">Details <br> </label>
-        <label for="subIndex" >1</label>
+        <label for="subIndex" >1</label> <br>
+        <hr>
         <label for="subjectCode">Subject code</label>
         <label>
             <input type="text" name="subjectCode" value="<?php echo Input::get('subjectCode'); ?>">
@@ -170,7 +170,7 @@ if(Input::exists()){
             <label for="Assignment_Completed_No">No</label>
             <input type="radio" name="assignmentCom" id="assignmentCom" value="<?php echo "no"; ?>">
         </div>
-
+        <br>
         <div>
             <label for="gradesObtained">Grades Obtained</label>
             <br>
