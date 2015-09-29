@@ -207,3 +207,12 @@ color: #f8b449;
 	color:black;
 	font-weight:bold;
 }
+label {
+    display: inline-block;
+    cursor: pointer;
+    position: relative;
+    padding-left: 25px;
+    margin-right: 15px;
+    font-size: 13px;
+}
+
