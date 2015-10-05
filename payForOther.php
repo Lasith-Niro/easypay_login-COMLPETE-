@@ -36,7 +36,7 @@ if(Input::exists()){
                     $opUserId = $user ->data()->id;
                     //echo '<br>'.$opUserId;
                     $_SESSION['payeeID'] = $opUserId;
-
+                    Redirect::to('payforme.php');
 //                    $tempdb = DB::getInstance();
 //                    if($tempdb->insert('transaction',array('payerID'=>$userId,'payeeID'=>$opUserId))){
 //                        echo 'userId insertion to transaction table completed.' ;
