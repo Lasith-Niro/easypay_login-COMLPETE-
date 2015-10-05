@@ -9,6 +9,14 @@ require_once 'core/init.php';
 require 'browser/browserconnect.php';
 
 //$_SESSION['uname'] = Input::get('username');
+if(Session::exists('home')){
+    echo '<p>' . Session::flash('home') . '</p>';
+}
+//checking if the user already logged in
+$user = new User();
+if($user->isLoggedIn()){
+    Redirect::to('userDashboard.php');
+}
 
 if(Input::exists()){
     if(Token::check(Input::get('token'))) {
@@ -27,11 +35,10 @@ if(Input::exists()){
 //            $pass = Input::get('password');
             $login = $user->login(Input::get('username'), Input::get('password'), $remember);
             if($login){
-                Redirect::to('index.php');
+                Redirect::to('userDashboard.php');
             } else {
-                ?>
-                <script type="text/javascript"> alert(" Sorry, Logging failed. ")</script>
-<?php
+                echo '<script type="text/javascript"> alert(" Sorry, Logging failed. ")</script>';
+
 //                echo '<p> Sorry, Logging failed. </p>';
 //                echo Hash::make($pass, $user->data()->salt);
             }
@@ -73,7 +80,7 @@ elseif($yourbrowser=="Internet Explorer"){
         <div class="container" >
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-                <a href="home page.html">
+                <a href="homePage.php">
                     <img id="img" src="images/logo.png" alt="" width="150px" >
                 </a>
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -90,7 +97,7 @@ elseif($yourbrowser=="Internet Explorer"){
                 <ul class="nav navbar-nav">
 
                     <li>
-                        <a href="home page.html">HOME</a>
+                        <a href="homePage.php">HOME</a>
                     </li>
                     <li>
                         <a href="#">UCSC</a>
