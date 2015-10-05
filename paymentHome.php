@@ -32,7 +32,7 @@ elseif($yourbrowser=="Internet Explorer"){
         <div class="container" >
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-                <a href="home page.html">
+                <a href="homePage.php">
                     <img id="img" src="images/logo.png" alt="" width="150px" >
                 </a>
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -49,7 +49,7 @@ elseif($yourbrowser=="Internet Explorer"){
                 <ul class="nav navbar-nav">
 
                     <li>
-                        <a href="home page.html">HOME</a>
+                        <a href="homePage.php">HOME</a>
                     </li>
                     <li>
                         <a href="#">UCSC</a>
@@ -63,12 +63,6 @@ elseif($yourbrowser=="Internet Explorer"){
                     </li>
                     <li>
                         <a href="#">CONTACT</a>
-                    </li>
-                    <li>
-                        <a href="login.php">LOGIN</a>
-                    </li>
-                    <li>
-                        <a href="register.php">REGISTER</a>
                     </li>
                 </ul>
 
@@ -91,20 +85,8 @@ elseif($yourbrowser=="Internet Explorer"){
                 <br>
 
                 <a href="payForOther.php"> Pay for other person </a>
-
-
-
             </div>
-
     </div>
-
-
-
-    </form>
-
-
-</div>
-
 </div>
 </body>
 </html>
