@@ -31,12 +31,15 @@ if(Input::exists()){
             if(!$username== null){
                 $user = new User();
                 if($user->find($username)){
-                    //echo 'User exists<br>';
+//                    echo 'User exists<br>';
+//                    echo $user->data()->username;
                     ////getting other person's userId////
                     $opUserId = $user ->data()->id;
                     //echo '<br>'.$opUserId;
                     $_SESSION['payeeID'] = $opUserId;
+
                     Redirect::to('payforme.php');
+
 //                    $tempdb = DB::getInstance();
 //                    if($tempdb->insert('transaction',array('payerID'=>$userId,'payeeID'=>$opUserId))){
 //                        echo 'userId insertion to transaction table completed.' ;
