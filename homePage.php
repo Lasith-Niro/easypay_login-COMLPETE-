@@ -1,3 +1,7 @@
+<?php
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,7 +39,7 @@
         <div class="container" >
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-			<img id="img" src="images/logo.png" alt="" width="150px" >
+			<a href="homePage.php"><img id="img" src="images/logo.png" alt="" width="150px" ></a>
 
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span>
@@ -51,7 +55,7 @@
                 <ul class="nav navbar-nav">
 					
 					<li>
-                        <a href="#">HOME</a>
+                        <a href="homePage.php">HOME</a>
                     </li>
 					<li>
                         <a href="#">UCSC</a>
