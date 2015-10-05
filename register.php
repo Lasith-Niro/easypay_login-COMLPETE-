@@ -4,6 +4,16 @@ require_once 'browser/browserconnect.php';
 //var_dump — Dumps information about a variable
 //var_dump(Token::check(Input::get('token')));
 
+if(Session::exists('home')){
+    echo '<p>' . Session::flash('home') . '</p>';
+}
+//checking if the user already logged in
+$user = new User();
+if($user->isLoggedIn()){
+    Redirect::to('userDashboard.php');
+}
+
+
 if(Input::exists()){
     if(Token::check(Input::get('token'))) {
         $validate = new Validate();
@@ -87,7 +97,7 @@ if(Input::exists()){
             <div class="container" >
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
-    			<a href="home page.html">
+    			<a href="homePage.php">
     			<img id="img" src="images/logo.png" alt="" width="150px" >
 				</a>
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
