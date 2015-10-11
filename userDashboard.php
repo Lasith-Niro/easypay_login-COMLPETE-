@@ -1,6 +1,5 @@
 <?php
 require_once 'core/init.php';
-require_once'myconnection.php';
 $user = new user();
 if(!$user->isLoggedIn()) {
     Redirect::to('index.php');
@@ -15,29 +14,25 @@ if(!$user->isLoggedIn()) {
 ?>
 
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en">
 
 <head>
-      <meta charset="utf-8" />
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>User Dashboard</title>
-	<!-- BOOTSTRAP STYLES-->
+    <!-- BOOTSTRAP STYLES-->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
-     <!-- FONTAWESOME STYLES-->
+    <!-- FONTAWESOME STYLES-->
     <link href="assets/css/font-awesome.css" rel="stylesheet" />
-     <!-- MORRIS CHART STYLES-->
+    <!-- MORRIS CHART STYLES-->
     <link href="assets/js/morris/morris-0.4.3.min.css" rel="stylesheet" />
-        <!-- CUSTOM STYLES-->
+    <!-- CUSTOM STYLES-->
     <link href="assets/css/custom.css" rel="stylesheet" />
-     <!-- GOOGLE FONTS-->
-   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+    <!-- GOOGLE FONTS-->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 </head>
 <body>
 <div id="wrapper">
-
-    <?php
-
-    ?>
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" >
 
         <div class="container" >
@@ -123,6 +118,13 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="logout.php" class="
                 <div class="panel-body">
                     <div class="table-responsive">
                         <table class="table table-striped table-bordered table-hover">
+                            <?php
+                            $user_id = $user->data()->id;;   // get usr id
+                            $transaction = DB::getInstance()->get('transaction',array('payerID','=',$user_id));
+                            if(!$transaction->count()){
+                                echo 'No transactions';
+                            }else{
+                            ?>
                             <thead>
                             <tr>
                                 <th>#</th>
@@ -137,27 +139,23 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="logout.php" class="
                             </thead>
                             <tbody>
                             <?php
-
-                            $user_id = $user->data()->id;;   // store the user id into session
-                            $sql = "SELECT * FROM transaction WHERE payerID='$user_id'";
-                            $result = mysqli_query($conn,$sql);
-
-                            //echo $user_id;
-                            $counter = 0;
-                            while($data = mysqli_fetch_assoc($result)){
-                                $counter+=1;
-                                echo"<tr>";
-                                echo "<td>".$counter."</td>";
-                                echo "<td>".$data['date']."</td>";
-                                echo "<td>".$data['time']."</td>";
-                                echo "<td>".$data['transactionID']."</td>";
-                                echo "<td>".$data['payerID']."</td>";
-                                echo "<td>"."</td>";
-                                echo "<td>".$data['statusDescription']."</td>";
-                                echo "<td>".$data['amount']."</td>";
-                                echo "</tr>";
+                                $counter = 0;
+                                foreach($transaction->results() as $t){
+//                                    print_r($t);
+//                                    echo'<br>';
+                                    $counter+=1;
+                                    echo"<tr>";
+                                    echo "<td>".$counter."</td>";
+                                    echo "<td>".$t->date."</td>";
+                                    echo "<td>".$t->time."</td>";
+                                    echo "<td>".$t->transactionID."</td>";
+                                    echo "<td>".$t->payerID."</td>";
+                                    echo "<td>".$t->paymentType."</td>";
+                                    echo "<td>".$t->statusDescription."</td>";
+                                    echo "<td>".$t->amount."</td>";
+                                    echo "</tr>";
+                                }
                             }
-
                             ?>
                             </tbody>
                         </table>
