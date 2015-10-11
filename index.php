@@ -54,7 +54,7 @@ if($user->isLoggedIn()) {
     }
     else{
         $msg= '<p> You logged as a Student </p>';
-        Redirect::to('userDashboard.php');
+        Redirect::to('dashboard_student.php');
     }
 } else {
     //include('loginfail.html');

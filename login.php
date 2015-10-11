@@ -35,7 +35,17 @@ if(Input::exists()){
 //            $pass = Input::get('password');
             $login = $user->login(Input::get('username'), Input::get('password'), $remember);
             if($login){
-                Redirect::to('userDashboard.php');
+                //setting session variables...
+                $_SESSION['isLoggedIn'] = true;
+                $_SESSION['fname'] = escape($user->data()->fname);
+                $_SESSION['lname'] = escape($user->data()->lname);
+                $_SESSION['userid'] = $user->data()->id;
+                if ($user->hasPermission('admin')) {
+                    Redirect::to('dashboard_admin.php');
+                }
+                else{
+                    Redirect::to('dashboard_student.php');
+                }
             } else {
                 echo '<script type="text/javascript"> alert(" Sorry, Logging failed. ")</script>';
 
