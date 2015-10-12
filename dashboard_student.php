@@ -3,6 +3,9 @@ require_once 'core/init.php';
 if(!$_SESSION['isLoggedIn']) {
     Redirect::to('index.php');
 }
+if($_SESSION['admin']){
+    Redirect::to('dashboard_admin.php');
+}
 
 ?>
 
