@@ -191,17 +191,25 @@ if(Input::exists()){
             <div>
                 <input id="dob" type="date" name="dob" placeholder="Date of birth" value="<?php echo escape(Input::get('dob')); ?>">
             </div>
-            <div class="field">
+            <table border="1" style="width:80%" id="table" >
                 <!--                <input id="year" type="number" name="year" placeholder="Current Academic year" value="--><?php //echo escape(Input::get('year')); ?><!--">-->
-                <label for="Syear" >First year</label>
-                <input id="year" type="radio" name="year" value="<?php echo escape("1"); ?>">
-                <label for="Syear" >Second year</label>
-                <input id="year" type="radio" name="year" value="<?php echo escape("2"); ?>">
-                <label for="Syear" >Third year</label>
-                <input id="year" type="radio" name="year" value="<?php echo escape("3"); ?>">
-                <label for="Syear" >Fourth year</label>
-                <input id="year" type="radio" name="year" value="<?php echo escape("4"); ?>">
-            </div>
+                <tr>
+                    <td align="center">First year</td>
+                    <td align="center"><input id="year" type="radio" name="year" value="<?php echo escape("1"); ?>"></td>
+                </tr>
+                <tr>
+                    <td align="center">Second year</td>
+                    <td align="center"><input id="year" type="radio" name="year" value="<?php echo escape("2"); ?>"></td>
+                </tr>
+                <tr>
+                    <td align="center">Third year</td>
+                    <td align="center"><input id="year" type="radio" name="year" value="<?php echo escape("3"); ?>"></td>
+                </tr>
+                <tr>
+                    <td align="center">Fourth year</td>
+                    <td align="center"> <input id="year" type="radio" name="year" value="<?php echo escape("4"); ?>"></td>
+                </tr>
+            </table>
 			 <div>
             <input type="checkbox" name="accept">
             I agree to the <a href="">Terms and Conditions</a> and <a href="">Privacy Policy</a>
