@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: lasith-niro
- * Date: 28/09/15
- * Time: 22:44
- */
 
 require_once 'core/init.php';
 require_once 'browser/browserconnect.php';
@@ -41,156 +35,193 @@ echo "You have to pay Rs.25 per paper." . '<br /> <br /> <br />';
 
 $de_transactionID = $tra->decodeEasyID($transactionID);
 
-if(Input::exists()){
-    if(Token::check(Input::get('token'))) {
-            $semester   = Input::get('examSem');
-            $index      = Input::get('indexNo');
-            $init_name  = Input::get('initName');
-            $full_name  = Input::get('fullName');
-            $fixedPhone = Input::get('fixedNo');
-            $subCode    = Input::get('subjectCode');
-            $subName    = Input::get('subjectName');
-            $assignmentComplete = Input::get('assignmentCom');
-            $gradeFirst = Input::get('l1Grade');
-            $gradeSecond= Input::get('l2Grade');
-            $gradeThird = Input::get('l3Grade');
 
+if(Input::exists()) {
+    if (Token::check(Input::get('token'))) {
+
+        /////////////////////////// getting form details////////////////////
+        $semester   = Input::get('examSem');
+        $index      = Input::get('indexNo');
+        $init_name  = Input::get('initName');
+        $full_name  = Input::get('fullName');
+        $mobilePhone = Input::get('mobileNo');
+        $fixedPhone = Input::get('fixedNo');
+        $subCode = Input::get('subjectCode');
+        $subName = Input::get('subjectName');
+        $assignmentComplete = Input::get('assignmentCom');
+        $gradeFirst = Input::get('l1Grade');
+        $gradeSecond= Input::get('l2Grade');
+        $gradeThird = Input::get('l3Grade');
+
+
+////////////////////// creating a associative array for each subject//////////////////
+        $numForms = count($subCode);
+        for($i = 0;$i<$numForms;$i++){
+            $j = $i+1;
+            ${"subject$j"} = array(
+                'subjectCode'=>$subCode[$i],
+                'subjectName'=>$subName[$i],
+                'assignmentCom'=>$assignmentComplete[$i],
+                'gradeFirst'=>$gradeFirst[$i],
+                'gradeSecond'=>$gradeSecond[$i],
+                'gradeThird'=>$gradeThird[$i]
+            );
+        }
+
+//        ////printing subject array///
+//        for($i=0;$i<$numForms;$i++){
+//            $j=$i+1;
+//            print_r(${"subject$j"});
+//            echo "<br>";
+//        }
+
+        /////////////////////// creating transaction array and insert data////////////////
+        for ($i = 0; $i < $numForms; $i++) {
+            $j = $i + 1;
             $tra->createRepeatExam(array(
-                'transactionID'=> $de_transactionID,
+                'transactionID' => $de_transactionID,
                 'Year' => $user->data()->year,
                 'Semester' => $semester,
-                'subjectCode' => $subCode,
+                'subjectCode' => ${"subject$j"}['subjectCode'],
                 'indexNumber' => $index,
                 'nameWithInitials' => $init_name,
                 'fullName' => $full_name,
                 'fixedPhone' => $fixedPhone,
-                'subjectName' => $subName,
-                'AssignmentComplete' => $assignmentComplete,
-                'gradeFirst' => $gradeFirst,
-                'gradeSecond' => $gradeSecond,
-                'gradeThird' => $gradeThird,
+                'subjectName' => ${"subject$j"}['subjectName'],
+                'AssignmentComplete' => ${"subject$j"}['assignmentCom'],
+                'gradeFirst' => ${"subject$j"}['gradeFirst'],
+                'gradeSecond' => ${"subject$j"}['gradeSecond'],
+                'gradeThird' => ${"subject$j"}['gradeThird'],
                 'status' => 0
             ));
-            Redirect::to('p_repeatExam.php');
-        } else {
-            foreach ($validation->errors() as $error) {
-                echo $error, '</ br>';
-            }
         }
+        Redirect::to('p_repeatExam.php');
+    } else {
+        foreach ($validation->errors() as $error) {
+            echo $error, '</ br>';
+        }
+    }
 }
-
-/*
- * index number
- * name with initials
- * name in full
- * contact number(mobile + Fixed)
- * Subject code + Subject name + Assignment complete + Grades obtained (prev)
- *
- */
-
 ?>
 
-
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>repeat | forms</title>
+    <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="js/functions.js"></script>
+</head>
+<body>
 <form action="" method="post">
-    <div class="field">
-        <label for="intro" >Please tick on the appropriate exam <br> <br></label>
-    </div>
-
-    <?php
-    if((integer)date('m') < 6){
+    <div id="f1">
+        <div class="field">
+            <label for="intro" >Please select the appropriate exam <br> <br></label>
+        </div>
+        <?php
+        if((integer)date('m') < 6){
+            ?>
+            <div class="field">
+                <select name="examSem" required="true">
+                    <option id="FYS1" value="<?php echo escape("FYS1"); ?>">First year - Semester I</option>
+                    <option id="SYS1" value="<?php echo escape("SYS1"); ?>">Second year - Semester I</option>
+                </select>
+            </div>
+        <?php
+        }else{
+            ?>
+            <div class="field">
+                <select name="examSem" required="true" >
+                    <option id="FYS2" value="<?php echo escape("FYS2"); ?>">First year - Semester II</option>
+                    <option id="SYS2" value="<?php echo escape("SYS2"); ?>">Second year - Semester II</option>
+                </select>
+            </div>
+        <?php
+        }
         ?>
         <div class="field">
-            <label for="firstYear_sem1">First year - Semester I</label>
-            <label for="FYS1"></label><input type="radio" name="examSem" id="FYS1" value="<?php echo escape("FYS1"); ?>">
-            <label for="secondYear_sem1">Second year - Semester I</label>
-            <label for="SYS1"></label><input type="radio" name="examSem" id="SYS1" value="<?php echo escape("SYS1"); ?>">
+            <label for="indexNo">Index number
+                <input type="text" name="indexNo" required="true" value="<?php echo Input::get('indexNo'); ?>">
+            </label>
         </div>
-    <?
-    } else {
-        ?>
         <div class="field">
-            <label for="firstYear_sem2">First year - Semester II</label>
-            <label for="FYS2"></label><input type="radio" name="examSem" id="FYS2" value="<?php echo escape("FYS2"); ?>">
-
-            <label for="secondYear_sem1">Second year - Semester II</label>
-            <label for="SYS2"></label><input type="radio" name="examSem" id="SYS2" value="<?php echo escape("SYS2"); ?>">
+            <label>Name with initials
+                <input type="text" name="initName" required="true" value="<?php echo Input::get('initName'); ?>">
+            </label>
         </div>
-    <?}
-    ?>
-    <div class="field">
-        <label for="indexNo">Index number</label>
-        <label>
-            <input type="text" name="indexNo" value="<?php echo Input::get('indexNo'); ?>">
-        </label>
-    </div>
-    <div class="field">
-        <label for="init_name">Name with initials</label>
-        <label>
-            <input type="text" name="initName" value="<?php echo Input::get('initName'); ?>">
-        </label>
-    </div>
-    <div class="field">
-        <label for="fullName">Name in full</label>
-        <label>
-            <input type="text" name="fullName" value="<?php echo Input::get('fullName'); ?>">
-        </label>
-    </div>
-    <br>
-    <div class="field">
-        <label for="contact">Contacts<br ></label>
-        <label for="Mobile number">Mobile number</label>
-        <label>
-            <input type="text" name="mobileNo" value="<?php echo escape($user->data()->phone); ?>">
-        </label>
-        <label for="Fixed number">Fixed number</label>
-        <label>
-            <input type="text" name="fixedNo" value="<?php echo Input::get('fixedNo'); ?>">
-        </label>
-    </div>
-    <br>
-    <!--    Subject code + Subject name + Assignment complete + Grades obtained (prev)-->
-    <div class="field">
-        <label for="details">Details <br> </label>
-        <label for="subIndex" >1</label> <br>
-        <hr>
-        <label for="subjectCode">Subject code</label>
-        <label>
-            <input type="text" name="subjectCode" value="<?php echo Input::get('subjectCode'); ?>">
-        </label>
-
-        <label for="subjectName">Subject name</label>
-        <label>
-            <input type="text" name="subjectName" value="<?php echo Input::get('subjectName'); ?>">
-        </label>
-
         <div class="field">
-            <label for="subjectCode">Assignment Completed?</label>
-            <label for="Assignment_Completed_Yes">Yes</label>
-            <input type="radio" name="assignmentCom" id="assignmentCom" value="<?php echo "yes"; ?>">
-            <label for="Assignment_Completed_No">No</label>
-            <input type="radio" name="assignmentCom" id="assignmentCom" value="<?php echo "no"; ?>">
+            <label>Name in full
+                <input type="text" name="fullName" required="true" value="<?php echo Input::get('fullName'); ?>">
+            </label>
         </div>
         <br>
-        <div>
-            <label for="gradesObtained">Grades Obtained</label>
-            <br>
-            <label for="firstShy">1</label>
-            <label>
-                <input type="text" name="l1Grade" placeholder="-" value="<?php echo Input::get('l1Grade'); ?>">
+        <div class="field">
+            <label for="contact">Contacts<br ></label>
+            <label>Mobile number
+                <input type="text" name="mobileNo" required="true" value="<?php echo escape($user->data()->phone); ?>">
             </label>
-            <br>
-            <label for="secondShy">2</label>
-            <label>
-                <input type="text" name="l2Grade" placeholder="-" value="<?php echo Input::get('l2Grade'); ?>">
-            </label>
-            <br>
-            <label for="thirdShy">3</label>
-            <label>
-                <input type="text" name="l3Grade" placeholder="-" value="<?php echo Input::get('l3Grade'); ?>">
+            <label>Fixed number
+                <input type="text" name="fixedNo" required="true" value="<?php echo Input::get('fixedNo'); ?>">
             </label>
         </div>
-    </div>
+        <br>
+        <!--    Subject code + Subject name + Assignment complete + Grades obtained (prev)-->
+        <div id="subjectDet">
+            <div class="field">
+                <label for="details">Subject Details <br> </label>
+                <label>Subject code
+                    <input type="text" name="subjectCode[]" required="true" value="<?php echo Input::get('subjectCode'); ?>">
+                </label>
+                <label>Subject name
+                    <input type="text" name="subjectName[]" required="true" value="<?php echo Input::get('subjectName'); ?>">
+                </label>
+                <div class="field">
+                    <label>Assignment Completed?</label>
+                    <select name="assignmentCom[]" required="true">
+                        <option value="<?php echo "yes"; ?>">Yes</option>
+                        <option value="<?php echo "no"; ?>" >No</option>
+                    </select>
+                </div>
+                <br>
+                <div>
+                    <div>
+                        <label for="gradesObtained">Grades Obtained</label>
+                    </div>
+                    <div>
+                        <label for="firstShy">1</label>
+                        <label>
+                            <input type="text" name="l1Grade[]" placeholder="-" required="true" value="<?php echo Input::get('l1Grade'); ?>">
+                        </label>
+                    </div>
+                    <div>
+                        <label for="secondShy">2</label>
+                        <label>
+                            <input type="text" name="l2Grade[]" placeholder="-" required="true" value="<?php echo Input::get('l2Grade'); ?>">
+                        </label>
+                    </div>
+                    <div>
+                        <label for="thirdShy">3</label>
+                        <label>
+                            <input type="text" name="l3Grade[]" placeholder="-" required="true" value="<?php echo Input::get('l3Grade'); ?>">
+                        </label>
+                    </div>
 
-<input type="submit" value="next">
-<input type="hidden" name="token" value="<?php echo Token::generate(); ?>">
+                </div>
+            </div>
+            <br>
+            <br>
+        </div>
+        <div id="container">
+
+        </div>
+        <div>
+            <input id="add" name="add" type="button" value="Add Form" onclick="createCopy();">
+            <input id="remove" name="remove" type="button" value="remove Form" onclick="removeCopy();">
+        </div>
+        <input type="hidden" name="token" value="<?php echo Token::generate(); ?>">
+        <input type="submit" value="Next">
+    </div>
 </form>
+
+</body>
+</html>
