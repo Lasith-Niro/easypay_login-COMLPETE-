@@ -13,15 +13,15 @@ body{
 	/*margin:0px 0px;******************************/
 	max-width:800px;
 	margin:0 auto;
-	
+
 	display:-webkit-box;
 	-webkit-box-orient:vertical;
 	-webkit-box-flex:1;
 	background-size:100% 100%;
-	
-	
+
+
 	/*border:1px solid black;*/
-	
+
 }
 #header{
 	background:#f1f1f1;
@@ -44,17 +44,17 @@ body{
 	margin:-100px;
 	float:right;
 	margin-right:-140px;
-	
+
 }
 
 #regForm{
 	text-align:center;
 	/*width:40%;*******************************/
-	width:50%;
-	
+	width:70%;
+
 	border-radius:5px;
 	/*margin:20px;****************************/
-	
+
 	margin-top:150px;
 	margin-left:auto;
 	margin-right:auto;
@@ -81,69 +81,69 @@ body{
 	border-radius:5px;
 }
 #password_again{
-    height:30px;
-    width:295px;
-    font-size:16px;
-    margin:10px;
-    border-radius:5px;
+	height:30px;
+	width:295px;
+	font-size:16px;
+	margin:10px;
+	border-radius:5px;
 }
 #name1{
-    height:30px;
-    width:295px;
-    font-size:16px;
-    margin:10px;
-    border-radius:5px;
+	height:30px;
+	width:295px;
+	font-size:16px;
+	margin:10px;
+	border-radius:5px;
 }
 #name2{
-    height:30px;
-    width:295px;
-    font-size:16px;
-    margin:10px;
-    border-radius:5px;
+	height:30px;
+	width:295px;
+	font-size:16px;
+	margin:10px;
+	border-radius:5px;
 }
 #regNumber{
 	height:30px;
-    width:295px;
-    font-size:16px;
-    margin:10px;
-    border-radius:5px;
+	width:295px;
+	font-size:16px;
+	margin:10px;
+	border-radius:5px;
 
 }
 #email{
-    height:30px;
-    width:295px;
-    font-size:16px;
-    margin:10px;
-    border-radius:5px;
+	height:30px;
+	width:295px;
+	font-size:16px;
+	margin:10px;
+	border-radius:5px;
 }
 #phoneNo{
-    height:30px;
-    width:295px;
-    font-size:16px;
-    margin:10px;
-    border-radius:5px;
+	height:30px;
+	width:295px;
+	font-size:16px;
+	margin:10px;
+	border-radius:5px;
 }
 #nic{
-    height:30px;
-    width:295px;
-    font-size:16px;
-    margin:10px;
-    border-radius:5px;
+	height:30px;
+	width:295px;
+	font-size:16px;
+	margin:10px;
+	border-radius:5px;
 }
 #dob{
-    height:30px;
-    width:295px;
-    font-size:16px;
-    margin:10px;
-    border-radius:5px;
-    /*color: darkgray;********************/
+	height:30px;
+	width:295px;
+	font-size:16px;
+	margin:10px;
+	border-radius:5px;
+	/*color: darkgray;********************/
 }
 #year{
-    height:30px;
-    width:295px;
-    font-size:16px;
-    margin:10px;
-    border-radius:5px;
+	height:30px;
+	width:295px;
+	font-size:16px;
+	margin:10px;
+	border-radius:5px;
 }
 #next{
 	font-weight:bold;
@@ -157,7 +157,7 @@ body{
 	/*position:absolute;*/
 	margin-left:40px;
 	bottom:0px;
-	
+
 }
 #navBar ul{
 	list-style:none;
@@ -166,7 +166,7 @@ body{
 #navBar li{
 	float: left;
 	margin-left:0px;
-	
+
 }
 #navBar a{
 	font-family: Trebuchet MS, sans-serif;
@@ -182,8 +182,8 @@ body{
 	border-radius:5px;
 }
 #navBar a:hover{
-background-position: -186px -200px;
-color: #f8b449;
+	background-position: -186px -200px;
+	color: #f8b449;
 }
 #topic{
 	font-size:20px;
@@ -192,4 +192,15 @@ color: #f8b449;
 	margin-bottom:10px;
 	color:black;
 	font-weight:bold;
+}
+
+#table{
+	margin: 50px;
+	border-width: 5px;
+	table-layout: fixed;
+	border-style: solid;
+	font-size: 130%;
+}
+input[type='radio'] {
+	transform: scale(1);
 }
