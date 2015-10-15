@@ -64,7 +64,7 @@ elseif($yourbrowser=="Mozilla Firefox"){
     $temp_var="css/changePasswordCSSFirefox.css";
 }
 elseif($yourbrowser=="Internet Explorer"){
-    $temp_var="css/updateCSSInternetExplorer.css";
+    $temp_var="css/changePasswordCSSInternetExplorer.css";
 }
 
 ?>
