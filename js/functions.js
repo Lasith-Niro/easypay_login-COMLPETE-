@@ -15,9 +15,6 @@ function createCopy(){
     }
 }
 
-
-///////////
-
 function removeCopy(){
     if(counter>0){
         document.getElementById("subjectDet").remove();
@@ -31,4 +28,17 @@ function removeCopy(){
 function addSubjectCount(){
     var $newDiv = $("<div><h3>Subject Details number "+counter+" </h3></div>");
     $newDiv.appendTo($("#container"));
+}
+/////////////////////////////////////////////////////////////////////////////
+
+
+////////////////////////
+
+
+function showElement(id){
+    document.getElementById(id).style.display = "block";
+}
+
+function hideElement(id){
+    document.getElementById(id).style.display = "none";
 }
