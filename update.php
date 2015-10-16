@@ -106,8 +106,6 @@ if(Input::exists()){
      <title>User | update</title>
      <link rel="stylesheet" href=<?php echo $temp_var?>>
      <link href="home/css/bootstrap.min.css" rel="stylesheet">
-
-
      <link href="home/css/full-width-pics.css" rel="stylesheet">
  </head>
  <body>
