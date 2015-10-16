@@ -41,9 +41,13 @@ if(Input::exists()){
                 $_SESSION['lname'] = escape($user->data()->lname);
                 $_SESSION['userid'] = $user->data()->id;
                 if ($user->hasPermission('admin')) {
+                    $_SESSION['admin']=true;
+                    $_SESSION['student']=false;
                     Redirect::to('dashboard_admin.php');
                 }
                 else{
+                    $_SESSION['student']=true;
+                    $_SESSION['admin']=false;
                     Redirect::to('dashboard_student.php');
                 }
             } else {
