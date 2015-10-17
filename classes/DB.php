@@ -84,7 +84,7 @@ class DB{
 
     public function action($action, $table, $where = array()) {
         if (count($where) === 3) {
-            $operators = array('=', '>', '<', '>=', '<=');
+            $operators = array('=', '>', '<', '>=', '<=', 'LIKE', 'NOT LIKE');
 
             $field      = $where[0];
             $operator   = $where[1];
@@ -167,6 +167,7 @@ class DB{
     public  function count(){
         return $this->_count;
     }
+
 }
 
 ?>
