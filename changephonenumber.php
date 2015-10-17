@@ -27,7 +27,8 @@ if(Input::exists()){
         if($validation->passed()){
             $new_phone_number = Input::get('new_phone_number');
             if($old_phone_number == $new_phone_number){
-                echo "You entered same phone number";
+                $message="You entered same phone number";
+                echo "<script type='text/javascript'>alert('$message');</script>";
             } else {
                 $_SESSION['old_number'] = $old_phone_number;
                 $_SESSION['new_number'] = $new_phone_number;
@@ -35,7 +36,7 @@ if(Input::exists()){
                 }
         } else {
             foreach ($validation->errors() as $error) {
-                echo $error, '<br>';
+                echo  "<script type='text/javascript'>alert('$error');</script>";
             }
         }
     }
