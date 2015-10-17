@@ -6,7 +6,7 @@
  * Time: 17:29
  */
 class notification{
-//    var $password="6651";
+    var $password="6651";
     function send($from,$to,$message,$password){
         $text = urlencode($message);
         $baseurl ="http://www.textit.biz/sendmsg";
@@ -14,9 +14,9 @@ class notification{
         $ret = file($url);
         $res= explode(":",$ret[0]);
         if (trim($res[0])=="OK") {
-            echo "Message Sent - ID : ".$res[1];
+            echo " <script type='text/javascript'>alert('Check your mobile,confirmation code was sent');</script>";
         } else {
-            echo "Sent Failed - Error : ".$res[1];
+            echo " <script type='text/javascript'>alert('Message sending failed, Try again');</script>";
         }
         return $res[1];
     }
