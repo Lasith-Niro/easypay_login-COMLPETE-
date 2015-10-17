@@ -17,7 +17,7 @@ $randomValue = rand(1000, 9999);
 echo $randomValue;
 $file = new accessFile();
 $detailArray = $file->read('Files/RouterPhone');
-$messageArray = $file->read('Files/messages');
+$messageArray = $file->read_newLine('Files/messages');
 $from = $detailArray[0];
 $pNumber = $_SESSION['phoneNo'];
 $to = '94'.substr($pNumber,1,9);

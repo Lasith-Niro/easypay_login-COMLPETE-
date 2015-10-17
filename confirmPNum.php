@@ -22,7 +22,7 @@ echo "Welcome to confirm your phone number!" . '<br />';
 $hiddenValue = Input::get('storeRandVal');
 $randomValue = rand(1000, 9999);
 $detailArray = $file->read('Files/RouterPhone');
-$messageArray = $file->read('Files/messages');
+$messageArray = $file->read_newLine('Files/messages');
 
 //echo $randomValue;
 

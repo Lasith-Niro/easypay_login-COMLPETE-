@@ -11,6 +11,12 @@
          $array = explode(" ", file_get_contents($file));
          return $array;
      }
+
+     function read_newLine($file){
+         $array = explode("\n", file_get_contents($file));
+         return $array;
+     }
+
      function write($myfile,$txt){
             $myfile = fopen($myfile, "w");
             fwrite($myfile, $txt);

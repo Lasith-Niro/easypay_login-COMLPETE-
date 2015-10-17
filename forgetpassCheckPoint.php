@@ -19,7 +19,7 @@ $id = $_SESSION['id'];
 $hiddenValue = Input::get('storeRandVal');
 $randomValue = rand(1000, 9999);
 $detailArray = $file->read('Files/RouterPhone');
-$messageArray = $file->read('Files/messages');
+$messageArray = $file->read_newLine('Files/messages');
 
 //echo $randomValue;
 
