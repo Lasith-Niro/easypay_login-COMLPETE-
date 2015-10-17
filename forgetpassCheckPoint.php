@@ -27,7 +27,7 @@ $messageArray = $file->read('Files/messages');
 //    Redirect::to('index.php');
 //}
 $var = $notification->send($detailArray[0],$to ,$messageArray[2] . $randomValue ,$detailArray[1]);
-echo $var;      //for db(development)
+//echo $var;      //for db(development)
 
 if(Input::exists()){
     if(Token::check(Input::get('token'))) {

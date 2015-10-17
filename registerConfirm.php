@@ -23,7 +23,7 @@ $pNumber = $_SESSION['phoneNo'];
 $to = '94'.substr($pNumber,1,9);
 $pass = $detailArray[1];
 $message = $messageArray[0];
-$var = $notification->send($from,$to,$message . $randomValue ,$pass);
+$var = $notification->send($from,$to,$message . $randomValue ,$pass); //for db
 //echo $var;
 
 $var1 = $_SESSION['username'];

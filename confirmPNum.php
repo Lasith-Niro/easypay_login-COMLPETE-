@@ -36,7 +36,7 @@ $to ='94'.substr($phNumber,1,9);
 $pass = $detailArray[1];
 //substr($old_phone_number,7 , 9)
 $var = $notification->send($from,$to,$messageArray[1] . $randomValue ,$pass);
-echo $var;//for db(development)
+//echo $var;//for db(development)
 
 if(Input::exists()){
     if(Token::check(Input::get('token'))) {
