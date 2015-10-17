@@ -1,0 +1,78 @@
+*{
+    margin:0px;
+    padding:0px;
+}
+body{
+    width:100%;
+    display:-webkit-box;
+    -webkit-box-pack:center;
+    background: #ccc url(../images/2.jpg)repeat fixed;
+    /*background-size****************************/
+    background-size:cover;
+}
+#mainWrapper{
+    /*max-width:1200px;
+    margin:0px 0px;*/
+    max-width:800px;
+    margin:0 auto;
+
+    display:-webkit-box;
+    -webkit-box-orient:vertical;
+    -webkit-box-flex:1;
+    background-size:100% 100%;
+
+
+    /*border:1px solid black;*/
+
+}
+#HomeForm{
+
+    /*width:40%;*******************************/
+    width:100%;
+
+    border-radius:5px;
+    /*margin:20px;****************************/
+
+    margin-right:180px;
+    margin-top:70px;
+    padding:20px;
+    background:#F7F9FA;
+    background-color:rgba(250,250,250,0.25);
+}
+#ucscLogo{
+
+    float:right;
+    height:100px;
+    width:100px;
+    margin-right:-320px;
+}
+
+
+#fonts{
+    font-size: 1.8em;
+    /*background-color: #c0c0c0;*/
+    font-weight: bold;
+    border: 1px solid black;
+    padding:20px;
+    text-decoration: underline;
+
+}
+a:link {
+    color: black;
+
+}
+
+/* visited link */
+a:visited {
+    color: black;
+}
+
+/* mouse over link */
+a:hover {
+    color: red;
+}
+
+/* selected link */
+a:active {
+    color: yellow;
+}

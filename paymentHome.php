@@ -85,7 +85,8 @@ elseif($yourbrowser=="Internet Explorer"){
 
     </div>
     <div id="HomeForm">
-        <form action="" method="POST">
+        <SPAN STYLE="color: darkred; font-size: 12pt">* To whom do you want to pay?</SPAN>
+
             <div id="fonts" >
                 <a href="payforme.php"> Pay for me <br></a>
                 <br>
