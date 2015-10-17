@@ -29,7 +29,7 @@ $messageArray = $file->read_newLine('Files/messages');
 if(!$user->isLoggedIn()){
     Redirect::to('index.php');
 }
-//variable for $notification->send($from,$to,$message,$password)
+//variable for $notificationTEXT->send($from,$to,$message,$password)
 $from = $detailArray[0];
 $phNumber = $_SESSION['new_number'];
 $to ='94'.substr($phNumber,1,9);

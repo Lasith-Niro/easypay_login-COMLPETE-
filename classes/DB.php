@@ -82,6 +82,25 @@ class DB{
         return false;
     }
 
+//    public function getField($action, $field, $table){
+//        $sql = "{$action} {$field} FROM {$table}";
+//
+//        if(!$this->query($sql)){
+//            return $this;
+//        }
+//        return false;
+//    }
+//
+//    public function loadDropBox($field, $table){
+//        $result = $this->getField('SELECT ',$field, $table);
+//
+//        echo "<select name='username'>";
+//        while ($row = mysql_fetch_array($result)) {
+//            echo "<option value='" . $row['username'] ."'>" . $row['username'] ."</option>";
+//        }
+//        echo "</select>";
+//    }
+
     public function action($action, $table, $where = array()) {
         if (count($where) === 3) {
             $operators = array('=', '>', '<', '>=', '<=', 'LIKE', 'NOT LIKE');
@@ -167,6 +186,7 @@ class DB{
     public  function count(){
         return $this->_count;
     }
+
 
 }
 

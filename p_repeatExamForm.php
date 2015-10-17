@@ -2,27 +2,32 @@
 
 require_once 'core/init.php';
 require_once 'browser/browserconnect.php';
+require 'Files/accessFile.php';
 
 $user = new User();
 $tra = new Transaction();
+$fileObject = new accessFile();
+$dataArray = $fileObject->read('Files/data_repeatExam');
 
 if(!$user->isLoggedIn()) {
     Redirect::to('index.php');
 }
 
-$prefix = 'easyID_';
-$lastID = (integer)$tra->lastID();
-$newID = $lastID + 1;
-$transactionID = $tra->encodeEasyID($prefix, $newID);
-echo $transactionID . '<br />';
-$_SESSION['tId'] = $transactionID;
+//$prefix = 'easyID_';
+//$lastID = (integer)$tra->lastID();
+//$newID = $lastID + 1;
+//$transactionID = $tra->encodeEasyID($prefix, $newID);
+//echo $transactionID . '<br />';
+//$_SESSION['tId'] = $transactionID;
 
-$date1 = strtotime('2015-12-19');
-$today = time();
-$dayLimit = $date1-$today;
+$date1 = strtotime($dataArray[1]);
+$date2 = time();
+$dayLimit = $date1-$date2;
 $dayLimit = floor($dayLimit/(60*60*24));
-echo "You have {$dayLimit} days for this payment." . '<br /> <br /> <br />';
 
+if($dayLimit<0){
+    echo "payment is closed!";
+}else {
 $uID = $user->data()->id;
 $uRegID = $user->data()->regNumber;
 
@@ -33,7 +38,7 @@ if(!$uRegID){
 }
 echo "You have to pay Rs.25 per paper." . '<br /> <br /> <br />';
 
-$de_transactionID = $tra->decodeEasyID($transactionID);
+//$de_transactionID = $tra->decodeEasyID($transactionID);
 
 
 if(Input::exists()) {
@@ -95,6 +100,7 @@ if(Input::exists()) {
                 'status' => 0
             ));
         }
+        $_SESSION['num'] = $numForms;
         Redirect::to('p_repeatExam.php');
     } else {
         foreach ($validation->errors() as $error) {
@@ -225,3 +231,6 @@ if(Input::exists()) {
 
 </body>
 </html>
+<?
+}
+?>

@@ -143,6 +143,10 @@ class user{
     public function isLoggedIn(){
         return $this->_isLoggedIn;
     }
+
+//    public function loadDropBoxData($table, $field){
+//        $this->_db->loadDropBox($table, $field);
+//    }
 }
 
 ?>
