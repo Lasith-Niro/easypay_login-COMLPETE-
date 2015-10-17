@@ -7,23 +7,23 @@
   */
 
  class accessFile{
-	function read($file){
-		$array = explode("\n", file_get_contents($file));
-		return $array;
-	}
-	function write($myfile,$txt){
-		$myfile = fopen($myfile, "w");
-		fwrite($myfile, $txt);
-	    fclose($myfile);
-	}
-	function writearray($myfile,array $txt){
-		$myfile = fopen($myfile, "w");
-		for( $number=0 ; $number<=count($txt)-1 ; $number++ ){
-			fwrite($myfile,$txt[$number]);
-			fwrite($myfile,"\n");
-		}
-	    fclose($myfile);
-	}
+     function read($file){
+         $array = explode(" ", file_get_contents($file));
+         return $array;
+     }
+     function write($myfile,$txt){
+            $myfile = fopen($myfile, "w");
+            fwrite($myfile, $txt);
+            fclose($myfile);
+     }
+     function writearray($myfile, $txt){
+            $myfile = fopen($myfile, "w");
+            for( $number=0 ; $number<=count($txt)-1 ; $number++ ){
+                fwrite($myfile,$txt[$number]);
+                fwrite($myfile,"\n");
+            }
+            fclose($myfile);
+     }
 } 
 
 

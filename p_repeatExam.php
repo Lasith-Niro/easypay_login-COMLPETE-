@@ -39,7 +39,7 @@ $transactionID = $tra->encodeEasyID($prefix, $newID);
 echo "You have to pay Rs.20.00 to this payment.";
 
 $transactionID = $_SESSION['tId'];
-echo $transactionID . '<br />';
+//echo $transactionID . '<br />';
 
 
 $merchantCode = 'TESTMERCHANT';

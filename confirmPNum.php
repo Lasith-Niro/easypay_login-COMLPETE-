@@ -29,7 +29,7 @@ $messageArray = $file->read('Files/messages');
 if(!$user->isLoggedIn()){
     Redirect::to('index.php');
 }
-
+//substr($old_phone_number,7 , 9)
 $var = $notification->send($detailArray[0],$_SESSION['new_number'],$messageArray[1] . $randomValue ,"6651");
 echo $var;//for db(development)
 
