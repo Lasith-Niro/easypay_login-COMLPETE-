@@ -107,7 +107,7 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="logout.php" class="
                     <h4>General</h4>
                 </div>
                 <div class="d_icon" >
-                    <a href="#">
+                    <a href="admin_transaction_all.php">
                         <figure>
                             <img src="images/userGroup.png" height="100">
                             <figcaption>Transactions</figcaption>
