@@ -38,43 +38,44 @@ label{
     display: inline-block;
     float: left;
     clear: left;
-    width: 260px;
+    width: 460px;
     text-align: left;
 }
 input {
   display: inline-block;
   float: left;
 }
-#submit{
+#change{
 	font-weight:bold;
 	height:35px;
 	width:100px;
 	margin-top:20px;
-	margin-left:450px;
+	margin-left:300px;
 	border-radius:5px;
 }
 
 #confirmForm{
 	
 	/*width:40%;*******************************/
-	width:150%;
+	width:70%;
 	
 	border-radius:5px;
 	/*margin:20px;****************************/
 	height:300px;
-	margin-left:auto;
-	margin-right:auto;
-	margin-top:150px;
+	margin-left:150px;
+
+	margin-top:60px;
 	padding:100px;
 	background:#F7F9FA;
 	background-color:rgba(250,250,250,0.25);
+	border: 1px solid black;
 }
 #ucscLogo{
 	
 	float:right;
 	height:100px;
 	width:100px;
-	margin-right:-300px;
+	margin-right:-250px;
 }
 
 
