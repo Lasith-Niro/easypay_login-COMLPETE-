@@ -23,6 +23,7 @@ $encryptObject = new encrypt();
 $tra = new Transaction();
 $fileObject = new accessFile();
 $dataArray = $fileObject->read('Files/data_UCSCregistration');
+$urlArray = $fileObject->read_newLine('Files/URLs');
 $user = new User();
 
 $amount = $dataArray[0];
@@ -49,7 +50,7 @@ if($dayLimit<0){
 
         $merchantCode = 'TESTMERCHANT';
         $transactionAmount = $amount;
-        $returnURL = 'www.easypaysl.com/ipgResponse.php';
+        $returnURL = $urlArray[0];
         $Invoice = $encryptObject->encode($merchantCode, $transactionID, $transactionAmount, $returnURL);
         $tra->createTEMP(array(
             'userID' => $user->data()->id

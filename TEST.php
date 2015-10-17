@@ -154,6 +154,7 @@ switch($statusCode){
     Redirect::to('index.php');
 */
 ?>
+<!--
 <html>
 <style>
     #browserother {
@@ -206,3 +207,18 @@ switch($statusCode){
     });
 
 </script>
+-->
+<?php
+// The message
+$message = "Line 1\nLine 2\nLine 3";
+
+// In case any of our lines are larger than 70 characters, we should use wordwrap()
+$message = wordwrap($message, 70);
+
+// Send
+mail('lasith2013.l2n@gmail.com', 'My Subject', $message);
+
+// Redirect
+header('Location: index.php');
+?>
+?>

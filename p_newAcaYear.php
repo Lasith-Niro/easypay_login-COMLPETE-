@@ -23,6 +23,7 @@ $encryptObject = new encrypt();
 $tra = new Transaction();
 $fileObject = new accessFile();
 $dataArray = $fileObject->read('Files/data_newAcaYear');
+$urlObject = $fileObject->read_newLine('Files/URLs');
 $user = new User();
 
 $amount = $dataArray[0];
@@ -40,9 +41,10 @@ $transactionID = $tra->encodeEasyID($prefix, $newID);
 
 $merchantCode = 'TESTMERCHANT';
 $transactionAmount = $amount;
-$returnURL = 'www.easypaysl.com/ipgResponse.php';
+$returnURL = $urlObject[0];
 $Invoice = $encryptObject->encode($merchantCode, $transactionID, $transactionAmount, $returnURL);
 
+//echo $returnURL;
 $tra->createTEMP(array(
     'userID' => $user->data()->id
 ));
