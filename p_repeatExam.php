@@ -24,42 +24,51 @@ require_once 'browser/browserconnect.php';
 $encryptObject = new encrypt();
 $tra = new Transaction();
 $fileObject = new accessFile();
-$amountArray = $fileObject->read('Files/amount');
+$dataArray = $fileObject->read('Files/data_repeatExam');
 $user = new User();
 
+$amount = $dataArray[0];
 if(!$user->isLoggedIn()) {
     Redirect::to('index.php');
 }
+$date1 = strtotime($dataArray[1]);
+$date2 = time();
+$dayLimit = $date1-$date2;
+$dayLimit = floor($dayLimit/(60*60*24));
 
-$prefix = 'easyID_';
-$lastID = (integer)$tra->lastID();
-$newID = $lastID + 1;
-$transactionID = $tra->encodeEasyID($prefix, $newID);
+if($dayLimit<0){
+    echo "payment is closed!";
+}else {
+    echo "You have {$dayLimit} days for this payment." . '<br />';
+    echo "You have to pay Rs.20.00 to this payment.";
+    $prefix = 'easyID_';
+    $lastID = (integer)$tra->lastID();
+    $newID = $lastID + 1;
+    $transactionID = $tra->encodeEasyID($prefix, $newID);
+//    $transactionID = $_SESSION['tId'];
+//    echo $transactionID . '<br />';
 
-echo "You have to pay Rs.20.00 to this payment.";
-
-$transactionID = $_SESSION['tId'];
-//echo $transactionID . '<br />';
-
-
-$merchantCode = 'TESTMERCHANT';
-$transactionAmount = $amountArray[0];
-$returnURL = 'www.easypaysl.com/ipgResponse.php';
-$Invoice = $encryptObject->encode($merchantCode, $transactionID, $transactionAmount, $returnURL);
-$tra->createTEMP(array(
-    'userID' => $user->data()->id
-));
+    $merchantCode = 'TESTMERCHANT';
+    $transactionAmount = $amount;
+    $returnURL = 'www.easypaysl.com/ipgResponse.php';
+    $Invoice = $encryptObject->encode($merchantCode, $transactionID, $transactionAmount, $returnURL);
+    $tra->createTEMP(array(
+        'userID' => $user->data()->id
+    ));
 
 
 
-//$_SESSION['uID'] = $uID;
-//$_SESSION['reg'] = $uRegID;
-$_SESSION['type'] = 3;
+    //$_SESSION['uID'] = $uID;
+    //$_SESSION['reg'] = $uRegID;
+    $_SESSION['type'] = 3;
 
+    ?>
+
+    <form action="https://ipg.dialog.lk/ezCashIPGExtranet/servlet_sentinal" method="post">
+        <input type="submit" value="Pay via eZcash">
+        <input type="hidden" value='<?php echo $Invoice; ?>' name="merchantInvoice">
+        <input type="hidden" name="token" value="<?php echo Token::generate(); ?>">
+    </form>
+<?
+}
 ?>
-
-<form action="https://ipg.dialog.lk/ezCashIPGExtranet/servlet_sentinal" method="post">
-    <input type="submit" value="Pay via eZcash">
-    <input type="hidden" value='<?php echo $Invoice; ?>' name="merchantInvoice">
-    <input type="hidden" name="token" value="<?php echo Token::generate(); ?>">
-</form>

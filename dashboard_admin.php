@@ -1,4 +1,12 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: lasith-niro
+ * Date: 17/10/15
+ * Time: 07:53
+ */
+?>
+<?php
 require_once 'core/init.php';
 if(!$_SESSION['isLoggedIn']) {
     Redirect::to('index.php');
@@ -6,7 +14,6 @@ if(!$_SESSION['isLoggedIn']) {
 if($_SESSION['student']){
     Redirect::to('dashboard_student.php');
 }
-
 ?>
 
 <!DOCTYPE html>
