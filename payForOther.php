@@ -33,10 +33,14 @@ if(Input::exists()){
                 if($user->find($username)){
 //                    echo 'User exists<br>';
 //                    echo $user->data()->username;
-                    ////getting other person's userId////
-                    $opUserId = $user ->data()->id;
+                    //getting other person's userId
+                    $opUserId = $user->data()->id;
                     //echo '<br>'.$opUserId;
                     $_SESSION['payeeID'] = $opUserId;
+                    //get other person's name
+                    $name2 = $user->data()->regNumber;
+                    $_SESSION['name2'] = $name2;
+
 
                     Redirect::to('payforme.php');
 

@@ -10,19 +10,20 @@ require_once 'core/init.php';
 require 'SMS/sms.php';
 require 'Files/accessFile.php';
 
-$notification = new notification();
+$notification = new smsNotification();
 echo "To confirm your registration enter your registration code..." . '<br />';
 $hiddenValue = Input::get('storeRandVal');
 $randomValue = rand(1000, 9999);
 echo $randomValue;
 $file = new accessFile();
 $detailArray = $file->read('Files/RouterPhone');
-$messageArray = $file->read('Files/messages');
+$messageArray = $file->read_newLine('Files/messages');
 $from = $detailArray[0];
-$to = $_SESSION['phone'];
+$pNumber = $_SESSION['phoneNo'];
+$to = '94'.substr($pNumber,1,9);
 $pass = $detailArray[1];
 $message = $messageArray[0];
-$var = $notification->send($from,$to,$message . $randomValue ,$pass);
+$var = $notification->send($from,$to,$message . $randomValue ,$pass); //for db
 //echo $var;
 
 $var1 = $_SESSION['username'];

@@ -5,7 +5,7 @@
  * Date: 11/08/15
  * Time: 17:29
  */
-class notification{
+class smsNotification{
 //    var $password="6651";
     function send($from,$to,$message,$password){
         $text = urlencode($message);

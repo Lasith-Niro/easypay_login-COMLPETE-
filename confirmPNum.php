@@ -11,7 +11,7 @@ require 'SMS/sms.php';
 require 'Files/accessFile.php';
 
 $user = new User();
-$notification = new notification();
+$notification = new smsNotification();
 $file = new accessFile();
 
 echo "Welcome to confirm your phone number!" . '<br />';
@@ -22,16 +22,21 @@ echo "Welcome to confirm your phone number!" . '<br />';
 $hiddenValue = Input::get('storeRandVal');
 $randomValue = rand(1000, 9999);
 $detailArray = $file->read('Files/RouterPhone');
-$messageArray = $file->read('Files/messages');
+$messageArray = $file->read_newLine('Files/messages');
 
 //echo $randomValue;
 
 if(!$user->isLoggedIn()){
     Redirect::to('index.php');
 }
-
-$var = $notification->send($detailArray[0],$_SESSION['new_number'],$messageArray[1] . $randomValue ,"6651");
-echo $var;//for db(development)
+//variable for $notification->send($from,$to,$message,$password)
+$from = $detailArray[0];
+$phNumber = $_SESSION['new_number'];
+$to ='94'.substr($phNumber,1,9);
+$pass = $detailArray[1];
+//substr($old_phone_number,7 , 9)
+$var = $notification->send($from,$to,$messageArray[1] . $randomValue ,$pass);
+//echo $var;//for db(development)
 
 if(Input::exists()){
     if(Token::check(Input::get('token'))) {

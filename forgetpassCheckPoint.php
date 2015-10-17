@@ -10,23 +10,24 @@ require 'SMS/sms.php';
 require 'Files/accessFile.php';
 
 $user = new User();
-$notification = new notification();
+$notification = new smsNotification();
 $file = new accessFile();
 
 $pNum = $_SESSION['phone'];
+$to = '94'.substr($pNum,1,9);
 $id = $_SESSION['id'];
 $hiddenValue = Input::get('storeRandVal');
 $randomValue = rand(1000, 9999);
 $detailArray = $file->read('Files/RouterPhone');
-$messageArray = $file->read('Files/messages');
+$messageArray = $file->read_newLine('Files/messages');
 
 //echo $randomValue;
 
 //if(!$user->isLoggedIn()){
 //    Redirect::to('index.php');
 //}
-$var = $notification->send($detailArray[0],$pNum ,$messageArray[2] . $randomValue ,$detailArray[1]);
-echo $var;      //for db(development)
+$var = $notification->send($detailArray[0],$to ,$messageArray[2] . $randomValue ,$detailArray[1]);
+//echo $var;      //for db(development)
 
 if(Input::exists()){
     if(Token::check(Input::get('token'))) {

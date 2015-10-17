@@ -14,7 +14,6 @@ class Transaction{
 
     public function __construct($Transaction = null){
         $this->_Tdb = DB::getInstance();
-
     }
 
     public function createRepeatExam($fields = array()) {

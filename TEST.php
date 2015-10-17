@@ -13,8 +13,19 @@
      #       #    #  #    #     #    #       #    #     #    #    #  #
      ######  #    #   ####      #    #       #    #     #     ####   ######
 */
+//require_once('Files/accessFile.php');
+//$fileObject = new accessFile();
+//
+//$data = "2015-08-20";
+//$fileObject->write('Files/date', $data . '\n');
+//echo "ok";
+//
+//$data2 = "2015-08-25";
+//$fileObject->write('Files/date', $data2 . '\n');
 
-
+?>
+<?
+/*
 $strFull = "easyID_1221";
 //echo $str . "<br>";
 $str = trim($strFull,"easyID_");
@@ -25,11 +36,8 @@ $final = substr_replace($str,'',0,$count);
 echo $final;
 //$final = substr_replace('0','z',$str,$count);
 //echo $final;
-
+*/
 ?>
-
-
-
 <?
 //require_once 'core/init.php';
 //$db = DB::getInstance();
@@ -145,4 +153,72 @@ switch($statusCode){
     Session::flash('home', $str);
     Redirect::to('index.php');
 */
+?>
+<!--
+<html>
+<style>
+    #browserother {
+        display:none;
+    }
+    #osother {
+        display:none;
+    }
+</style>
+<p>Chose Your Browser: <select name = "Browser" required>
+        <option value = "">-- Select an Option --</option>
+        <option value = "1">IE</option>
+        <option value = "2">FF</option>
+        <option value = "3">Safari</option>
+        <option value = "4">Opera</option>
+        <option value = "5">Other</option>
+    </select>
+</p>
+<div id="browserother">
+    <p>Please Specify: <label id="browserlabel"><input name="Other Browser" type="text" placeholder="Other Browser" size="50" /></label></p>
+</div>
+
+<p>Operating System: <select name = "OS" required>
+        <option value = "">-- Select an Option --</option>
+        <option value = "Win">Windows</option>
+        <option value = "ios">iOS</option>
+        <option value = "otheros">Other</option>
+    </select>
+</p>
+<div id="osother">
+    <p>Please Specify: <label id="oslabel"><input name="Other OS" type="text" placeholder="Other OS" size="50" /></label></p>
+</div>
+
+</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js">
+    $('select[name=Browser]').change(function () {
+        if ($(this).val() == '5') {
+            $('#browserother').show();
+        } else {
+            $('#browserother').hide();
+        }
+    });
+
+    $('select[name=OS]').change(function () {
+        if ($(this).val() == 'otheros') {
+            $('#osother').show();
+        } else {
+            $('#osother').hide();
+        }
+    });
+
+</script>
+-->
+<?php
+// The message
+$message = "Line 1\nLine 2\nLine 3";
+
+// In case any of our lines are larger than 70 characters, we should use wordwrap()
+$message = wordwrap($message, 70);
+
+// Send
+mail('lasith2013.l2n@gmail.com', 'My Subject', $message);
+
+// Redirect
+header('Location: index.php');
+?>
 ?>

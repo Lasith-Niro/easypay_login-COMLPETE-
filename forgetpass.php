@@ -63,7 +63,7 @@ if(Input::exists()){
     <div id="ForgotPassword">
         <form action="" method="POST">
             <div>
-                <input required id="verification" type="text" name="name" autocomplete="off" placeholder="Enter verification code" size="25" maxlength="20"/>
+                <input required id="verification" type="text" name="name" autocomplete="off" placeholder="Enter user name" size="25" maxlength="20"/>
             </div>
 
             <input type="hidden" name="token" value="<?php echo Token::generate(); ?>">

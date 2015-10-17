@@ -1,4 +1,12 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: lasith-niro
+ * Date: 28/09/15
+ * Time: 22:27
+ */
+?>
+<?php
 require_once 'browser/browserconnect.php';
 $ua=getBrowser();
 $yourbrowser= $ua['name'];
@@ -12,7 +20,6 @@ elseif($yourbrowser=="Mozilla Firefox"){
 elseif($yourbrowser=="Internet Explorer"){
     $temp_var="css/paymentCSSInternetExplorer.css";
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -78,16 +85,16 @@ elseif($yourbrowser=="Internet Explorer"){
     <div id="HomeForm">
         <SPAN STYLE="color: darkred; font-size: 12pt">* Select your Payment</SPAN>
 
-            <div id="fonts" >
+        <div id="fonts" >
 
-                    <a  href="p_UCSCregistration.php">Register to UCSC</a>
-                    <br><br>
-                    <a href="p_newAcaYear.php">Register for new Academic year</a>
-                    <br><br>
-                    <a href="p_repeatExamForm.php">Pay Repeat Exam Fees</a>
+            <a  href="p_UCSCregistration.php">Register to UCSC</a>
+            <br><br>
+            <a href="p_newAcaYear.php">Register for new Academic year</a>
+            <br><br>
+            <a href="p_repeatExamForm.php">Pay Repeat Exam Fees</a>
 
 
-            </div>
+        </div>
     </div>
 </div>
 
