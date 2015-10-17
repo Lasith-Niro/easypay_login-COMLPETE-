@@ -17,10 +17,7 @@ $notify = new Notification();
 if(!$user->isLoggedIn()){
     Redirect::to('index.php');
 }
-
 $notifyArray = $fileObject->read_newLine('Files/notificationTEXT');
-
-
 if(Input::exists()){
     if(Token::check(Input::get('token'))) {
         $validate = new Validate();
