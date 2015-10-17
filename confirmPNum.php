@@ -11,7 +11,7 @@ require 'SMS/sms.php';
 require 'Files/accessFile.php';
 
 $user = new User();
-$notification = new notification();
+$notification = new smsNotification();
 $file = new accessFile();
 
 echo "Welcome to confirm your phone number!" . '<br />';

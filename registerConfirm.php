@@ -10,7 +10,7 @@ require_once 'core/init.php';
 require 'SMS/sms.php';
 require 'Files/accessFile.php';
 
-$notification = new notification();
+$notification = new smsNotification();
 echo "To confirm your registration enter your registration code..." . '<br />';
 $hiddenValue = Input::get('storeRandVal');
 $randomValue = rand(1000, 9999);
