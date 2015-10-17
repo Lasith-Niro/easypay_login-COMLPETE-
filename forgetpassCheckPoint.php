@@ -10,7 +10,7 @@ require 'SMS/sms.php';
 require 'Files/accessFile.php';
 
 $user = new User();
-$notification = new notification();
+$notification = new smsNotification();
 $file = new accessFile();
 
 $pNum = $_SESSION['phone'];
