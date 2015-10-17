@@ -29,8 +29,13 @@ $messageArray = $file->read('Files/messages');
 if(!$user->isLoggedIn()){
     Redirect::to('index.php');
 }
+//variable for $notification->send($from,$to,$message,$password)
+$from = $detailArray[0];
+$phNumber = $_SESSION['new_number'];
+$to ='94'.substr($phNumber,1,9);
+$pass = $detailArray[1];
 //substr($old_phone_number,7 , 9)
-$var = $notification->send($detailArray[0],$_SESSION['new_number'],$messageArray[1] . $randomValue ,"6651");
+$var = $notification->send($from,$to,$messageArray[1] . $randomValue ,$pass);
 echo $var;//for db(development)
 
 if(Input::exists()){

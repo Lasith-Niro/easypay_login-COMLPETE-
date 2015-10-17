@@ -14,6 +14,7 @@ $notification = new notification();
 $file = new accessFile();
 
 $pNum = $_SESSION['phone'];
+$to = '94'.substr($pNum,1,9);
 $id = $_SESSION['id'];
 $hiddenValue = Input::get('storeRandVal');
 $randomValue = rand(1000, 9999);
@@ -25,7 +26,7 @@ $messageArray = $file->read('Files/messages');
 //if(!$user->isLoggedIn()){
 //    Redirect::to('index.php');
 //}
-$var = $notification->send($detailArray[0],$pNum ,$messageArray[2] . $randomValue ,$detailArray[1]);
+$var = $notification->send($detailArray[0],$to ,$messageArray[2] . $randomValue ,$detailArray[1]);
 echo $var;      //for db(development)
 
 if(Input::exists()){
