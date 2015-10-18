@@ -6,47 +6,50 @@ $notification = new Notification();
 if(!$user->isLoggedIn()){
     Redirect::to('index.php');
 }
+//check for admin
+if ($user->hasPermission('admin')) {
+    if(Input::exists()){
+        if(Token::check(Input::get('token'))) {
+            $validate = new Validate();
+            $validation = $validate->check($_POST, array(
+                   'topic' => array(
+                       'required' => true,
+                       'max' => 255
+                   ),
+                   'detail' => array(
+                       'required' => true
+                   )
+                )
+            );
+            if($validation->passed()){
+                $topic = Input::get('topic');
+                $detail = Input::get('detail');
+                $datetime=date("d/m/y h:i:s"); //create date time
+                $notification->createNotification(array(
+                    'topic' => $topic,
+                    'detail' => $detail,
+                    'datetime' => $datetime
+                    ));
 
-if(Input::exists()){
-    if(Token::check(Input::get('token'))){
-        $validate = new Validate();
-        $validation = $validate->check($_POST, array(
-               'topic' => array(
-                   'required' => true,
-                   'max' => 255
-               ),
-               'detail' => array(
-                   'required' => true
-               )
-            )
-        );
-        if($validation->passed()){
-            $topic = Input::get('topic');
-            $detail = Input::get('detail');
-            $datetime=date("d/m/y h:i:s"); //create date time
-            $notification->createNotification(array(
-                'topic' => $topic,
-                'detail' => $detail,
-                'datetime' => $datetime
-                ));
-
-            if($notification){
-//                echo "Successful";
-                echo "<a href=notif_main_forum.php>View all notification</a>";
-            }
-            else {
-                echo "ERROR";
-            }
-//            echo $topic . '</ br>';
-//            echo $detail . '</ br>';
-        } else {
-            foreach($validation->errors() as $error){
-                echo $error , '</ br>';
+                if($notification){
+    //                echo "Successful";
+                    echo "<a href=notif_main_forum.php>View all notification</a>";
+                    echo "</br>";
+                    echo "<a href=notif_assign_users.php>Assign users </a>";
+                }
+                else {
+                    echo "ERROR";
+                }
+    //            echo $topic . '</ br>';
+    //            echo $detail . '</ br>';
+            } else {
+                foreach($validation->errors() as $error){
+                    echo $error , '</ br>';
+                }
             }
         }
-    }
 
-}
+    }
 ?>
 
 <form action="" method="post">
@@ -62,3 +65,8 @@ if(Input::exists()){
     <input type="reset" name="Submit2" value="Reset" />
     <input type = "hidden" name="token" value="<?php echo Token::generate(); ?>">
 </form>
+<?
+} else {
+    Redirect::to('index.php');
+}
+?>
