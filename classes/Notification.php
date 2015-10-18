@@ -20,17 +20,21 @@ class Notification {
         }
     }
 
-    public function deleteNotification($txt){
-        if(!$this->_Ndb->delete('notification', array('nID', '=', $txt))){
+    public function deleteNotification($id){
+        if(!$this->_Ndb->delete('notification', array('nID', '=', $id))){
             throw new Exception('There was a problem in connection');
         }
+    }
+
+    public function getData(){
+        return $this->_Ndb->getAll('SELECT *', 'notification', 'nID');
     }
 
     public function data(){
         return $this->_Ndata;
     }
 
-    public function getTransactionID(){
+    public function getNotificationID(){
         return $this->_Ndata->nID;
     }
 }

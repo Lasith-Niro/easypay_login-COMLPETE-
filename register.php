@@ -61,22 +61,21 @@ if(Input::exists()){
         }
     }
 }
+
+$ua=getBrowser();
+$yourbrowser= $ua['name'];
+$temp_var;
+if ($yourbrowser=="Google Chrome"){
+    $temp_var="css/regCSSChrome.css";
+}
+elseif($yourbrowser=="Mozilla Firefox"){
+    $temp_var="css/regCSSFirefox.css";
+}
+elseif($yourbrowser=="Internet Explorer"){
+    $temp_var="css/regCSSInternetExplorer.css";
+}
+
 ?>
-<?php
-	$ua=getBrowser();
-	$yourbrowser= $ua['name'];
-	$temp_var;
-	if ($yourbrowser=="Google Chrome"){
-		$temp_var="css/regCSSChrome.css";
-	}
-	elseif($yourbrowser=="Mozilla Firefox"){
-		$temp_var="css/regCSSFirefox.css";
-	}
-	elseif($yourbrowser=="Internet Explorer"){
-		$temp_var="css/regCSSInternetExplorer.css";
-	}
-	
-	?>
 
 <!DOCTYPE html>
 <html lang="en">

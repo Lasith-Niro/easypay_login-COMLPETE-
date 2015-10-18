@@ -46,7 +46,6 @@ if(Input::exists()){
                         'uID' => $uID,
                         'nCode' => $msgCode
                     ));
-
                 }else{
                     //echo 'Not exists<br>';
                     echo'<script type="text/javascript">
