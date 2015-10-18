@@ -15,20 +15,22 @@ $fObject = new accessFile();
 if(!$user->isLoggedIn()){
     Redirect::to('index.php');
 }
-$inFile = $fObject->read('Files/data_UCSCregistration');
-$inAmount = $inFile[0];
-$inData = $inFile[1];
+//check for admin
+if ($user->hasPermission('admin')) {
+    $inFile = $fObject->read('Files/data_UCSCregistration');
+    $inAmount = $inFile[0];
+    $inData = $inFile[1];
 
 
-if(Input::exists()){
-    if(Token::check(Input::get('token'))) {
-        $newDate= Input::get('date');
-        $newAmount=Input::get('amount');
+    if(Input::exists()){
+        if(Token::check(Input::get('token'))) {
+            $newDate= Input::get('date');
+            $newAmount=Input::get('amount');
 
-        $outData = $newAmount . " " . $newDate;
-        $fObject->write('Files/data_UCSCregistration', $outData);
+            $outData = $newAmount . " " . $newDate;
+            $fObject->write('Files/data_UCSCregistration', $outData);
+        }
     }
-}
 ?>
 
 <form action="" method="post">
@@ -45,3 +47,8 @@ if(Input::exists()){
     <input type="submit" value="Save">
     <input type="hidden" name="token" value="<?php echo Token::generate(); ?>">
 </form>
+<?php
+} else {
+    Redirect::to('index.php');
+}
+?>

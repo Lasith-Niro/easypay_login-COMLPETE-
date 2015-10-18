@@ -1,5 +1,9 @@
 <?php
 require_once 'core/init.php';
+$user = new User();
+if(!$user->isLoggedIn()){
+    Redirect::to('index.php');
+}
 ?>
 <!--<table width="90%" border="0" align="center" cellpadding="3" cellspacing="1" bgcolor="#CCCCCC">-->
 <!--    <tr>-->
