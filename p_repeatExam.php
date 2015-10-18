@@ -16,7 +16,6 @@
 
 require_once 'core/init.php';
 require 'payment/encrypt.php';
-require 'Files/accessFile.php';
 require_once 'browser/browserconnect.php';
 
 //echo "The 2 digit representation of current month with leading zero is: " . date("m") . '<br />';
@@ -28,10 +27,16 @@ $dataArray = $fileObject->read('Files/data_repeatExam');
 $urlArray = $fileObject->read_newLine('Files/URLs');
 $user = new User();
 
-$amount = $dataArray[0];
+$oneAmount = $dataArray[0];
+$time = $_SESSION['num'];
+
+$amount= $oneAmount * $time;
+
+echo $amount;
 if(!$user->isLoggedIn()) {
     Redirect::to('index.php');
 }
+
 $date1 = strtotime($dataArray[1]);
 $date2 = time();
 $dayLimit = $date1-$date2;
@@ -53,6 +58,7 @@ if($dayLimit<0){
     $transactionAmount = $amount;
     $returnURL = $urlArray[0];
     $Invoice = $encryptObject->encode($merchantCode, $transactionID, $transactionAmount, $returnURL);
+
     $tra->createTEMP(array(
         'userID' => $user->data()->id
     ));

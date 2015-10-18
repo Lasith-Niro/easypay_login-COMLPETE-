@@ -27,7 +27,6 @@ $urlArray = $fileObject->read_newLine('Files/URLs');
 $user = new User();
 
 $amount = $dataArray[0];
-
 if(!$user->isLoggedIn()){
     Redirect::to('index.php');
 }
@@ -40,13 +39,12 @@ $dayLimit = floor($dayLimit/(60*60*24));
 if($dayLimit<0){
     echo "payment is closed!";
 }else {
-    echo "You have {$dayLimit} days for this payment." . '<br />';
     if($user->data()->year == 1){
+        echo "You have {$dayLimit} days for this payment." . '<br />';
         $prefix = 'easyID_';
         $lastID = (integer)$tra->lastID();
         $newID = $lastID + 1;
         $transactionID = $tra->encodeEasyID($prefix, $newID);
-
 
         $merchantCode = 'TESTMERCHANT';
         $transactionAmount = $amount;
@@ -55,7 +53,6 @@ if($dayLimit<0){
         $tra->createTEMP(array(
             'userID' => $user->data()->id
         ));
-
 
         $uNIC = $user->data()->nic;
         $regYear = date("Y") + 1;
@@ -72,8 +69,6 @@ if($dayLimit<0){
         echo "You have to pay Rs.2500 for register." . '<br />';
         //$_SESSION['nic'] = $uNIC;
         //$_SESSION['reg'] = $uRegID;
-
-
 
         $en_transactionID = $tra->decodeEasyID($transactionID);
         $tra->createUCSCRegistration(array(

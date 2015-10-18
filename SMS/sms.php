@@ -21,7 +21,7 @@ class smsNotification{
         return $res[1];
     }
 }
-//$my = new notification();
+//$my = new notificationTEXT();
 //$my->message = "this is my testing message";
 //$my->send("94772774100","770294331","this is my testing message","2235");
 ?>
