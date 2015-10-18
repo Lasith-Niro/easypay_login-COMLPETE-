@@ -33,9 +33,7 @@ if ($user->hasPermission('admin')) {
 
                 if($notification){
     //                echo "Successful";
-                    echo "<a href=notif_main_forum.php>View all notification</a>";
-                    echo "</br>";
-                    echo "<a href=notif_assign_users.php>Assign users </a>";
+                    Redirect::to('notif_dboard.php');
                 }
                 else {
                     echo "ERROR";
