@@ -32,6 +32,9 @@ if($_SESSION['admin']){
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" >
 
         <div class="container" >
+            <a href="homePage.php">
+                <img id="img" src="images/logo.png" alt="" width="150px" >
+            </a>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -71,7 +74,7 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="logout.php" class="
     <div class="sidebar-collapse">
         <ul class="nav" id="main-menu">
             <li class="text-center">
-                <img src="assets/img/find_user.png" class="user-image img-responsive"/>
+                <img src="images/User.png" class="user-image img-responsive"/>
             </li>
             <li>
                 <a class="active-menu"  href="dashboard_student.php"><i class="fa fa-dashboard fa-3x"></i> Dashboard</a>

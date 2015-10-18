@@ -41,6 +41,9 @@ if($_SESSION['student']){
 <div id="wrapper">
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" >
         <div class="container" >
+            <a href="homePage.php">
+                <img id="img" src="images/logo.png" alt="" width="150px" >
+            </a>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
@@ -112,72 +115,75 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="logout.php" class="
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h4>General</h4>
+<!--                    <a id="a1" onclick="toggleDiv('inG');">Show/Hide</a>-->
                 </div>
-                <div class="d_icon" >
-                    <a href="admin_transaction_all.php">
-                        <figure>
-                            <img src="images/userGroup.png" height="100">
-                            <figcaption>Transactions</figcaption>
-                        </figure>
-                    </a>
+                <div id="inG">
+                    <div class="d_icon" >
+                        <a href="admin_transaction_all.php">
+                            <figure>
+                                <img src="images/transaction.png" height="100">
+                                <figcaption>Transactions</figcaption>
+                            </figure>
+                        </a>
+                    </div>
                 </div>
+
             </div>
         </div>
-
+<!---->
         <div class="col-md-9 col-sm-12 col-xs-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h4>Accounts Manager</h4>
+<!--                    <a id="a2" onclick="toggleDiv('inAM');">Show/Hide</a>-->
                 </div>
-                <div class="d_icon" >
-                    <a href="#">
-                        <figure>
-                            <img src="images/userGroup.png" height="100">
-                            <figcaption>Search Users</figcaption>
-                        </figure>
-                    </a>
+                <div id="inAM">
+                    <div class="d_icon" >
+                        <a href="#">
+                            <figure>
+                                <img src="images/searchUser.png" height="100">
+                                <figcaption>Search Users</figcaption>
+                            </figure>
+                        </a>
+                    </div>
                 </div>
-
             </div>
         </div>
-
+<!---->
         <div class="col-md-9 col-sm-12 col-xs-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h4>Admin Tools</h4>
+<!--                    <a id="a3" onclick="toggleDiv('inAT');">Show/Hide</a>-->
                 </div>
-                <div class="d_icon" >
-                    <a href="#">
-                        <figure>
-                            <img src="images/userGroup.png" height="100">
-                            <figcaption>SMS</figcaption>
-                        </figure>
-                    </a>
-                </div>
-                <div class="d_icon" >
-                    <a href="#">
-                        <figure>
-                            <img src="images/userGroup.png" height="100">
-                            <figcaption>E-mail</figcaption>
-                        </figure>
-                    </a>
-                </div>
-                <div class="d_icon" >
-                    <a href="#">
-                        <figure>
-                            <img src="images/userGroup.png" height="100">
-                            <figcaption>Settings</figcaption>
-                        </figure>
-                    </a>
+                <div id="inAT" >
+                    <div class="d_icon" >
+                        <a href="#">
+                            <figure>
+                                <img src="images/sms.png" height="100">
+                                <figcaption>SMS</figcaption>
+                            </figure>
+                        </a>
+                    </div>
+                    <div class="d_icon" >
+                        <a href="#">
+                            <figure>
+                                <img src="images/email.png" height="100">
+                                <figcaption>E-mail</figcaption>
+                            </figure>
+                        </a>
+                    </div>
+                    <div class="d_icon" >
+                        <a href="#">
+                            <figure>
+                                <img src="images/settings.jpg" height="100">
+                                <figcaption>Settings</figcaption>
+                            </figure>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
-        <div id="abc" style="display: none">
-            <div id="popupContact">
-                <input type="text" width="200px" height="200px">
-            </div>
-        </div>
-
     </div>
 </div>
 

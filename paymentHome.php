@@ -1,5 +1,6 @@
 
 <?php
+require_once 'core/init.php';
 require_once 'browser/browserconnect.php';
 $ua=getBrowser();
 $yourbrowser= $ua['name'];
@@ -32,7 +33,7 @@ elseif($yourbrowser=="Internet Explorer"){
         <div class="container" >
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-                <a href="home page.html">
+                <a href="homePage.php">
                     <img id="img" src="images/logo.png" alt="" width="150px" >
                 </a>
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">

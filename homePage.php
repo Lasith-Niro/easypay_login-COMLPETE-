@@ -1,4 +1,6 @@
 <?php
+require_once 'core/init.php';
+//$user = new user();
 
 
 ?>
@@ -70,12 +72,27 @@
                     <li>
                         <a href="#">CONTACT</a>
                     </li>
-					<li>
+                    <?php
+                    if(!isset($_SESSION['isLoggedIn'])|| $_SESSION['isLoggedIn']==false){
+
+                    ?>
+                        <li>
                         <a href="login.php">LOGIN</a>
                     </li>
 					<li>
                         <a href="register.php">REGISTER</a>
                     </li>
+                    <?php
+                    }else{
+                        ?>
+                        <li>
+                            <a href="dashboard_student.php">DASHBOARD</a>
+                        </li>
+
+                    <?php
+                    }
+                    ?>
+
                 </ul>
 				
             </div>
@@ -83,6 +100,16 @@
         </div>
         <!-- /.container -->
     </nav>
+<?php
+if(isset($_SESSION['isLoggedIn'])&& $_SESSION['isLoggedIn']==true) {
+    ?>
+    <div style="color: white;padding: 15px 50px 5px 50px;
+float: right;
+font-size: 16px;"><a href="logout.php" class="btn btn-danger square-btn-adjust">Logout</a> </div>
+<?php
+}
+?>
+
 
     <!-- Full Width Image Header with Logo -->
     <!-- Image backgrounds are set within the full-width-pics.css file. -->

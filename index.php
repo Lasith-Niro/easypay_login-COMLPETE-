@@ -51,6 +51,7 @@ if($user->isLoggedIn()) {
     $_SESSION['user_name'] = $user->data()->username;
     if ($user->hasPermission('admin')) {
         $msg= '<p> You logged as an Administrator</p>';
+        Redirect::to('dashboard_admin.php');
     }
     else{
         $msg= '<p> You logged as a Student </p>';
