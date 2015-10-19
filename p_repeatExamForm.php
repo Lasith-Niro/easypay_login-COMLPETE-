@@ -231,6 +231,6 @@ if(Input::exists()) {
 
 </body>
 </html>
-<?
+<?php
 }
 ?>
