@@ -47,7 +47,7 @@ if ($user->hasPermission('admin')) {
     <input type="submit" value="Save">
     <input type="hidden" name="token" value="<?php echo Token::generate(); ?>">
 </form>
-<?
+<?php
 } else {
     Redirect::to('index.php');
 }

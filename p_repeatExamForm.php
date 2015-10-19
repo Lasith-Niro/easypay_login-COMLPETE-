@@ -13,12 +13,12 @@ if(!$user->isLoggedIn()) {
     Redirect::to('index.php');
 }
 
-//$prefix = 'easyID_';
-//$lastID = (integer)$tra->lastID();
-//$newID = $lastID + 1;
-//$transactionID = $tra->encodeEasyID($prefix, $newID);
+$prefix = 'easyID_';
+$lastID = (integer)$tra->lastID();
+$newID = $lastID + 1;
+$transactionID = $tra->encodeEasyID($prefix, $newID);
 //echo $transactionID . '<br />';
-//$_SESSION['tId'] = $transactionID;
+$_SESSION['tId'] = $transactionID;
 
 $date1 = strtotime($dataArray[1]);
 $date2 = time();
@@ -38,8 +38,8 @@ if(!$uRegID){
 }
 echo "You have to pay Rs.25 per paper." . '<br /> <br /> <br />';
 
-//$de_transactionID = $tra->decodeEasyID($transactionID);
-
+$de_transactionID = $tra->decodeEasyID($transactionID);
+$_SESSION['deID'] = $de_transactionID;
 
 if(Input::exists()) {
     if (Token::check(Input::get('token'))) {
@@ -97,15 +97,17 @@ if(Input::exists()) {
                 'gradeFirst' => ${"subject$j"}['gradeFirst'],
                 'gradeSecond' => ${"subject$j"}['gradeSecond'],
                 'gradeThird' => ${"subject$j"}['gradeThird'],
-                'status' => 0
+                'paymentStatus' => 0,
+                'adminStatus' => 0
             ));
         }
         $_SESSION['num'] = $numForms;
         Redirect::to('p_repeatExam.php');
     } else {
-        foreach ($validation->errors() as $error) {
-            echo $error, '</ br>';
-        }
+        echo "error";
+//        foreach ($validation->errors() as $error) {
+//            echo $error, '</ br>';
+//        }
     }
 }
 ?>

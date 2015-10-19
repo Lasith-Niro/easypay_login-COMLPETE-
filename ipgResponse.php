@@ -64,19 +64,22 @@ if(Token::check(Input::get('token'))){
                 if($paymentType === 1){
                     //payment type = UCSC registration fee
                     $transaction->updateStatus('UCSC_Registration',array(
-                        'status' => 1
+                        //paymentstatuss
+                        'paymentStatus' => 1
                     ),$de_transactionID);
                 }
                 elseif($paymentType === 2){
                     //payment type = New academic year fee
                     $transaction->updateStatus('New_Academic_Year',array(
-                        'status' => 1
+                        //paymentstatuss
+                        'paymentStatus' => 1
                     ), $de_transactionID);
                 }
                 elseif($paymentType === 3){
                     //payment type = Repeat exam fee
                     $transaction->updateStatus('Repeat_Exam',array(
-                       'status' => 1
+                        //paymentstatuss
+                       'paymentStatus' => 1
                     ), $de_transactionID);
                 }
                 Redirect::to('index.php');

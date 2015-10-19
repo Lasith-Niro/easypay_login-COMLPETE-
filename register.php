@@ -10,7 +10,7 @@ if(Session::exists('home')){
 //checking if the user already logged in
 $user = new User();
 if($user->isLoggedIn()){
-    Redirect::to('userDashboard.php');
+    Redirect::to('dashboard_student.php');
 }
 
 

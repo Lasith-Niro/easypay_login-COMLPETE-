@@ -17,6 +17,7 @@
 require_once 'core/init.php';
 require 'payment/encrypt.php';
 require_once 'browser/browserconnect.php';
+require 'Files/accessFile.php';
 
 //echo "The 2 digit representation of current month with leading zero is: " . date("m") . '<br />';
 
@@ -32,7 +33,7 @@ $time = $_SESSION['num'];
 
 $amount= $oneAmount * $time;
 
-echo $amount;
+//echo $amount;
 if(!$user->isLoggedIn()) {
     Redirect::to('index.php');
 }
@@ -50,8 +51,8 @@ if($dayLimit<0){
     $prefix = 'easyID_';
     $lastID = (integer)$tra->lastID();
     $newID = $lastID + 1;
-    $transactionID = $tra->encodeEasyID($prefix, $newID);
-//    $transactionID = $_SESSION['tId'];
+//    $transactionID = $tra->encodeEasyID($prefix, $newID);
+    $transactionID = $_SESSION['deID'];
 //    echo $transactionID . '<br />';
 
     $merchantCode = 'TESTMERCHANT';

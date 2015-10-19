@@ -126,6 +126,22 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="logout.php" class="
                             </figure>
                         </a>
                     </div>
+                    <div class="d_icon" >
+                        <a href="editPayment.php">
+                            <figure>
+                                <img src="images/editPayments.png" height="100">
+                                <figcaption>Update Payment Types</figcaption>
+                            </figure>
+                        </a>
+                    </div>
+                    <div class="d_icon" >
+                        <a href="notif_main_forum.php">
+                            <figure>
+                                <img src="images/notification.png" height="100">
+                                <figcaption>Notifications Forum</figcaption>
+                            </figure>
+                        </a>
+                    </div>
                 </div>
 
             </div>

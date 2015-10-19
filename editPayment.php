@@ -24,7 +24,7 @@ if ($user->hasPermission('admin')) {
     <li><a href="edit_newAcaYear.php">Register for new academic year</a></li>
     <li><a href="edit_repeatExam.php">Pay repeat exam fees</a></li>
 </ul>
-<?
+<?php
 } else {
     Redirect::to('index.php');
 }

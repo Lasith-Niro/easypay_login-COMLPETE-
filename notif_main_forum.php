@@ -52,7 +52,7 @@ if ($user->hasPermission('admin')) {
     </tr>
 
 </table>
-<?
+<?php
 } else {
     Redirect::to('index.php');
 }
