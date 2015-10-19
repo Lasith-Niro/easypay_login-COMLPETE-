@@ -29,6 +29,8 @@ if ($user->hasPermission('admin')) {
 
             $outData = $newAmount . " " . $newDate;
             $fObject->write('Files/data_newAcaYear', $outData);
+            Redirect::to('edit_newAcaYear.php'); //refresh the page
+
         }
     }
 ?>

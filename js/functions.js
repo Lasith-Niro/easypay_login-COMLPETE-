@@ -36,9 +36,35 @@ function addSubjectCount(){
 
 
 function showElement(id){
-    document.getElementById(id).style.display = "block";
+    document.getElementById(id).style.display = "inline";
+    //$('#'+id).show();
 }
 
 function hideElement(id){
     document.getElementById(id).style.display = "none";
 }
+
+//to toggle a div element
+function toggleDiv(id) {
+    $("#" + id).toggle();
+}
+
+function autoSuggest(id){
+    var usernames = [
+        'lahiru',
+        'lasith',
+        'anjana',
+        'nadeesh',
+        'thisumi',
+        'shanika'
+    ];
+
+    $('#'+id).autocomplete({
+        source: usernames,
+        minLength: 0,
+        scroll: true
+    }).focus(function() {
+        $(this).autocomplete("search", "");
+    });
+}
+

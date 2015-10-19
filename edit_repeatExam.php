@@ -29,6 +29,7 @@ if ($user->hasPermission('admin')) {
 
             $outData = $newAmount . " " . $newDate;
             $fObject->write('Files/data_repeatExam', $outData);
+            Redirect::to('edit_repeatExam.php');
         }
 }
 ?>

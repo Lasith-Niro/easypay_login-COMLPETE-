@@ -49,6 +49,7 @@ if(Session::exists('home')){
 $user = new User();
 if($user->isLoggedIn()) {
     $_SESSION['user_name'] = $user->data()->username;
+    //check for admin
     if ($user->hasPermission('admin')) {
         $msg= '<p> You logged as an Administrator</p>';
         Redirect::to('dashboard_admin.php');

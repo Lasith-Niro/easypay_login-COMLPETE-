@@ -76,7 +76,7 @@ if($dayLimit<0){
     $tra->createNewAcademicYear(array(
         'transactionID' => $de_transactionID,
         'acaYear' => $acaYear,
-        'status' => 0
+        'paymentStatus' => 0
     ));
 
     ?>

@@ -74,7 +74,7 @@ if($dayLimit<0){
         $tra->createUCSCRegistration(array(
             'transactionID' => $en_transactionID,
             'regYear' => $regYear,
-            'status' => 0
+            'paymentStatus' => 0
         ))
 
     ?>

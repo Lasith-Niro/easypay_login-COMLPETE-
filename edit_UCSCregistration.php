@@ -29,6 +29,7 @@ if ($user->hasPermission('admin')) {
 
             $outData = $newAmount . " " . $newDate;
             $fObject->write('Files/data_UCSCregistration', $outData);
+            Redirect::to('edit_UCSCregistration.php');
         }
     }
 ?>
