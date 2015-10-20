@@ -156,6 +156,7 @@ elseif($yourbrowser=="Internet Explorer"){
 
 
     <div id="regForm">
+<!--        <h3>Signup</h3>-->
         <form action="" method="post">
             <div>
                 <input id="username" type="text" name="username"  placeholder="Enter username" value="<?php echo Input::get('username'); ?>" autocomplete="off" >

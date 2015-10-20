@@ -49,22 +49,15 @@ function toggleDiv(id) {
     $("#" + id).toggle();
 }
 
-function autoSuggest(id){
-    var usernames = [
-        'lahiru',
-        'lasith',
-        'anjana',
-        'nadeesh',
-        'thisumi',
-        'shanika'
-    ];
-
-    $('#'+id).autocomplete({
-        source: usernames,
-        minLength: 0,
-        scroll: true
-    }).focus(function() {
-        $(this).autocomplete("search", "");
+////////////////// auto suggestions function ///////////////////
+function autoSuggest(dID,phpFile){
+    //searchVal -> variable name to catch $_POST['searchVal']
+    //phpFile -> where the searching done
+    //dID -> display location
+    var searchText = $("input[name = 'search']").val();
+    $.post(phpFile,{searchVal:searchText},function(output){
+        $('#'+dID).html(output);
     });
 }
+
 
