@@ -22,6 +22,7 @@ if($_SESSION['student']){
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Transaction | Page</title>
+    <link href="css/customCss.css" rel="stylesheet">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
 
@@ -30,18 +31,21 @@ if($_SESSION['student']){
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
-    <link href="css/stdCSS.css" rel="stylesheet" type="text/css">
+
     <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
     <script type="text/javascript" src="js/functions.js"></script>
 </head>
 <body>
 <div id="wrapper">
-    <div id="wrapper">
-        <?php
-        include "header.php";
-        ?>
-    </div>
+
+    <?php
+    include "header.php";
+    ?>
+
 </div>
+<div class="backgroundImg">
+
+
 <?php
 include "adminSidebar.php";
 ?>
@@ -59,17 +63,25 @@ include "adminSidebar.php";
         <div class="col-md-9 col-sm-12 col-xs-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h4>Enter the month</h4>
+                    <h4>Search by month</h4>
                 </div>
                 <!--                -->
                 <form action="" method="post" class="form-horizontal">
-                    <div class="">
-                        <input class="form-control" id="month" name="month" type="number" placeholder="Enter Month"  required value="<?php echo Input::get('month')?>">
-                        <input class="form-control" id="year" name="year" type="number" placeholder="Enter Year" required value="<?php echo Input::get('year')?>">
+                    <div class="gap">
+                        <div class="col-lg-3">
+                            <input class="form-control" id="month" name="month" type="number" placeholder="Enter Month"  required value="<?php echo Input::get('month')?>">
+                        </div>
+
+                        <div class="col-lg-3">
+                            <input class="form-control" id="year" name="year" type="number" placeholder="Enter Year" required value="<?php echo Input::get('year')?>">
+                        </div>
+
                     </div>
 
+                    <div class="gap">
+                        <input class="btn btn-default" type="submit" value="Search">
+                    </div>
 
-                    <input class="btn btn-default" type="submit" value="Search">
                 </form>
                 <a href="admin_transaction_all.php"><button class="btn btn-default">Back</button></a>
                 <?php
@@ -149,7 +161,7 @@ include "adminSidebar.php";
         </div>
     </div>
 </div>
-
+</div>
 <?php
 include "footer.php";
 ?>

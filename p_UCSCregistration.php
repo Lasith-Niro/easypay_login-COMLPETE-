@@ -25,6 +25,7 @@ require_once 'browser/browserconnect.php';
         <title>Payment | Page</title>
         <!--    <link rel="stylesheet" href=--><?php //echo $temp_var?><!-- >-->
         <!--    <link href="home/css/bootstrap.min.css" rel="stylesheet">-->
+        <link href="css/customCss.css" rel="stylesheet">
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
 
@@ -39,7 +40,8 @@ require_once 'browser/browserconnect.php';
 <?php
 include "header.php";
 ?>
-<div class="container">
+<div class="container backgroundImg">
+    <br>
     <div class="jumbotron col-lg-6 col-lg-offset-3">
 <?php
 
@@ -117,8 +119,7 @@ if($dayLimit<0){
             <input type="hidden" value='<?php echo $Invoice; ?>' name="merchantInvoice">
             <input class="btn btn-default" type="hidden" name="token" value="<?php echo Token::generate(); ?>">
         </form>
-    </div>
-</div>
+
 
 
     <?php
@@ -127,6 +128,10 @@ if($dayLimit<0){
         echo "<div class='alert alert-danger'>You cannot make this payment.</div>";
     }
 }
+    ?>
+    </div>
+</div>
+<?php
 include "footer.php";
 ?>
 

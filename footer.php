@@ -6,7 +6,7 @@
  * Time: 11:04 AM
  */
 ?>
-<footer class="navbar-fixed-bottom">
+<footer class="">
     <div class="container" style="text-align: center">
         <span class="copyright">Copyright &copy; easypaysl.com 2015</span>
         <div>

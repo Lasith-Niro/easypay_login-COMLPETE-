@@ -81,6 +81,7 @@ if(Input::exists()){
 <head>
     <meta charset="UTF-8">
     <title>Payment | Page</title>
+    <link href="css/customCss.css" rel="stylesheet">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
 
@@ -99,7 +100,8 @@ if(Input::exists()){
     ?>
 </div>
 
-<div class="container">
+<div class="container backgroundImg">
+    <br>
     <div class="jumbotron col-lg-6 col-lg-offset-3">
         <h3>Please enter the other person's username</h3>
         <form action="" method="post" class="form-horizontal">

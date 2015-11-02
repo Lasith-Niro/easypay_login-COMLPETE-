@@ -31,8 +31,9 @@ require_once 'browser/browserconnect.php';
 <?php
 include "header.php";
 ?>
-<div class="container">
-    <div class="jumbotron col-lg-6 col-lg-offset-3">
+<div class="container backgroundImg">
+    <br>
+    <div class="jumbotron col-lg-5 col-lg-offset-3">
         <?php
 
 
@@ -106,28 +107,30 @@ elseif($yourbrowser=="Internet Explorer"){
 <!--        <!--<h1 id="welcome">Welcome to Easypay</h1>-->
 <!--        -->
 <!--    </header>-->
-    <div id="updateForm">
-    <form action="" method="post" class="form-horizontal">
-        <h3><strong>Change Password</strong></h3>
-    <div class="gap">
-        <label>Current password</label>
-        <input class="form-control" type="password" name="password_current" id="password_current">
+        <div id="updateForm">
+            <form action="" method="post" class="form-horizontal">
+                <h3><strong>Change Password</strong></h3>
+            <div class="gap">
+                <label>Current password</label>
+                <input class="form-control" type="password" name="password_current" id="password_current">
+            </div>
+
+            <div class="gap">
+                <label>New password</label>
+                <input class="form-control" type="password" name="password_new" id="password_new">
+            </div>
+
+            <div class="gap">
+                <label>New password again</label>
+                <input class="form-control" type="password" name="password_new_again" id="password_new_again">
+            </div>
+
+            <input class="btn btn-default" id="change" type="submit" value="Change">
+            <input type="hidden" name="token" value="<?php echo Token::generate(); ?>">
+            </form>
+        </div>
     </div>
-
-    <div class="gap">
-        <label>New password</label>
-        <input class="form-control" type="password" name="password_new" id="password_new">
-    </div>
-
-    <div class="gap">
-        <label>New password again</label>
-        <input class="form-control" type="password" name="password_new_again" id="password_new_again">
-    </div>
-
-    <input class="btn btn-default" id="change" type="submit" value="Change">
-    <input type="hidden" name="token" value="<?php echo Token::generate(); ?>">
-</form>
-
+</div>
         <?php
         include "footer.php";
         ?>

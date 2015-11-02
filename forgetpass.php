@@ -17,6 +17,7 @@ require 'Files/accessFile.php';
     <title>Login | page</title>
     <!--    <link rel="stylesheet" href=--><?php //echo $temp_var?><!-- >-->
     <!--    <link href="home/css/bootstrap.min.css" rel="stylesheet">-->
+    <link href="css/customCss.css" rel="stylesheet">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
 
@@ -32,6 +33,9 @@ require 'Files/accessFile.php';
     include "header.php";
     ?>
 </div>
+<div id="mainWrapper" class="container backgroundImg">
+    <br>
+    <div id="ForgotPassword" class="jumbotron col-lg-6 col-lg-offset-3">
 <?php
 
 if(Input::exists()){
@@ -75,12 +79,10 @@ if(Input::exists()){
 
 
 
-<div id="mainWrapper" class="container">
-
-    <div id="ForgotPassword" class="jumbotron col-lg-6 col-lg-offset-3">
+        <label>Username</label>
         <form action="" method="POST" class="form-horizontal">
-            <div>
-                <input class="form-control" required id="verification" type="text" name="name" autocomplete="off" placeholder="Enter user name" size="25" maxlength="20"/>
+            <div class="gap ">
+                <input class="form-control " required id="verification" type="text" name="name" autocomplete="off" placeholder="Enter user name" size="25" maxlength="20"/>
             </div>
 
             <input type="hidden" name="token" value="<?php echo Token::generate(); ?>">

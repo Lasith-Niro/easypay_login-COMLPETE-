@@ -26,6 +26,7 @@ if($_SESSION['admin']){
 <!--    <link href="assets/css/custom.css" rel="stylesheet" />-->
 <!--    <!-- GOOGLE FONTS-->
 <!--    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />-->
+    <link href="css/customCss.css" rel="stylesheet">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
 
@@ -41,6 +42,7 @@ if($_SESSION['admin']){
     include "header.php";
     ?>
 </div>
+<div class="backgroundImg">
 <!--<div style="color: white;padding: 15px 50px 5px 50px;-->
 <!--float: right;-->
 <!--font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="logout.php" class="btn btn-danger square-btn-adjust">Logout</a> </div>-->
@@ -71,7 +73,7 @@ if($_SESSION['admin']){
 
 </nav>
 <!-- /. NAV SIDE  -->
-<div class="container col-lg-9" id="page-wrapper" >
+<div class="container col-lg-9 " id="page-wrapper" >
     <div class="row">
         <div class="col-md-12">
             <h2>Student Dashboard</h2>
@@ -133,6 +135,7 @@ if($_SESSION['admin']){
             </div>
         </div>
     </div>
+</div>
 </div>
 <?php
 include "footer.php";

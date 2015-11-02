@@ -1,9 +1,31 @@
 .backgroundImg{
     background-image: url("../images/background-hd.jpg");
+    /*flex-basis: 100%;*/
+    background-repeat: round;
+    min-width: 100%;
+    min-height: 550px;
     margin: 0px;
-    height: 100%;
+    /*height: 100%;*/
 
 }
 .gap{
     margin: 10px;
+}
+
+/**/
+.d_icon{
+    text-align: center;
+    height: 100px;
+    float: left;
+    margin: 20px;
+}
+.fieldTiltle{
+    font-weight: bold;
+}
+.stdField{
+    height:30px;
+    width:250px;
+    font-size:16px;
+    margin:10px;
+    border-radius:5px;
 }

@@ -32,8 +32,9 @@ require_once 'core/init.php';
  <?php
  include "header.php";
  ?>
- <div class="container">
-     <div class="jumbotron col-lg-6 col-lg-offset-3">
+ <div class="container backgroundImg">
+     <br>
+     <div class="jumbotron col-lg-5 col-lg-offset-3">
          <?php
 
 //checking if the user already logged in
@@ -133,56 +134,58 @@ if(Input::exists()){
 <!--         <!--<h1 id="welcome">Welcome to Easypay</h1>-->
 <!--         -->
 <!--     </header>-->
-     <div id="updateForm">
-         <form action="" method="post" xmlns="http://www.w3.org/1999/html">
-             <h3><strong>Update</strong></h3>
-             <div class="gap">
-                 <label>Username</label>
-                 <input class="form-control" type="text" name="name" disabled value="<?php echo escape($user->data()->username); ?>">
-             </div>
-             <!--    <div class="field">-->
-             <!--        <label for="phone">Phone number</label>-->
-             <!--        <input type="string" name="phone" value="--><?php //echo 0 . escape($user->data()->phone); ?><!--">-->
-             <!--    </div>-->
-             <div class="gap">
-                 <label>Registration Number</label>
-                 <input class="form-control" type="string" name="regNumber" value="<?php echo escape($user->data()->regNumber); ?>">
-             </div>
-             <div class="gap">
-                 <label>First Name</label>
-                 <input class="form-control" type="string" name="fname" value="<?php echo escape($user->data()->fname); ?>">
-             </div>
+         <div id="updateForm">
+             <form action="" method="post" xmlns="http://www.w3.org/1999/html">
+                 <h3><strong>Update</strong></h3>
+                 <div class="gap">
+                     <label>Username</label>
+                     <input class="form-control" type="text" name="name" disabled value="<?php echo escape($user->data()->username); ?>">
+                 </div>
+                 <!--    <div class="field">-->
+                 <!--        <label for="phone">Phone number</label>-->
+                 <!--        <input type="string" name="phone" value="--><?php //echo 0 . escape($user->data()->phone); ?><!--">-->
+                 <!--    </div>-->
+                 <div class="gap">
+                     <label>Registration Number</label>
+                     <input class="form-control" type="string" name="regNumber" value="<?php echo escape($user->data()->regNumber); ?>">
+                 </div>
+                 <div class="gap">
+                     <label>First Name</label>
+                     <input class="form-control" type="string" name="fname" value="<?php echo escape($user->data()->fname); ?>">
+                 </div>
 
-             <div class="gap">
-                 <label>Last Name</label>
-                 <input class="form-control" type="string" name="lname" value="<?php echo escape($user->data()->lname); ?>">
-             </div>
+                 <div class="gap">
+                     <label>Last Name</label>
+                     <input class="form-control" type="string" name="lname" value="<?php echo escape($user->data()->lname); ?>">
+                 </div>
 
-             <div class="gap">
-                 <label>E-mail</label>
-                 <input class="form-control" type="email" name="email" value="<?php echo escape($user->data()->email); ?>">
-             </div>
+                 <div class="gap">
+                     <label>E-mail</label>
+                     <input class="form-control" type="email" name="email" value="<?php echo escape($user->data()->email); ?>">
+                 </div>
 
-             <div class="gap">
-                 <label>NIC</label>
-                 <input class="form-control" type="string" name="nic" value="<?php echo escape($user->data()->nic);?>">
-             </div>
+                 <div class="gap">
+                     <label>NIC</label>
+                     <input class="form-control" type="string" name="nic" value="<?php echo escape($user->data()->nic);?>">
+                 </div>
 
-             <div class="gap">
-                 <label>Date of birth</label>
-                 <input class="form-control" type=date name="dob" value="<?php echo escape($user->data()->dob);?>">
-             </div>
+                 <div class="gap">
+                     <label>Date of birth</label>
+                     <input class="form-control" type=date name="dob" value="<?php echo escape($user->data()->dob);?>">
+                 </div>
 
-             <div class="gap">
-                 <label>Academic Year</label>
-                 <input class="form-control" type="string" name="year" value="<?php echo escape($user->data()->year);?>">
-             </div>
+                 <div class="gap">
+                     <label>Academic Year</label>
+                     <input class="form-control" type="string" name="year" value="<?php echo escape($user->data()->year);?>">
+                 </div>
 
-             <input class="btn btn-default" id="submit" type="submit" value="Update">
+                 <input class="btn btn-default" id="submit" type="submit" value="Update">
 
-             <input type="hidden" name="token" value="<?php echo Token::generate(); ?>">
-         </form>
+                 <input type="hidden" name="token" value="<?php echo Token::generate(); ?>">
+             </form>
+         </div>
      </div>
+ </div>
          <?php
          include "footer.php";
          ?>

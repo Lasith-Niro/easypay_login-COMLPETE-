@@ -42,7 +42,8 @@ require 'Files/accessFile.php';
 <?php
 include "header.php";
 ?>
-<div class="container">
+<div class="container backgroundImg">
+    <br>
     <div class="jumbotron col-lg-6 col-lg-offset-3">
 <?php
 
@@ -106,6 +107,8 @@ if($dayLimit<0){
         <input type="hidden" value='<?php echo $Invoice; ?>' name="merchantInvoice">
         <input type="hidden" name="token" value="<?php echo Token::generate(); ?>">
     </form>
+    </div>
+</div>
 <?php
 }
 

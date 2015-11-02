@@ -27,7 +27,8 @@ require 'Files/accessFile.php';
 <?php
 include "header.php";
 ?>
-<div class="container">
+<div class="container backgroundImg">
+    <br>
     <div class="jumbotron col-lg-5 col-lg-offset-3">
 <?php
 
@@ -216,6 +217,7 @@ if(Input::exists()) {
                     <div>
                         <label for="firstShy">First shy</label>
                         <select class="form-control" name="l1Grade[]" value="<?php echo Input::get('l1Grade'); ?>">
+                            <option>-</option>
                             <option>A+</option>
                             <option>A</option>
                             <option>A-</option>
@@ -233,6 +235,7 @@ if(Input::exists()) {
                     <div>
                         <label for="secondShy">Second shy</label>
                         <select class="form-control" name="l2Grade[]" value="<?php echo Input::get('l2Grade'); ?>">
+                            <option>-</option>
                             <option>A+</option>
                             <option>A</option>
                             <option>A-</option>
@@ -250,6 +253,7 @@ if(Input::exists()) {
                     <div>
                         <label for="thirdShy">Third shy</label>
                         <select class="form-control" name="l3Grade[]" value="<?php echo Input::get('l3Grade'); ?>">
+                            <option>-</option>
                             <option>A+</option>
                             <option>A</option>
                             <option>A-</option>
@@ -281,6 +285,8 @@ if(Input::exists()) {
     </div>
 </form>
 
+</div>
+</div>
 
 <?php
 }

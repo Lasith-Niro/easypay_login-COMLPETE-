@@ -32,6 +32,8 @@ require 'Files/accessFile.php';
     include "header.php";
     ?>
 </div>
+<div class="container backgroundImg">
+    <div class="jumbotron col-lg-6 col-lg-offset-3">
 <?php
 
 $user = new User();
@@ -82,11 +84,10 @@ if(Input::exists()){
 }
 ?>
 
-<div class="container">
-    <div class="jumbotron col-lg-6 col-lg-offset-3">
+
         <form action="" method="post">
             <div class="field">
-                <label for="phone_number">Your phone number is *******<?php echo substr($pNum,7 , 9); ?></label>
+                <div class='alert alert-info'>Your phone number is *******<?php echo substr($pNum,7 , 9); ?></div>
             </div>
 
             <div class="field">

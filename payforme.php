@@ -29,6 +29,7 @@ elseif($yourbrowser=="Internet Explorer"){
 <!--    <link rel="stylesheet" href=--><?php //echo $temp_var?><!-- >-->
 <!--    <link href="home/css/bootstrap.min.css" rel="stylesheet">-->
 <!--    <link href="home/css/full-width-pics.css" rel="stylesheet">-->
+    <link href="css/customCss.css" rel="stylesheet">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
 
@@ -51,7 +52,8 @@ elseif($yourbrowser=="Internet Explorer"){
 <!--        </header>-->
 
 <!--    </div>-->
-<div class="container">
+<div class="container backgroundImg">
+    <br>
     <div id="HomeForm" class="jumbotron col-lg-6 col-lg-offset-3">
         <h3>Select your Payment</h3>
         <div>
