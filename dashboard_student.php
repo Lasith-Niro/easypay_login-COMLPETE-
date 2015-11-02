@@ -48,7 +48,7 @@ if($_SESSION['admin']){
     <div class="sidebar-collapse">
         <ul class="nav" id="main-menu">
             <li class="text-center">
-                <img src="images/User.png" class="user-image " height="200px"/>
+                <img src="images/User.png" class="user-image " height="150px"/>
             </li>
             <li>
                 <a class="active-menu"  href="dashboard_student.php"><i class="fa fa-dashboard fa-3x"></i> Dashboard</a>

@@ -10,13 +10,14 @@ require_once 'core/init.php';
  require_once 'browser/browserconnect.php';
  ?>
  <!DOCTYPE html>
- <html lang="en">
+ <html lang="en" xmlns="http://www.w3.org/1999/html">
  <head>
      <title>Update | Page</title>
      <!--    <link rel="stylesheet" href=--><?php //echo $temp_var?><!-- >-->
      <!--    <link href="home/css/bootstrap.min.css" rel="stylesheet">-->
      <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
      <script type="text/javascript" src="js/functions.js"></script>
+     <link href="css/customCss.css" rel="stylesheet">
      <!-- Latest compiled and minified CSS -->
      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
 
@@ -134,45 +135,46 @@ if(Input::exists()){
 <!--     </header>-->
      <div id="updateForm">
          <form action="" method="post" xmlns="http://www.w3.org/1999/html">
-             <div>
-                 <div>User Name</div>
-                 <input class="form-control" type="text" name="name" value="<?php echo escape($user->data()->username); ?>">
+             <h3><strong>Update</strong></h3>
+             <div class="gap">
+                 <label>Username</label>
+                 <input class="form-control" type="text" name="name" disabled value="<?php echo escape($user->data()->username); ?>">
              </div>
              <!--    <div class="field">-->
              <!--        <label for="phone">Phone number</label>-->
              <!--        <input type="string" name="phone" value="--><?php //echo 0 . escape($user->data()->phone); ?><!--">-->
              <!--    </div>-->
-             <div>
-                 <div>Registration Number</div>
+             <div class="gap">
+                 <label>Registration Number</label>
                  <input class="form-control" type="string" name="regNumber" value="<?php echo escape($user->data()->regNumber); ?>">
              </div>
-             <div>
-                 <div>First Name</div>
+             <div class="gap">
+                 <label>First Name</label>
                  <input class="form-control" type="string" name="fname" value="<?php echo escape($user->data()->fname); ?>">
              </div>
 
-             <div>
-                 <div>Last Name</div>
+             <div class="gap">
+                 <label>Last Name</label>
                  <input class="form-control" type="string" name="lname" value="<?php echo escape($user->data()->lname); ?>">
              </div>
 
-             <div>
-                 <div>E-mail</div>
+             <div class="gap">
+                 <label>E-mail</label>
                  <input class="form-control" type="email" name="email" value="<?php echo escape($user->data()->email); ?>">
              </div>
 
-             <div>
-                 <div>NIC</div>
+             <div class="gap">
+                 <label>NIC</label>
                  <input class="form-control" type="string" name="nic" value="<?php echo escape($user->data()->nic);?>">
              </div>
 
-             <div>
-                 <div>Date of birth</div>
+             <div class="gap">
+                 <label>Date of birth</label>
                  <input class="form-control" type=date name="dob" value="<?php echo escape($user->data()->dob);?>">
              </div>
 
-             <div>
-                 <div>Academic Year</div>
+             <div class="gap">
+                 <label>Academic Year</label>
                  <input class="form-control" type="string" name="year" value="<?php echo escape($user->data()->year);?>">
              </div>
 

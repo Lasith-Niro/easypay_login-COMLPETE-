@@ -10,7 +10,7 @@
     <div class="sidebar-collapse">
         <ul class="nav" id="main-menu">
             <li class="text-center">
-                <img src="images/admin.jpg" class="user-image" height="200px"/>
+                <img src="images/admin.jpg" class="user-image" height="150px"/>
             </li>
             <li>
                 <a class="active-menu"  href="dashboard_admin.php"><i class="fa fa-dashboard fa-3x"></i> Dashboard</a>

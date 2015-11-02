@@ -111,25 +111,30 @@ elseif($yourbrowser=="Internet Explorer"){
             </div>
 
 <!--            <img align="center" id="ucscLogo" src="images/ucsc.png" height="100px"/>-->
-            <div>
+            <div class="gap">
+                <label>Username</label><br>
                 <input class="form-control" required id="username" type="text" name="username" autocomplete="off" placeholder="Enter username" size="25" maxlength="20"/>
             </div>
-            <div>
+            <div class="gap">
+                <label>Password</label><br>
                 <input class="form-control" required id="password" type="password" name="password" autocomplete="off" placeholder="Enter password" size="25" maxlength="20"/>
             </div>
-            <div id="remember">
+            <div id="remember" class="gap">
                 <input type="checkbox"  name="remember"/> Remember me
             </div>
 
-            <div>
+            <div class="gap">
                 <input class="btn btn-primary col-lg-12"  id="loginButton" type="submit" value="Sign in" name="signin"/>
             </div>
-            <div id="forgotPassword">  <a href="forgetpass.php" title="To recover your password, click here " >Forgot password?</a></div>
+            <div id="forgotPassword" class="gap">  <a href="forgetpass.php" title="To recover your password, click here " >Forgot password?</a></div>
 
             <input type="hidden" name="token" value="<?php echo Token::generate(); ?>">
         </form>
         <hr>
-        <a href="register.php"><button class="btn btn-default col-lg-12" id="signupButton">Sign up</button></a>
+        <div class="gap">
+            <a href="register.php"><button class="btn btn-default col-lg-12" id="signupButton">Sign up</button></a>
+        </div>
+
 
     </div>
 </div>

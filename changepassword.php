@@ -16,6 +16,7 @@ require_once 'browser/browserconnect.php';
     <!--    <link href="home/css/bootstrap.min.css" rel="stylesheet">-->
     <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
     <script type="text/javascript" src="js/functions.js"></script>
+    <link href="css/customCss.css" rel="stylesheet">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
 
@@ -74,7 +75,8 @@ if(Input::exists()){
 
         } else {
             foreach ($validation->errors() as $error) {
-                echo $error, '<br />';
+//                echo $error, '<br />';
+                echo "<div class='alert alert-danger'>$error</div>";
             }
         }
     }
@@ -105,19 +107,19 @@ elseif($yourbrowser=="Internet Explorer"){
 <!--    </header>-->
     <div id="updateForm">
     <form action="" method="post" class="form-horizontal">
-        <h3>Change Password</h3>
-    <div>
-        <div>Current password</div>
+        <h3><strong>Change Password</strong></h3>
+    <div class="gap">
+        <label>Current password</label>
         <input class="form-control" type="password" name="password_current" id="password_current">
     </div>
 
-    <div>
-        <div>New password</div>
+    <div class="gap">
+        <label>New password</label>
         <input class="form-control" type="password" name="password_new" id="password_new">
     </div>
 
-    <div>
-        <div>New password again</div>
+    <div class="gap">
+        <label>New password again</label>
         <input class="form-control" type="password" name="password_new_again" id="password_new_again">
     </div>
 
