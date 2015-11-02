@@ -79,19 +79,24 @@ $dayLimit = $date1-$date2;
 $dayLimit = floor($dayLimit/(60*60*24));
 
 if($dayLimit<0){
-    echo "payment is closed!";
+//    echo "payment is closed!";
+    echo "<div class='alert alert-danger'>Payment is closed.</div>";
 }else {
-    echo "You have {$dayLimit} days for this payment." . '<br />';
+//    echo "You have {$dayLimit} days for this payment." . '<br />';
+    echo "<div class='alert alert-info'>You have {$dayLimit} days for this payment.</div>";
     $uID = $user->data()->id;
     $uRegID = $user->data()->regNumber;
 
     if(!$uRegID){
-        echo "You have not submitted your registration number." . '<br />';
+//        echo "You have not submitted your registration number." . '<br />';
+        echo "<div class='alert alert-danger'>You have not submitted your registration number.</div>";
     //    echo $uRegID . '<br />';
     } else {
-        echo "Your registration number is " . $uRegID . '<br />';
+//        echo "Your registration number is " . $uRegID . '<br />';
+        echo "<div class='alert alert-info'>Your registration number is $uRegID</div>";
     }
-    echo "You have to pay Rs.600 for register." . '<br />';
+//    echo "You have to pay Rs.600 for register." . '<br />';
+    echo "<div class='alert alert-info'>You have to pay Rs.600 for register</div>";
 
     $_SESSION['type'] = 2;
     $acaYear = date("Y");
