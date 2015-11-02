@@ -14,9 +14,11 @@ class smsNotification{
         $ret = file($url);
         $res= explode(":",$ret[0]);
         if (trim($res[0])=="OK") {
-            echo "Check your mobile,confirmation code was sent";
+//            echo "Check your mobile,confirmation code was sent";
+            echo "<div class='alert alert-info'>Check your mobile. Confirmation code was sent</div>";
         } else {
-            echo " Message sending failed, Try again";
+//            echo " Message sending failed, Try again";
+            echo "<div class='alert alert-danger'>Message sending failed, Try again</div>";
         }
         return $res[1];
     }

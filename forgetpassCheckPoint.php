@@ -17,6 +17,7 @@ require 'Files/accessFile.php';
     <title>Login | page</title>
     <!--    <link rel="stylesheet" href=--><?php //echo $temp_var?><!-- >-->
     <!--    <link href="home/css/bootstrap.min.css" rel="stylesheet">-->
+    <link href="css/customCss.css" rel="stylesheet">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
 
@@ -33,6 +34,7 @@ require 'Files/accessFile.php';
     ?>
 </div>
 <div class="container backgroundImg">
+    <br>
     <div class="jumbotron col-lg-6 col-lg-offset-3">
 <?php
 
@@ -48,13 +50,9 @@ $randomValue = rand(1000, 9999);
 $detailArray = $file->read('Files/RouterPhone');
 $messageArray = $file->read_newLine('Files/messages');
 
-//echo $randomValue;
 
-//if(!$user->isLoggedIn()){
-//    Redirect::to('index.php');
-//}
-$var = $notification->send($detailArray[0],$to ,$messageArray[2] . $randomValue ,$detailArray[1]);
-//echo $var;      //for db(development)
+$var = $notification->send($detailArray[0],$to ,$messageArray[2] . " " . $randomValue ,$detailArray[1]);
+
 
 if(Input::exists()){
     if(Token::check(Input::get('token'))) {
@@ -91,8 +89,11 @@ if(Input::exists()){
             </div>
 
             <div class="field">
-                <label for="code">Enter your verification </label>
-                <input class="form-control" type="number" name="rand_number" id="rand_number">
+                <label>Enter your verification </label>
+                <div class="gap">
+                    <input class="form-control" type="number" name="rand_number" id="rand_number">
+                </div>
+
 
             </div>
 

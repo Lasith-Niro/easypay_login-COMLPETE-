@@ -56,6 +56,7 @@ if(Input::exists()){
             <p> <a href="forgetpassCheckPoint.php"> <?php echo escape($user->data()->username); ?> </a> </p>
         <?php
             $_SESSION['phone'] = $user->data()->phone;
+            $_SESSION['id'] = $user->data()->id;
         } else {
             echo "User Not Found";
         }

@@ -18,6 +18,7 @@ require 'Files/accessFile.php';
     <!--    <link href="home/css/bootstrap.min.css" rel="stylesheet">-->
     <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
     <script type="text/javascript" src="js/functions.js"></script>
+    <link href="css/customCss.css" rel="stylesheet">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
 
@@ -32,8 +33,9 @@ require 'Files/accessFile.php';
 <?php
 include "header.php";
 ?>
-<div class="container">
-    <div class="jumbotron col-lg-6 col-lg-offset-3">
+<div class="container backgroundImg">
+    <br>
+    <div class="jumbotron col-lg-5 col-lg-offset-3">
         <?php
 
 $user = new User();
@@ -63,18 +65,20 @@ if ($user->hasPermission('admin')) {
 
 <form action="" method="post">
     <div class="field">
-        <label for="date">Enter the new date</label>
-        <input type="date" name="date" id="date" value="<?php echo($inData)?>">
+        <label>Enter the new date</label>
+        <input class="form-control" type="date" name="date" id="date" value="<?php echo($inData)?>">
     </div>
 
     <div class="field">
-        <label for="amount">Enter the new amount</label>
-        <input type="text" name="amount" id="amount" value="<?php echo($inAmount)?>" >
+        <label>Enter the new amount</label>
+        <input class="form-control" type="text" name="amount" id="amount" value="<?php echo($inAmount)?>" >
     </div>
 
-    <input type="submit" value="Save">
+    <input class="btn btn-default" type="submit" value="Save">
     <input type="hidden" name="token" value="<?php echo Token::generate(); ?>">
 </form>
+    </div>
+</div>
 <?php
 } else {
     Redirect::to('index.php');
