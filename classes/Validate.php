@@ -8,8 +8,8 @@
 
 class Validate {
     private $_passed = false,
-            $_errors = array(),
-            $_db = null;
+        $_errors = array(),
+        $_db = null;
 
     public function __construct(){
         $this->_db = DB::getInstance();
@@ -23,12 +23,12 @@ class Validate {
                 $item = escape($item);
 
                 if($rule === 'required' && empty($value)){
-                   $this->addError("{$item} is required <br> ");
+                    $this->addError("{$item} is required <br> ");
                 } else if(!empty($value)) {
                     switch($rule){
                         case 'regexEmail':
                             if(!filter_var($value, FILTER_VALIDATE_EMAIL)){
-                                $this->addError("{$item} must be valid email address.");
+                                $this->addError("email address must be valid email address.");
                             }
                             break;
                         case 'name':
@@ -38,18 +38,28 @@ class Validate {
                             break;
                         case 'regexPassword':
                             if(!preg_match("#[0-9]+#", $value)){
-                                $this->addError("{$item} must be valid email address.");
+                                $this->addError("password must be valid email address.");
                             } elseif(!preg_match("#[A-Z]+#", $value)){
-                                $this->addError("{$item} must be valid email address.");
+                                $this->addError("password must be valid email address.");
                             } elseif(!preg_match("#[a-z]+#", $value)){
-                                $this->addError("{$item} must be valid email address.");
+                                $this->addError("password must be valid email address.");
                             }  elseif(!preg_match("/[!@#$%^&*()\-_=+{};:,<.>]/", $value)){
-                                $this->addError("{$item} must be valid email address.");
+                                $this->addError("password must be valid email address.");
+                            }
+                            break;
+                        case 'regexRegistrationNumber':
+                            if(!preg_match('([0-9]{4}.*[a-zA-Z]{2}.*[0-9]{3})',$value)){
+                                $this->addError("Your registration number is wrong.");
                             }
                             break;
                         case 'regexString':
                             if(!preg_match("/^[a-zA-Z]*$/", $value)){
                                 $this->addError("{$item} must be valid {$item}.");
+                            }
+                            break;
+                        case 'regexNic':
+                            if(!preg_match('/^[0-9]{9}[vVxX]$/',$value)){
+                                $this->addError("Your NIC number is wrong.");
                             }
                             break;
                         case 'regexPhone':
