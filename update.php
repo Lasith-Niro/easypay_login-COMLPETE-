@@ -10,14 +10,13 @@ require_once 'core/init.php';
  require_once 'browser/browserconnect.php';
  ?>
  <!DOCTYPE html>
- <html lang="en" xmlns="http://www.w3.org/1999/html">
+ <html lang="en">
  <head>
      <title>Update | Page</title>
      <!--    <link rel="stylesheet" href=--><?php //echo $temp_var?><!-- >-->
      <!--    <link href="home/css/bootstrap.min.css" rel="stylesheet">-->
      <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
      <script type="text/javascript" src="js/functions.js"></script>
-     <link href="css/customCss.css" rel="stylesheet">
      <!-- Latest compiled and minified CSS -->
      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
 
@@ -52,7 +51,7 @@ if(Input::exists()){
                'max' => 50
            ),
            'regNumber' => array(
-              'required' => true,
+               'regexRegistrationNumber' => 'regNumber',
               'min' => 9
             ),
            'fname' => array(
@@ -67,11 +66,13 @@ if(Input::exists()){
             ),
            'email' => array(
                 'required' => true,
+               'regexEmail' => 'email',
                 'min' => 2,
                 'max' => 100
             ),
            'nic' => array(
                 'required' => true,
+                'regexNic' => 'nic',
                 'min' => 10
             ),
            'dob' => array(
@@ -135,46 +136,45 @@ if(Input::exists()){
 <!--     </header>-->
      <div id="updateForm">
          <form action="" method="post" xmlns="http://www.w3.org/1999/html">
-             <h3><strong>Update</strong></h3>
-             <div class="gap">
-                 <label>Username</label>
-                 <input class="form-control" type="text" name="name" disabled value="<?php echo escape($user->data()->username); ?>">
+             <div>
+                 <div>User Name</div>
+                 <input class="form-control" type="text" name="name" value="<?php echo escape($user->data()->username); ?>">
              </div>
              <!--    <div class="field">-->
              <!--        <label for="phone">Phone number</label>-->
              <!--        <input type="string" name="phone" value="--><?php //echo 0 . escape($user->data()->phone); ?><!--">-->
              <!--    </div>-->
-             <div class="gap">
-                 <label>Registration Number</label>
+             <div>
+                 <div>Registration Number</div>
                  <input class="form-control" type="string" name="regNumber" value="<?php echo escape($user->data()->regNumber); ?>">
              </div>
-             <div class="gap">
-                 <label>First Name</label>
+             <div>
+                 <div>First Name</div>
                  <input class="form-control" type="string" name="fname" value="<?php echo escape($user->data()->fname); ?>">
              </div>
 
-             <div class="gap">
-                 <label>Last Name</label>
+             <div>
+                 <div>Last Name</div>
                  <input class="form-control" type="string" name="lname" value="<?php echo escape($user->data()->lname); ?>">
              </div>
 
-             <div class="gap">
-                 <label>E-mail</label>
+             <div>
+                 <div>E-mail</div>
                  <input class="form-control" type="email" name="email" value="<?php echo escape($user->data()->email); ?>">
              </div>
 
-             <div class="gap">
-                 <label>NIC</label>
+             <div>
+                 <div>NIC</div>
                  <input class="form-control" type="string" name="nic" value="<?php echo escape($user->data()->nic);?>">
              </div>
 
-             <div class="gap">
-                 <label>Date of birth</label>
+             <div>
+                 <div>Date of birth</div>
                  <input class="form-control" type=date name="dob" value="<?php echo escape($user->data()->dob);?>">
              </div>
 
-             <div class="gap">
-                 <label>Academic Year</label>
+             <div>
+                 <div>Academic Year</div>
                  <input class="form-control" type="string" name="year" value="<?php echo escape($user->data()->year);?>">
              </div>
 
