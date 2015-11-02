@@ -9,12 +9,36 @@
 require_once 'core/init.php';
 require 'SMS/sms.php';
 require 'Files/accessFile.php';
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <header></header>
+    <title>Register | Page</title>
+    <!--    <link rel="stylesheet" href=--><?php //echo $temp_var?><!-- >-->
+    <!--    <link href="home/css/bootstrap.min.css" rel="stylesheet">-->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+</head>
+<body>
+<div>
+    <?php
+    include "header.php";
+    ?>
+</div>
+<?php
 
 $notification = new smsNotification();
 echo "To confirm your registration enter your registration code..." . '<br />';
 $hiddenValue = Input::get('storeRandVal');
 $randomValue = rand(1000, 9999);
-echo $randomValue;
+//echo $randomValue;
 $file = new accessFile();
 $detailArray = $file->read('Files/RouterPhone');
 $messageArray = $file->read_newLine('Files/messages');
@@ -89,13 +113,24 @@ if(Input::exists()){
 }
 //session_unset();
 ?>
+<div class="container">
+    <div class="jumbotron col-lg-6 col-lg-offset-3">
+        <form action="" method="post">
+            <div class="field">
+                <label for="rand_number">Enter number </label>
+                <input type="number" name="rand_number" id="rand_number">
+            </div>
+            <input type="hidden" name="storeRandVal" value="<?php echo $randomValue; ?>">
+            <input type="submit" value="Register">
+            <input type="hidden" name="token" value="<?php echo Token::generate(); ?>">
+        </form>
 
-<form action="" method="post">
-    <div class="field">
-        <label for="rand_number">Enter number </label>
-        <input type="number" name="rand_number" id="rand_number">
     </div>
-    <input type="hidden" name="storeRandVal" value="<?php echo $randomValue; ?>">
-    <input type="submit" value="Register">
-    <input type="hidden" name="token" value="<?php echo Token::generate(); ?>">
-</form>
+</div>
+
+<?php
+include "footer.php";
+?>
+
+</body>
+</html>

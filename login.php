@@ -81,94 +81,62 @@ elseif($yourbrowser=="Internet Explorer"){
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <header>
-
-    </header>
+    <header></header>
     <title>Login | page</title>
-    <link rel="stylesheet" href=<?php echo $temp_var?> >
-    <link href="home/css/bootstrap.min.css" rel="stylesheet">
+<!--    <link rel="stylesheet" href=--><?php //echo $temp_var?><!-- >-->
+    <link href="css/customCss.css" rel="stylesheet">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
 </head>
 <body>
-<div id="mainWrapper">
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" >
-        <div class="container" >
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <a href="homePage.php">
-                    <img id="img" src="images/logo.png" alt="" width="150px" >
-                </a>
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
+<div>
+    <?php
+    include "header.php";
+    ?>
+</div>
 
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-
-                <ul class="nav navbar-nav">
-
-                    <li>
-                        <a href="homePage.php">HOME</a>
-                    </li>
-                    <li>
-                        <a href="#">UCSC</a>
-                    </li>
-                    <li>
-                        <a href="#">ABOUT</a>
-                    </li>
-
-                    <li>
-                        <a href="#">SERVICES</a>
-                    </li>
-                    <li>
-                        <a href="#">CONTACT</a>
-                    </li>
-                    <li>
-                        <a href="login.php">LOGIN</a>
-                    </li>
-                    <li>
-                        <a href="register.php">REGISTER</a>
-                    </li>
-                </ul>
-
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
-
-
-
-    <div id="loginForm">
-        <form action="login.php" method="POST">
-            <!--<div>
-                <h1 id="signin">Sign in</h1>
-            </div> -->
-
-            <img id="ucscLogo" src="images/ucsc.png" height="100px"/>
+<div class="container-fluid backgroundImg">
+    <br>
+    <div id="loginForm" class="jumbotron col-lg-4 col-lg-offset-4 ">
+        <img class="col-lg-offset-4" src="images/ucsc.png" height="100px">
+        <form action="login.php" method="POST" class="form-horizontal">
             <div>
-                <input required id="username" type="text" name="username" autocomplete="off" placeholder="Enter username" size="25" maxlength="20"/>
+                <h3 id="signin"><strong>Sign in</strong></h3>
+            </div>
+
+<!--            <img align="center" id="ucscLogo" src="images/ucsc.png" height="100px"/>-->
+            <div>
+                <input class="form-control" required id="username" type="text" name="username" autocomplete="off" placeholder="Enter username" size="25" maxlength="20"/>
             </div>
             <div>
-                <input required id="password" type="password" name="password" autocomplete="off" placeholder="Enter password" size="25" maxlength="20"/>
+                <input class="form-control" required id="password" type="password" name="password" autocomplete="off" placeholder="Enter password" size="25" maxlength="20"/>
             </div>
-            <div id="remember"><input type="checkbox"  name="remember"/> Remember me</div>
+            <div id="remember">
+                <input type="checkbox"  name="remember"/> Remember me
+            </div>
 
             <div>
-                <input id="loginButton" type="submit" value="Sign in" name="signin"/>
+                <input class="btn btn-primary col-lg-12"  id="loginButton" type="submit" value="Sign in" name="signin"/>
             </div>
             <div id="forgotPassword">  <a href="forgetpass.php" title="To recover your password, click here " >Forgot password?</a></div>
-            <hr id="hr">
 
             <input type="hidden" name="token" value="<?php echo Token::generate(); ?>">
         </form>
-        <a href="register.php"><button id="signupButton">Sign up</button></a>
+        <hr>
+        <a href="register.php"><button class="btn btn-default col-lg-12" id="signupButton">Sign up</button></a>
 
     </div>
-
 </div>
+
+<?php
+include "footer.php";
+?>
+
 </body>
 </html>

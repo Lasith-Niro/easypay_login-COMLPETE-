@@ -18,6 +18,32 @@ require_once 'core/init.php';
 require 'payment/encrypt.php';
 require_once 'browser/browserconnect.php';
 require 'Files/accessFile.php';
+?>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <title>Payment | Page</title>
+        <!--    <link rel="stylesheet" href=--><?php //echo $temp_var?><!-- >-->
+        <!--    <link href="home/css/bootstrap.min.css" rel="stylesheet">-->
+        <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+        <script type="text/javascript" src="js/functions.js"></script>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous">
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+    </head>
+<body>
+
+<?php
+include "header.php";
+?>
+<div class="container">
+    <div class="jumbotron col-lg-6 col-lg-offset-3">
+<?php
 
 //echo "The 2 digit representation of current month with leading zero is: " . date("m") . '<br />';
 
@@ -51,8 +77,8 @@ if($dayLimit<0){
     $prefix = 'easyID_';
     $lastID = (integer)$tra->lastID();
     $newID = $lastID + 1;
-//    $transactionID = $tra->encodeEasyID($prefix, $newID);
-    $transactionID = $_SESSION['deID'];
+    $transactionID = $tra->encodeEasyID($prefix, $newID);
+    //$transactionID = $_SESSION['deID'];
 //    echo $transactionID . '<br />';
 
     $merchantCode = 'TESTMERCHANT';
@@ -78,4 +104,9 @@ if($dayLimit<0){
     </form>
 <?php
 }
-?>
+
+        include "footer.php";
+        ?>
+
+</body>
+</html>

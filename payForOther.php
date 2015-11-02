@@ -80,26 +80,43 @@ if(Input::exists()){
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Pay For Other</title>
+    <title>Payment | Page</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
     <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
     <script type="text/javascript" src="js/functions.js"></script>
 </head>
 <body>
 <div>
-    <div id="mainContent">
-        <h1>Pay for another person</h1>
-        <h3>Please enter the other person's details</h3>
-        <form action="" method="post">
-            <div id="f1">
-                <input type="text" name="username" placeholder="Username" <?php echo Input::get('username')?>>
+    <?php
+    include "header.php";
+    ?>
+</div>
+
+<div class="container">
+    <div class="jumbotron col-lg-6 col-lg-offset-3">
+        <h3>Please enter the other person's username</h3>
+        <form action="" method="post" class="form-horizontal">
+            <div>
+                <input class="form-control" type="text" name="username" placeholder="Username" <?php echo Input::get('username')?>>
             </div>
             <div>
                 <input type="hidden" name="token" value="<?php echo Token::generate(); ?>" >
-                <input type="submit" value="Submit">
+                <input class="btn btn-default" type="submit" value="Submit">
             </div>
         </form>
-
     </div>
+
 </div>
+<?php
+include "footer.php";
+?>
+
 </body>
 </html>

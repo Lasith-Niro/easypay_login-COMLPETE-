@@ -76,165 +76,102 @@ elseif($yourbrowser=="Internet Explorer"){
 }
 
 ?>
-
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
     <title>Register | page</title>
-    <link rel="stylesheet" href=<?php echo $temp_var?>>
-	<link href="home/css/bootstrap.min.css" rel="stylesheet">
-
-
+<!--    <link rel="stylesheet" href=--><?php //echo $temp_var?><!-->
+    <link href="css/customCss.css" rel="stylesheet">
     <link href="home/css/full-width-pics.css" rel="stylesheet">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
 </head>
-
 <body>
-
-<div id="mainWrapper">
-	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" >
-
-            <div class="container" >
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
-    			<a href="homePage.php">
-    			<img id="img" src="images/logo.png" alt="" width="150px" >
-				</a>
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-
-                </div>
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-
-                    <ul class="nav navbar-nav">
-
-    					<li>
-                            <a href="index.php">HOME</a>
-                        </li>
-    					<li>
-                            <a href="#">UCSC</a>
-                        </li>
-                        <li>
-                            <a href="#">ABOUT</a>
-                        </li>
-
-                        <li>
-                            <a href="#">SERVICES</a>
-                        </li>
-                        <li>
-                            <a href="#">CONTACT</a>
-                        </li>
-    					<li>
-                            <a href="login.php">LOGIN</a>
-                        </li>
-    					<li>
-                            <a href="register.php">REGISTER</a>
-                        </li>
-                    </ul>
-
-                </div>
-                <!-- /.navbar-collapse -->
-            </div>
-            <!-- /.container -->
-        </nav>
-
-    
-        <header>
-	
-            <img id="ucscLogo" src="images/ucsc.png" height="100px"/>
-            <!--<h1 id="welcome">Welcome to Easypay</h1>-->
-            
-
-        </header>
-
-    
-    
-
-
-    <div id="regForm">
-<!--        <h3>Signup</h3>-->
+<?php
+include 'header.php';
+?>
+<div class="container-fluid backgroundImg" >
+    <br>
+    <div id="regForm" class="jumbotron col-lg-5 col-lg-offset-3">
+        <img class="col-lg-offset-4" src="images/ucsc.png" height="100px">
         <form action="" method="post">
             <div>
-                <input id="username" type="text" name="username"  placeholder="Enter username" value="<?php echo Input::get('username'); ?>" autocomplete="off" >
+                <h3 id="signup">Sign up</h3>
             </div>
 
-            <div>
-                <input id="password" type="password" name="password" placeholder="Enter password">
+            <div class="gap">
+                <label>Username</label><br>
+                <input class="form-control" id="username" type="text" name="username"  placeholder="Enter username" value="<?php echo Input::get('username'); ?>" autocomplete="off" >
+            </div>
+            <div class="gap">
+                <label>Password</label><br>
+                <input class="form-control" id="password" type="password" name="password" placeholder="Enter password">
             </div>
 
-            <div>
-                <input id="password_again" type="password" name="password_again" placeholder="Enter your password again">
+            <div class="gap">
+                <label>Re-Password</label><br>
+                <input class="form-control" id="password_again" type="password" name="password_again" placeholder="Enter your password again">
             </div>
 
-            <div>
-                <input id="name1" type="text" name="name1" placeholder="Your first name" value="<?php echo escape(Input::get('name1')); ?>">
+            <div class="gap">
+                <label>First Name</label><br>
+                <input class="form-control" id="name1" type="text" name="name1" placeholder="Your first name" value="<?php echo escape(Input::get('name1')); ?>">
             </div>
-            <div>
-                <input id="name2" type="text" name="name2" placeholder="Your last name" value="<?php echo escape(Input::get('name2')); ?>">
+            <div class="gap">
+                <label>Last Name</label><br>
+                <input class="form-control" id="name2" type="text" name="name2" placeholder="Your last name" value="<?php echo escape(Input::get('name2')); ?>">
             </div>
-            <div>
-                <input id="regNumber" type="text" name="regNumber" placeholder="UCSC registration number" value="<?php echo escape(Input::get('regNumber'));?>">
+            <div class="gap">
+                <label>UCSC Registration No</label><br>
+                <input class="form-control" id="regNumber" type="text" name="regNumber" placeholder="UCSC registration number" value="<?php echo escape(Input::get('regNumber'));?>">
             </div>
-            <div>
-                <input id="email" type="email" name="email" placeholder="email address" value="<?php echo escape(Input::get('email')); ?>">
+            <div class="gap">
+                <label>E-Mail</label><br>
+                <input class="form-control" id="email" type="email" name="email" placeholder="email address" value="<?php echo escape(Input::get('email')); ?>">
             </div>
-            <div>
-                <input id="phoneNo" type="text" name="phoneNo" placeholder="Mobile number" value="<?php echo escape(Input::get('phoneNo')); ?>">
+            <div class="gap">
+                <label>Mobile</label><br>
+                <input class="form-control" id="phoneNo" type="text" name="phoneNo" placeholder="Mobile number" value="<?php echo escape(Input::get('phoneNo')); ?>">
             </div>
-            <div>
-                <input id="nic" type="text" name="nic" placeholder="NIC number" value="<?php echo escape(Input::get('nic')); ?>">
+            <div class="gap">
+                <label>N.I.C No</label><br>
+                <input class="form-control" id="nic" type="text" name="nic" placeholder="NIC number" value="<?php echo escape(Input::get('nic')); ?>">
             </div>
-            <div>
-                <input id="dob" type="date" name="dob" placeholder="Date of birth" value="<?php echo escape(Input::get('dob')); ?>">
+            <div class="gap">
+                <label>Date of Birth</label><br>
+                <input class="form-control" id="dob" type="date" name="dob" placeholder="Date of birth" value="<?php echo escape(Input::get('dob')); ?>">
             </div>
-            <table border="1" style="width:80%" id="table" >
-                <!--                <input id="year" type="number" name="year" placeholder="Current Academic year" value="--><?php //echo escape(Input::get('year')); ?><!--">-->
-                <tr>
-                    <td align="center">First year</td>
-                    <td align="center"><input id="year" type="radio" name="year" value="<?php echo escape("1"); ?>"></td>
-                </tr>
-                <tr>
-                    <td align="center">Second year</td>
-                    <td align="center"><input id="year" type="radio" name="year" value="<?php echo escape("2"); ?>"></td>
-                </tr>
-                <tr>
-                    <td align="center">Third year</td>
-                    <td align="center"><input id="year" type="radio" name="year" value="<?php echo escape("3"); ?>"></td>
-                </tr>
-                <tr>
-                    <td align="center">Fourth year</td>
-                    <td align="center"> <input id="year" type="radio" name="year" value="<?php echo escape("4"); ?>"></td>
-                </tr>
-            </table>
-			 <div>
-            <input type="checkbox" name="accept">
-            I agree to the <a href="">Terms and Conditions</a> and <a href="">Privacy Policy</a>
+
+            <div class="gap">
+                <label>Academic Year</label><br>
+                <select class="form-control" id="year" name="year">
+                    <option value="<?php echo escape("1"); ?>">First Year</option>
+                    <option value="<?php echo escape("2"); ?>">Second Year</option>
+                    <option value="<?php echo escape("3"); ?>">Third Year</option>
+                    <option value="<?php echo escape("4"); ?>">Fourth Year</option>
+                </select>
+            </div>
+
+			<div class="gap">
+                <input type="checkbox" name="accept"> I agree to the <a href="">Terms and Conditions</a> and <a href="">Privacy Policy</a>
             </div>
             <input type = "hidden" name="token" value="<?php echo Token::generate(); ?>">
-            <input id="next" type="submit" value="Next">
+            <input class="btn btn-default" id="next" type="submit" value="Next">
         </form>
-
-
     </div>
 </div>
-<!--<script>
-function myFunction() {
-    var pass1 = document.getElementById("password").value;
-    var pass2 = document.getElementById("rePassword").value;
-    if (pass1 != pass2) {
-        //alert("Passwords Do not match");
-        document.getElementById("password").style.borderColor = "#E34234";
-        document.getElementById("rePassword").style.borderColor = "#E34234";
-    }
-    else {
-        alert("Passwords Match!!!");
-    }
-}
-myFunction();
-</script> -->
+
+<?php
+include "footer.php";
+?>
+
 </body>
 </html>

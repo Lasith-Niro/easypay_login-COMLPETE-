@@ -25,79 +25,49 @@ elseif($yourbrowser=="Internet Explorer"){
 <html lang="en">
 <head>
 
-    <title>Payment | Home</title>
-    <link rel="stylesheet" href=<?php echo $temp_var?> >
-    <link href="home/css/bootstrap.min.css" rel="stylesheet">
-    <link href="home/css/full-width-pics.css" rel="stylesheet">
+    <title>Payment | Page</title>
+<!--    <link rel="stylesheet" href=--><?php //echo $temp_var?><!-- >-->
+<!--    <link href="home/css/bootstrap.min.css" rel="stylesheet">-->
+<!--    <link href="home/css/full-width-pics.css" rel="stylesheet">-->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
 </head>
 <body>
-<div id="mainWrapper">
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" >
-        <div class="container" >
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <a href="homePage.php">
-                    <img id="img" src="images/logo.png" alt="" width="150px" >
-                </a>
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
+<div>
+    <?php
+    include "header.php";
+    ?>
+</div>
+<!--    <div id="header">-->
+<!--        <header>-->
+<!--            <img id="ucscLogo" src="images/ucsc.png" />-->
+<!---->
+<!--        </header>-->
 
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-
-                <ul class="nav navbar-nav">
-
-                    <li>
-                        <a href="homePage.php">HOME</a>
-                    </li>
-                    <li>
-                        <a href="#">UCSC</a>
-                    </li>
-                    <li>
-                        <a href="#">ABOUT</a>
-                    </li>
-
-                    <li>
-                        <a href="#">SERVICES</a>
-                    </li>
-                    <li>
-                        <a href="#">CONTACT</a>
-                    </li>
-                </ul>
-
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
-    <div id="header">
-        <header>
-            <img id="ucscLogo" src="images/ucsc.png" />
-
-        </header>
-
-    </div>
-    <div id="HomeForm">
-        <SPAN STYLE="color: darkred; font-size: 12pt">* Select your Payment</SPAN>
-
-        <div id="fonts" >
-
+<!--    </div>-->
+<div class="container">
+    <div id="HomeForm" class="jumbotron col-lg-6 col-lg-offset-3">
+        <h3>Select your Payment</h3>
+        <div>
             <a  href="p_UCSCregistration.php">Register to UCSC</a>
             <br><br>
             <a href="p_newAcaYear.php">Register for new Academic year</a>
             <br><br>
             <a href="p_repeatExamForm.php">Pay Repeat Exam Fees</a>
-
-
         </div>
     </div>
 </div>
 
+
+<?php
+include "footer.php";
+?>
 
 </body>
 </html>

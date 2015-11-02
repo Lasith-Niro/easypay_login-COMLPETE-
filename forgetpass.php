@@ -9,6 +9,30 @@
 require_once 'core/init.php';
 require 'SMS/sms.php';
 require 'Files/accessFile.php';
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <header></header>
+    <title>Login | page</title>
+    <!--    <link rel="stylesheet" href=--><?php //echo $temp_var?><!-- >-->
+    <!--    <link href="home/css/bootstrap.min.css" rel="stylesheet">-->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+</head>
+<body>
+<div>
+    <?php
+    include "header.php";
+    ?>
+</div>
+<?php
 
 if(Input::exists()){
     if(Token::check(Input::get('token'))) {
@@ -50,28 +74,25 @@ if(Input::exists()){
 <!--</form>-->
 
 
-<html lang="en">
-<head>
-    <title>Forgot Password</title>
-    <link rel="stylesheet" href="css/forget1CSS.css">
-</head>
-<body>
-<img id="ucscLogo" src="images/ucsc.png" />
-<img id="easypayLogo" src="images/logo.png" height="100px"/>
-<div id="mainWrapper">
 
-    <div id="ForgotPassword">
-        <form action="" method="POST">
+<div id="mainWrapper" class="container">
+
+    <div id="ForgotPassword" class="jumbotron col-lg-6 col-lg-offset-3">
+        <form action="" method="POST" class="form-horizontal">
             <div>
-                <input required id="verification" type="text" name="name" autocomplete="off" placeholder="Enter user name" size="25" maxlength="20"/>
+                <input class="form-control" required id="verification" type="text" name="name" autocomplete="off" placeholder="Enter user name" size="25" maxlength="20"/>
             </div>
 
             <input type="hidden" name="token" value="<?php echo Token::generate(); ?>">
         </form>
-        <a href=""><button id="nextButton">Next</button></a>
+        <a href=""><button class="btn btn-default" id="nextButton">Next</button></a>
 
     </div>
 
 </div>
+<?php
+include "footer.php";
+?>
+
 </body>
 </html>

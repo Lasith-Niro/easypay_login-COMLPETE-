@@ -1,0 +1,9 @@
+.backgroundImg{
+    background-image: url("../images/background-hd.jpg");
+    margin: 0px;
+    height: 100%;
+
+}
+.gap{
+    margin: 10px;
+}

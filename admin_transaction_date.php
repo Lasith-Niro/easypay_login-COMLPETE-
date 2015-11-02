@@ -21,84 +21,30 @@ if($_SESSION['student']){
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Admin | Dashboard</title>
-    <!-- BOOTSTRAP STYLES-->
-    <link href="assets/css/bootstrap.css" rel="stylesheet" />
-    <!-- FONTAWESOME STYLES-->
-    <link href="assets/css/font-awesome.css" rel="stylesheet" />
-    <!-- MORRIS CHART STYLES-->
-    <link href="assets/js/morris/morris-0.4.3.min.css" rel="stylesheet" />
-    <!-- CUSTOM STYLES-->
-    <link href="assets/css/custom.css" rel="stylesheet" />
-    <!-- GOOGLE FONTS-->
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+    <title>Transaction | Page</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
     <link href="css/stdCSS.css" rel="stylesheet" type="text/css">
     <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
     <script type="text/javascript" src="js/functions.js"></script>
 </head>
 <body>
 <div id="wrapper">
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" >
-        <div class="container" >
-            <a href="homePage.php">
-                <img id="img" src="images/logo.png" alt="" width="150px" >
-            </a>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li>
-                        <a href="homePage.php">HOME</a>
-                    </li>
-                    <li>
-                        <a href="#">UCSC</a>
-                    </li>
-                    <li>
-                        <a href="#">ABOUT</a>
-                    </li>
-
-                    <li>
-                        <a href="paymentHome.php">PAYMENT</a>
-                    </li>
-                    <li>
-                        <a href="#">CONTACT</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
+    <?php
+    include "header.php";
+    ?>
 </div>
-<div style="color: white;padding: 15px 50px 5px 50px;
-float: right;
-font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="logout.php" class="btn btn-danger square-btn-adjust">Logout</a> </div>
-<nav class="navbar-default navbar-side" role="navigation">
-    <div class="sidebar-collapse">
-        <ul class="nav" id="main-menu">
-            <li class="text-center">
-                <img src="images/admin.jpg" class="user-image img-responsive"/>
-            </li>
-            <li>
-                <a class="active-menu"  href="dashboard_admin.php"><i class="fa fa-dashboard fa-3x"></i> Dashboard</a>
-            </li>
-            <li>
-                <a href="#"><i class="fa fa-search fa-3x"></i>Search Student</a>
-            </li>
-            <li>
-                <a href="#"><i class="fa fa-book fa-3x"></i>#</a>
-            </li>
-            <li>
-                <a href="#"><i class="fa fa-lock fa-3x"></i>#</a>
-            </li>
-            <li>
-                <a href="#"><i class="fa fa-phone fa-3x"></i>#</a>
-            </li>
-        </ul>
 
-    </div>
-
-</nav>
-<div id="page-wrapper" >
+<?php
+include "adminSidebar.php";
+?>
+<div id="page-wrapper" class="container col-lg-9">
     <div id="page-inner">
         <div class="row">
             <div class="col-md-12">
@@ -114,13 +60,13 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="logout.php" class="
                     <h4>Enter the date</h4>
                 </div>
 <!--                -->
-                <form action="" method="post">
-                    <input id="date" name="date" type="number" placeholder="Enter Date"    value="<?php echo Input::get('date') ?>">
-                    <input id="month" name="month" type="number" placeholder="Enter Month"   value="<?php echo Input::get('month')?>">
-                    <input id="year" name="year" type="number" placeholder="Enter Year"   value="<?php echo Input::get('year')?>">
-                    <input type="submit" value="Search">
+                <form action="" method="post" class="form-horizontal">
+                    <input class="form-control" id="date" name="date" type="number" placeholder="Enter Date"  required value="<?php echo Input::get('date') ?>">
+                    <input class="form-control" id="month" name="month" type="number" placeholder="Enter Month" required   value="<?php echo Input::get('month')?>">
+                    <input class="form-control" id="year" name="year" type="number" placeholder="Enter Year" required  value="<?php echo Input::get('year')?>">
+                    <input class="btn btn-default" type="submit" value="Search">
                 </form>
-                <a href="admin_transaction_all.php"><button>Back</button></a>
+                <a href="admin_transaction_all.php"><button class="btn btn-default">Back</button></a>
                 <?php
                 if(Input::exists()){
                 if($y = Input::get('year')){
@@ -199,46 +145,12 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="logout.php" class="
     </div>
 </div>
 
-<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
-<!-- JQUERY SCRIPTS -->
-<script src="assets/js/jquery-1.10.2.js"></script>
-<!-- BOOTSTRAP SCRIPTS -->
-<script src="assets/js/bootstrap.min.js"></script>
-<!-- METISMENU SCRIPTS -->
-<script src="assets/js/jquery.metisMenu.js"></script>
-<!-- MORRIS CHART SCRIPTS -->
-<script src="assets/js/morris/raphael-2.1.0.min.js"></script>
-<script src="assets/js/morris/morris.js"></script>
-<!-- CUSTOM SCRIPTS -->
-<script src="assets/js/custom.js"></script>
-<!---->
 
-</body>
-
-</html>
-
-
-
-
-
-
-
-
-
-<!---->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Transactions | Date</title>
-    <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
-    <script type="text/javascript" src="js/functions.js"></script>
-</head>
-<body>
-
-    <!--    -->
 <?php
 }
-?>
-</body>
 
+include "footer.php";
+?>
+
+</body>
 </html>

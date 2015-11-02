@@ -2,7 +2,6 @@
 require_once 'core/init.php';
 //$user = new user();
 
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,107 +15,27 @@ require_once 'core/init.php';
     <meta name="author" content="">
 
     <title>Home | Page</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
 
-    <!-- Bootstrap Core CSS -->
-    <link href="home/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous">
 
-    <!-- Custom CSS -->
-    <link href="home/css/full-width-pics.css" rel="stylesheet">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
 
 </head>
 
 <body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" >
-	
-        <div class="container" >
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-			<a href="homePage.php"><img id="img" src="images/logo.png" alt="" width="150px" ></a>
-
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-			
-                <ul class="nav navbar-nav">
-					
-					<li>
-                        <a href="homePage.php">HOME</a>
-                    </li>
-					<li>
-                        <a href="#">UCSC</a>
-                    </li>
-                    <li>
-                        <a href="#">ABOUT</a>
-                    </li>
-					
-                    <li>
-                        <a href="#">SERVICES</a>
-                    </li>
-                    <li>
-                        <a href="#">CONTACT</a>
-                    </li>
-                    <?php
-                    if(!isset($_SESSION['isLoggedIn'])|| $_SESSION['isLoggedIn']==false){
-
-                    ?>
-                        <li>
-                        <a href="login.php">LOGIN</a>
-                    </li>
-					<li>
-                        <a href="register.php">REGISTER</a>
-                    </li>
-                    <?php
-                    }else{
-                        ?>
-                        <li>
-                            <a href="dashboard_student.php">DASHBOARD</a>
-                        </li>
-
-                    <?php
-                    }
-                    ?>
-
-                </ul>
-				
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
 <?php
-if(isset($_SESSION['isLoggedIn'])&& $_SESSION['isLoggedIn']==true) {
-    ?>
-    <div style="color: white;padding: 15px 50px 5px 50px;
-float: right;
-font-size: 16px;"><a href="logout.php" class="btn btn-danger square-btn-adjust">Logout</a> </div>
-<?php
-}
+    include 'header.php';
+
 ?>
-
-
-    <!-- Full Width Image Header with Logo -->
-    <!-- Image backgrounds are set within the full-width-pics.css file. -->
+<div class="container">
     <header class="image-bg-fluid-height">
         <img class="img-responsive img-center" src="images/ucsc.png" alt="" width="150px" >
-		
-		
     </header>
 
     <!-- Content Section -->
@@ -127,7 +46,7 @@ font-size: 16px;"><a href="logout.php" class="btn btn-danger square-btn-adjust">
                     <h1 class="section-heading">Easy Pay</h1>
                     <p class="lead section-lead">The easiest way to make payments for UCSC.</p>
                     <p class="section-paragraph">The purpose of the 'Easy-pay' system is to develop and implement an online payment system; “Easy-pay”, which facilitates making online payments without the association of credit cards. The system will collaborate with the renowned mobile payment system Dialog eZ Cash of Dialog Axiata PLC to fulfil this purpose. The Easy-pay system will be initially developed for the students in University of Colombo School of Colombo (UCSC) thus providing a web interface for them to make online payments to the UCSC. A web interface will be developed in order to facilitate making payments. This contains user friendly interfaces that would help students and the university staff to easily interact with the system. Each and every student who gets registered with the system should have a separate profile through which he/she can view their payment history, receive admission cards and the relevant reminders.</p>
-					
+
                 </div>
             </div>
         </div>
@@ -151,6 +70,8 @@ font-size: 16px;"><a href="logout.php" class="btn btn-danger square-btn-adjust">
         </div>
         <!-- /.container -->
     </section>
+</div>
+
 
     <!-- Footer -->
     <footer>
@@ -171,6 +92,9 @@ font-size: 16px;"><a href="logout.php" class="btn btn-danger square-btn-adjust">
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
 
-</body>
+<?php
+include "footer.php";
+?>
 
+</body>
 </html>
