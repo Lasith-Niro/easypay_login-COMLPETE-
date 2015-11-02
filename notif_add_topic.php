@@ -8,6 +8,7 @@ require_once 'core/init.php';
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Notification | Page</title>
+        <link href="css/customCss.css" rel="stylesheet">
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
 
@@ -26,10 +27,13 @@ require_once 'core/init.php';
         include "header.php";
         ?>
     </div>
+<div class="backgroundImg">
+
 
 <?php
 include "adminSidebar.php";
 ?>
+    <br>
 <div class="col-md-9 col-sm-12 col-xs-12">
     <div class="jumbotron col-lg-6 col-lg-offset-1">
     <h3>Add topic</h3>
@@ -98,6 +102,9 @@ if ($user->hasPermission('admin')) {
     <input class="btn btn-default" type="reset" name="Submit2" value="Reset" />
     <input type = "hidden" name="token" value="<?php echo Token::generate(); ?>">
 </form>
+    </div>
+</div>
+</div>
 <?php
 } else {
     Redirect::to('index.php');
