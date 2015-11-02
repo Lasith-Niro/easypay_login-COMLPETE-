@@ -15,7 +15,6 @@ require_once 'core/init.php';
     <!--    <link href="home/css/bootstrap.min.css" rel="stylesheet">-->
     <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
     <script type="text/javascript" src="js/functions.js"></script>
-    <link href="css/customCss.css" rel="stylesheet">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
 
@@ -46,6 +45,7 @@ if(Input::exists()){
         $validate = new Validate();
         $validation = $validate->check($_POST, array(
             'new_phone_number' => array(
+                'regexPhone' => 'new_phone_number',
                 'required' => true,
                 'min' => 10,
                 'max' => 10
@@ -64,8 +64,7 @@ if(Input::exists()){
                 }
         } else {
             foreach ($validation->errors() as $error) {
-//                echo  "<script type='text/javascript'>alert('$error');</script>";
-                echo "<div class='alert alert-danger'>$error</div>";
+                echo  "<script type='text/javascript'>alert('$error');</script>";
             }
         }
     }
@@ -98,12 +97,11 @@ elseif($yourbrowser=="Internet Explorer"){
 <!--    </div>-->
     <div id="changeForm">
         <form action="" method="post" class="form-horizontal">
-            <h3><strong>Change Phone Number</strong></h3>
-            <div class="gap">
-                <div class="alert alert-info">Your phone number is *******<?php echo substr($old_phone_number,7 , 9); ?></div>
+            <div>
+                <div>Your phone number is *******<?php echo substr($old_phone_number,7 , 9); ?></div>
             </div>
             <div>
-                <label>Enter your new phone number</label>
+                <h3>Enter your new phone number</h3>
                 <input class="form-control" type="text" name="new_phone_number" id="new_phone_number">
             </div>
             <input class="btn btn-default" id="continue" type="submit" value="Continue">
