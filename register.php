@@ -104,7 +104,7 @@ include 'header.php';
         <img class="col-lg-offset-4" src="images/ucsc.png" height="100px">
         <form action="" method="post">
             <div>
-                <h3 id="signup">Sign up</h3>
+                <h3 id="signup"><strong>Sign up</strong></h3>
             </div>
 
             <div class="gap">

@@ -27,6 +27,7 @@ require 'Files/accessFile.php';
         <!--    <link href="home/css/bootstrap.min.css" rel="stylesheet">-->
         <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
         <script type="text/javascript" src="js/functions.js"></script>
+        <link href="css/customCss.css" rel="stylesheet">
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
 
@@ -70,10 +71,13 @@ $dayLimit = $date1-$date2;
 $dayLimit = floor($dayLimit/(60*60*24));
 
 if($dayLimit<0){
-    echo "payment is closed!";
+//    echo "payment is closed!";
+    echo "<div class='alert alert-danger'>Payment is closed.</div>";
 }else {
-    echo "You have {$dayLimit} days for this payment." . '<br />';
-    echo "You have to pay Rs.20.00 to this payment.";
+//    echo "You have {$dayLimit} days for this payment." . '<br />';
+    echo "<div class='alert alert-info'>You have {$dayLimit} days for this payment.</div>";
+//    echo "You have to pay Rs.20.00 to this payment.";
+    echo "<div class='alert alert-info'>You have to pay Rs.20.00 to this payment.</div>";
     $prefix = 'easyID_';
     $lastID = (integer)$tra->lastID();
     $newID = $lastID + 1;
@@ -98,7 +102,7 @@ if($dayLimit<0){
     ?>
 
     <form action="https://ipg.dialog.lk/ezCashIPGExtranet/servlet_sentinal" method="post">
-        <input type="submit" value="Pay via eZcash">
+        <input class="btn btn-default" type="submit" value="Pay via eZcash">
         <input type="hidden" value='<?php echo $Invoice; ?>' name="merchantInvoice">
         <input type="hidden" name="token" value="<?php echo Token::generate(); ?>">
     </form>

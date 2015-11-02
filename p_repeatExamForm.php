@@ -12,6 +12,7 @@ require 'Files/accessFile.php';
         <!--    <link href="home/css/bootstrap.min.css" rel="stylesheet">-->
         <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
         <script type="text/javascript" src="js/functions.js"></script>
+        <link href="css/customCss.css" rel="stylesheet">
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
 
@@ -27,7 +28,7 @@ require 'Files/accessFile.php';
 include "header.php";
 ?>
 <div class="container">
-    <div class="jumbotron col-lg-6 col-lg-offset-3">
+    <div class="jumbotron col-lg-5 col-lg-offset-3">
 <?php
 
 $user = new User();
@@ -58,12 +59,14 @@ $uID = $user->data()->id;
 $uRegID = $user->data()->regNumber;
 
 if(!$uRegID){
-    echo "You have not submitted your registration number." . '<br />';
+//    echo "You have not submitted your registration number." . '<br />';
+    echo "<div class='alert alert-danger'>You have not submitted your registration number.</div>";
 } else {
-    echo "Your registration number is " . $uRegID . '<br />';
+//    echo "Your registration number is " . $uRegID . '<br />';
+    echo "<div class='alert alert-info'>Your registration number is $uRegID </div>";
 }
-echo "You have to pay Rs.25 per paper." . '<br />';
-
+//echo "You have to pay Rs.25 per paper." . '<br />';
+    echo "<div class='alert alert-info'>You have to pay Rs.25 per paper. </div>";
 $de_transactionID = $tra->decodeEasyID($transactionID);
 $_SESSION['deID'] = $de_transactionID;
 
@@ -142,12 +145,13 @@ if(Input::exists()) {
 <form action="" method="post" class="form-horizontal">
     <div id="f1">
         <div>
-            <h3>Please select the appropriate exam</h3>
+            <h3>Repeat Exam Form</h3>
         </div>
         <?php
         if((integer)date('m') < 6){
             ?>
-            <div>
+            <div class="gap">
+                <label>Semester</label>
                 <select class="form-control" name="examSem" required="true">
                     <option id="FYS1" value="<?php echo escape("FYS1"); ?>">First year - Semester I</option>
                     <option id="SYS1" value="<?php echo escape("SYS1"); ?>">Second year - Semester I</option>
@@ -156,7 +160,8 @@ if(Input::exists()) {
         <?php
         }else{
             ?>
-            <div>
+            <div class="gap">
+                <label>Semester</label>
                 <select class="form-control" name="examSem" required="true" >
                     <option id="FYS2" value="<?php echo escape("FYS2"); ?>">First year - Semester II</option>
                     <option id="SYS2" value="<?php echo escape("SYS2"); ?>">Second year - Semester II</option>
@@ -165,40 +170,38 @@ if(Input::exists()) {
         <?php
         }
         ?>
-        <div>
-            <label for="indexNo">Index number
-                <input class="form-control" type="text" name="indexNo" required="true" value="<?php echo Input::get('indexNo'); ?>">
-            </label>
+        <div class="gap">
+            <label for="indexNo">Index number</label>
+            <input class="form-control" type="text" name="indexNo" required="true" value="<?php echo Input::get('indexNo'); ?>">
+
         </div>
-        <div>
-            <label>Name with initials
-                <input class="form-control" type="text" name="initName" required="true" value="<?php echo Input::get('initName'); ?>">
-            </label>
+        <div class="gap">
+            <label>Name with initials</label>
+            <input class="form-control" type="text" name="initName" required="true" value="<?php echo Input::get('initName'); ?>">
+
         </div>
-        <div>
-            <label>Name in full
-                <input class="form-control" type="text" name="fullName" required="true" value="<?php echo Input::get('fullName'); ?>">
-            </label>
+        <div class="gap">
+            <label>Name in full</label>
+            <input class="form-control" type="text" name="fullName" required="true" value="<?php echo Input::get('fullName'); ?>">
         </div>
-        <div>
-            <div>Contacts</div>
-            <label>Mobile number
-                <input class="form-control" type="text" name="mobileNo" required="true" value="<?php echo escape($user->data()->phone); ?>">
-            </label>
-            <label>Fixed number
-                <input class="form-control" type="text" name="fixedNo" required="true" value="<?php echo Input::get('fixedNo'); ?>">
-            </label>
+        <h4>Contacts</h4>
+        <div class="gap">
+            <label>Mobile number</label>
+            <input class="form-control" type="tel" name="mobileNo" required="true" value="<?php echo escape($user->data()->phone); ?>">
+
+            <label>Fixed number</label>
+            <input class="form-control" type="text" name="fixedNo" required="true" value="<?php echo Input::get('fixedNo'); ?>">
         </div>
         <!--    Subject code + Subject name + Assignment complete + Grades obtained (prev)-->
-        <div id="subjectDet">
+        <h4>Subject Details</h4>
+        <div id="subjectDet" class="gap">
             <div>
-                <div>Subject Details</div>
-                <label>Subject code
-                    <input class="form-control" type="text" name="subjectCode[]" required="true" value="<?php echo Input::get('subjectCode'); ?>">
-                </label>
-                <label>Subject name
-                    <input class="form-control" type="text" name="subjectName[]" required="true" value="<?php echo Input::get('subjectName'); ?>">
-                </label>
+                <label>Subject code</label>
+                <input class="form-control" type="text" name="subjectCode[]" required="true" value="<?php echo Input::get('subjectCode'); ?>">
+
+                <label>Subject name</label>
+                <input class="form-control" type="text" name="subjectName[]" required="true" value="<?php echo Input::get('subjectName'); ?>">
+
                 <div>
                     <label>Assignment Completed?</label>
                     <select class="form-control" name="assignmentCom[]" required="true">
@@ -208,30 +211,62 @@ if(Input::exists()) {
                 </div>
                 <div>
                     <div>
-                        <label for="gradesObtained">Grades Obtained</label>
+                        <h4>Grades Obtained</h4>
                     </div>
                     <div>
-                        <label for="firstShy">1</label>
-                        <label>
-                            <input class="form-control" type="text" name="l1Grade[]" placeholder="-" required="true" value="<?php echo Input::get('l1Grade'); ?>">
-                        </label>
+                        <label for="firstShy">First shy</label>
+                        <select class="form-control" name="l1Grade[]" value="<?php echo Input::get('l1Grade'); ?>">
+                            <option>A+</option>
+                            <option>A</option>
+                            <option>A-</option>
+                            <option>B+</option>
+                            <option>B</option>
+                            <option>B-</option>
+                            <option>C+</option>
+                            <option>C</option>
+                            <option>C-</option>
+                        </select>
+<!--                        <div>-->
+<!--                            <input class="form-control" type="text" name="l1Grade[]" required="true" value="--><?php //echo Input::get('l1Grade'); ?><!--">-->
+<!--                        </div>-->
                     </div>
                     <div>
-                        <label for="secondShy">2</label>
-                        <label>
-                            <input class="form-control" type="text" name="l2Grade[]" placeholder="-" required="true" value="<?php echo Input::get('l2Grade'); ?>">
-                        </label>
+                        <label for="secondShy">Second shy</label>
+                        <select class="form-control" name="l2Grade[]" value="<?php echo Input::get('l2Grade'); ?>">
+                            <option>A+</option>
+                            <option>A</option>
+                            <option>A-</option>
+                            <option>B+</option>
+                            <option>B</option>
+                            <option>B-</option>
+                            <option>C+</option>
+                            <option>C</option>
+                            <option>C-</option>
+                        </select>
+<!--                        <div>-->
+<!--                            <input class="form-control" type="text" name="l2Grade[]" required="true" value="--><?php //echo Input::get('l2Grade'); ?><!--">-->
+<!--                        </div>-->
                     </div>
                     <div>
-                        <label for="thirdShy">3</label>
-                        <label>
-                            <input class="form-control" type="text" name="l3Grade[]" placeholder="-" required="true" value="<?php echo Input::get('l3Grade'); ?>">
-                        </label>
+                        <label for="thirdShy">Third shy</label>
+                        <select class="form-control" name="l3Grade[]" value="<?php echo Input::get('l3Grade'); ?>">
+                            <option>A+</option>
+                            <option>A</option>
+                            <option>A-</option>
+                            <option>B+</option>
+                            <option>B</option>
+                            <option>B-</option>
+                            <option>C+</option>
+                            <option>C</option>
+                            <option>C-</option>
+                        </select>
+<!--                        <div>-->
+<!--                            <input class="form-control" type="text" name="l3Grade[]" required="true" value="--><?php //echo Input::get('l3Grade'); ?><!--">-->
+<!--                        </div>-->
                     </div>
 
                 </div>
             </div>
-            <br>
             <br>
         </div>
         <div id="container">

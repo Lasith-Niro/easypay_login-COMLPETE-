@@ -63,7 +63,8 @@ if(Input::exists()){
 
         if($validation->passed()){
             if( Hash::make(Input::get('password_current')) !== $user->data()->password ){
-                echo 'Your current password is wrong';
+//                echo 'Your current password is wrong';
+                echo "<div class='alert alert-danger'>Current password entered is wrong</div>";
             } else {
                 $user->update(array(
                    'password' => Hash::make(Input::get('password_new'))
