@@ -30,9 +30,8 @@ require_once 'core/init.php';
 <?php
 include "header.php";
 ?>
-<div class="container backgroundImg">
-    <br>
-    <div class="jumbotron col-lg-5 col-lg-offset-3">
+<div class="container">
+    <div class="jumbotron col-lg-6 col-lg-offset-3">
         <?php
 
 $user = new User();
@@ -97,22 +96,21 @@ elseif($yourbrowser=="Internet Explorer"){
 <!---->
 <!--        </header>-->
 <!--    </div>-->
-        <div id="changeForm">
-            <form action="" method="post" class="form-horizontal">
-                <h3><strong>Change Phone Number</strong></h3>
-                <div class="gap">
-                    <div class="alert alert-info">Your phone number is *******<?php echo substr($old_phone_number,7 , 9); ?></div>
-                </div>
-                <div class="gap">
-                    <label>Enter your new phone number</label>
-                    <input class="form-control" type="text" name="new_phone_number" id="new_phone_number">
-                </div>
-                <input class="btn btn-default" id="continue" type="submit" value="Continue">
-                <input type="hidden" name="token" value="<?php echo Token::generate(); ?>">
-            </form>
-        </div>
+    <div id="changeForm">
+        <form action="" method="post" class="form-horizontal">
+            <h3><strong>Change Phone Number</strong></h3>
+            <div class="gap">
+                <div class="alert alert-info">Your phone number is *******<?php echo substr($old_phone_number,7 , 9); ?></div>
+            </div>
+            <div>
+                <label>Enter your new phone number</label>
+                <input class="form-control" type="text" name="new_phone_number" id="new_phone_number">
+            </div>
+            <input class="btn btn-default" id="continue" type="submit" value="Continue">
+            <input type="hidden" name="token" value="<?php echo Token::generate(); ?>">
+        </form>
     </div>
-</div>
+
         <?php
         include "footer.php";
         ?>
