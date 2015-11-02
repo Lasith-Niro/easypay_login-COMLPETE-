@@ -17,6 +17,7 @@ require 'Files/accessFile.php';
     <title>Register | Page</title>
     <!--    <link rel="stylesheet" href=--><?php //echo $temp_var?><!-- >-->
     <!--    <link href="home/css/bootstrap.min.css" rel="stylesheet">-->
+    <link href="css/customCss.css" rel="stylesheet">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
 
@@ -32,10 +33,13 @@ require 'Files/accessFile.php';
     include "header.php";
     ?>
 </div>
+<div class="container backgroundImg">
+    <br>
+    <div class="jumbotron col-lg-6 col-lg-offset-3">
 <?php
 
 $notification = new smsNotification();
-echo "To confirm your registration enter your registration code..." . '<br />';
+//echo "To confirm your registration enter your registration code..." . '<br />';
 $hiddenValue = Input::get('storeRandVal');
 $randomValue = rand(1000, 9999);
 //echo $randomValue;
@@ -47,7 +51,7 @@ $pNumber = $_SESSION['phoneNo'];
 $to = '94'.substr($pNumber,1,9);
 $pass = $detailArray[1];
 $message = $messageArray[0];
-$var = $notification->send($from,$to,$message . $randomValue ,$pass); //for db
+$var = $notification->send($from,$to,$message ." ". $randomValue ,$pass); //for db
 //echo $var;
 
 $var1 = $_SESSION['username'];
@@ -113,15 +117,14 @@ if(Input::exists()){
 }
 //session_unset();
 ?>
-<div class="container">
-    <div class="jumbotron col-lg-6 col-lg-offset-3">
+
         <form action="" method="post">
             <div class="field">
-                <label for="rand_number">Enter number </label>
-                <input type="number" name="rand_number" id="rand_number">
+                <label>Enter number </label>
+                <input class="form-control" type="number" name="rand_number" id="rand_number">
             </div>
             <input type="hidden" name="storeRandVal" value="<?php echo $randomValue; ?>">
-            <input type="submit" value="Register">
+            <input class="btn btn-default" type="submit" value="Register">
             <input type="hidden" name="token" value="<?php echo Token::generate(); ?>">
         </form>
 
