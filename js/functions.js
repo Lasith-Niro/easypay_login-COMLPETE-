@@ -1,7 +1,7 @@
 /**
  * Created by lahiru on 9/20/2015.
  */
-var flimit = 3;
+var flimit = 7;
 var counter = 0;
 function createCopy(){
     if(counter<flimit-1){
@@ -59,5 +59,22 @@ function autoSuggest(dID,phpFile){
         $('#'+dID).html(output);
     });
 }
+//////  repeat exam///////////
 
+function acceptApp(){
+    var acc=0;
+    if (confirm("Confirm Acceptance") == true) {
+        //httpGet('admin_repeatExamStatusUpdater.php?id=".$id."&accept=true');
+    }
+
+
+}
+
+function rejectApp(){
+    var rej=0;
+    if (confirm("Confirm Rejection") == true) {
+        //httpGet('admin_repeatExamStatusUpdater.php?id=".$id."&reject=true');
+    }
+
+}
 
