@@ -9,6 +9,21 @@
 require_once 'core/init.php';
 require 'SMS/sms.php';
 require 'Files/accessFile.php';
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Confirm | Phone number</title>
+    <?php include 'headerScript.php'?>
+</head>
+<body>
+<?php
+include "header.php";
+?>
+<div class="backgroundImg container-fluid">
+    <br>
+    <div class="jumbotron col-lg-offset-3 col-lg-6">
+<?php
 
 $user = new User();
 $notification = new smsNotification();
@@ -85,76 +100,20 @@ elseif($yourbrowser=="Internet Explorer"){
     $temp_var="css/confirmPNumCSSInternetExplorer.css";
 }
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Confirm | Phone number</title>
-    <link rel="stylesheet" href=<?php echo $temp_var?> >
-    <link href="home/css/bootstrap.min.css" rel="stylesheet">
-    <link href="home/css/full-width-pics.css" rel="stylesheet">
-</head>
-<body>
-<div id="mainWrapper">
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" >
-        <div class="container" >
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <a href="homePage.php">
-                    <img id="img" src="images/logo.png" alt="" width="150px" >
-                </a>
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
 
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-
-                <ul class="nav navbar-nav">
-
-                    <li>
-                        <a href="homePage.php">HOME</a>
-                    </li>
-                    <li>
-                        <a href="#">UCSC</a>
-                    </li>
-                    <li>
-                        <a href="#">ABOUT</a>
-                    </li>
-
-                    <li>
-                        <a href="#">SERVICES</a>
-                    </li>
-                    <li>
-                        <a href="#">CONTACT</a>
-                    </li>
-                </ul>
-
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
-    <div id="header">
-        <header>
-            <img id="ucscLogo" src="images/ucsc.png" />
-
-        </header>
-    </div>
-    <div id="confirmForm">
-        <form action="" method="post">
-            <div class="field">
-                <label for="rand_number">Enter received code here </label>
-                <input type="number" name="rand_number" id="rand_number">
+        <form action="" method="post" class="form-horizontal">
+            <div class="gap">
+                <label>Enter received code here</label>
+                <input class="form-control" type="text" name="rand_number" id="rand_number">
             </div>
             <input type="hidden" name="storeRandVal" value="<?php echo $randomValue; ?>">
-            <input id="change" type="submit" value="Change">
+            <input class="btn btn-default" id="change" type="submit" value="Confirm verification">
             <input type="hidden" name="token" value="<?php echo Token::generate(); ?>">
         </form>
     </div>
 </div>
+<?php
+include "footer.php";
+?>
 </body>
 </html>

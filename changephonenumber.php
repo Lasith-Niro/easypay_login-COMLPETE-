@@ -11,27 +11,16 @@ require_once 'core/init.php';
 <html lang="en">
 <head>
     <title>Update | Page</title>
-    <!--    <link rel="stylesheet" href=--><?php //echo $temp_var?><!-- >-->
-    <!--    <link href="home/css/bootstrap.min.css" rel="stylesheet">-->
-    <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
-    <script type="text/javascript" src="js/functions.js"></script>
-    <link href="css/customCss.css" rel="stylesheet">
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
-
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous">
-
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+    <?php include 'headerScript.php'?>
 </head>
 <body>
 
 <?php
 include "header.php";
 ?>
-<div class="container">
-    <div class="jumbotron col-lg-6 col-lg-offset-3">
+<div class="backgroundImg container-fluid">
+    <br>
+    <div class="jumbotron col-lg-5 col-lg-offset-3">
         <?php
 
 $user = new User();
@@ -96,21 +85,22 @@ elseif($yourbrowser=="Internet Explorer"){
 <!---->
 <!--        </header>-->
 <!--    </div>-->
-    <div id="changeForm">
-        <form action="" method="post" class="form-horizontal">
-            <h3><strong>Change Phone Number</strong></h3>
-            <div class="gap">
-                <div class="alert alert-info">Your phone number is *******<?php echo substr($old_phone_number,7 , 9); ?></div>
-            </div>
-            <div>
-                <label>Enter your new phone number</label>
-                <input class="form-control" type="text" name="new_phone_number" id="new_phone_number">
-            </div>
-            <input class="btn btn-default" id="continue" type="submit" value="Continue">
-            <input type="hidden" name="token" value="<?php echo Token::generate(); ?>">
-        </form>
+        <div id="changeForm">
+            <form action="" method="post" class="form-horizontal">
+                <h3><strong>Change Phone Number</strong></h3>
+                <div class="gap">
+                    <div class="alert alert-info">Your phone number is *******<?php echo substr($old_phone_number,7 , 9); ?></div>
+                </div>
+                <div class="gap">
+                    <label>Enter your new phone number</label>
+                    <input class="form-control" type="text" name="new_phone_number" id="new_phone_number">
+                </div>
+                <input class="btn btn-default" id="continue" type="submit" value="Continue">
+                <input type="hidden" name="token" value="<?php echo Token::generate(); ?>">
+            </form>
+        </div>
     </div>
-
+</div>
         <?php
         include "footer.php";
         ?>

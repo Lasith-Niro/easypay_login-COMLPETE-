@@ -6,28 +6,34 @@
  * Time: 1:41 PM
  */
 ?>
+
+
+<!--                <img src="images/admin.jpg" class="user-image" height="150px"/>-->
+
 <nav class="navbar-default navbar-side col-lg-3" role="navigation">
     <div class="sidebar-collapse">
         <ul class="nav" id="main-menu">
             <li class="text-center">
-                <img src="images/admin.jpg" class="user-image" height="150px"/>
+                <img src="images/admin.jpg" class="user-image " height="150px"/>
             </li>
             <li>
-                <a class="active-menu"  href="dashboard_admin.php"><i class="fa fa-dashboard fa-3x"></i> Dashboard</a>
+                <a href="dashboard_admin.php"><i class="active"></i>Dashboard</a>
             </li>
             <li>
-                <a href="#"><i class="nav"></i>GENARAL</a>
-                <ul class=""></ul>
-            </li>
-            <!--            -->
-            <!--            -->
-            <li>
-                <a href="#"><i class=""></i>ACCOUNTS MANAGER</a>
+                <a href="admin_transaction_all.php"><i class="fa fa-dollar fa-3x"></i>Transactions</a>
             </li>
             <li>
-                <a href="#"><i class=""></i>#</a>
+                <a href="editPayment.php"><i class=""></i>Update Payment Details</a>
             </li>
-
+            <li>
+                <a href="notif_main_forum.php"><i class=""></i>Notification Forum</a>
+            </li>
+            <li>
+                <a href="admin_searchUser.php"><i class=""></i>Accounts Manager</a>
+            </li>
         </ul>
+
     </div>
+
 </nav>
+

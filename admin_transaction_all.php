@@ -19,22 +19,10 @@ if($_SESSION['student']){
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Transaction | Page</title>
-    <link href="css/customCss.css" rel="stylesheet">
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
-
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous">
-
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
-
-    <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
-    <script type="text/javascript" src="js/functions.js"></script>
+    <?php include 'headerScript.php'?>
 </head>
+
 <body>
 <div id="wrapper">
 
@@ -42,7 +30,7 @@ if($_SESSION['student']){
     include "header.php";
     ?>
 </div>
-<div class="backgroundImg">
+<div class="backgroundImg container-fluid">
 
 <?php
 include "adminSidebar.php";
@@ -50,96 +38,158 @@ include "adminSidebar.php";
 
 <div id="page-wrapper" class="container col-lg-9" >
     <div id="page-inner">
-        <div class="row">
-            <div class="col-md-12">
-                <h2>Admin Dashboard</h2>
-            </div>
-        </div>
-
-        <hr />
-
-        <div class="col-md-9 col-sm-12 col-xs-12">
+        <br>
+        <div class="">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h4>Select the time range</h4>
                 </div>
-                <div class="gap ">
-                    <select class="form-control">
-                        <option>#</option>
-                        <option onclick="toggleDiv('at');">All Transactions</option>
-                        <option onclick="window.location = 'admin_transaction_month.php'">Monthly Transactions</option>
-                        <option onclick="window.location = 'admin_transaction_date.php'">Transactions on specific date</option>
-                    </select>
-                </div>
+                <div>
+                    <a data-toggle="modal" data-target="#at"><button class="btn btn-default">All Transactions</button></a>
+                    <a data-toggle="modal" data-target="#mtform"><button class="btn btn-default">Monthly</button></a>
+                    <a data-toggle="modal" data-target="#dtform"><button class="btn btn-default">Spacific Date</button></a>
 
+                </div>
 <!--                <a href="dashboard_admin.php"><button class="btn btn-default">Back to Dashboard</button></a>-->
 
-                <div id="at" style="display: none">
-                    <div  class="panel panel-default">
-                        <div class="panel-heading">
-                            All Transaction History Table
-                        </div>
-                        <div class="panel-body">
-                            <div class="table-responsive">
-                                <table class="table table-striped table-bordered table-hover">
-                                    <?php
-                                    $Alltransactions = DB::getInstance()->get('transaction',array(1,'=',1));
-                                    //foreach($Alltransactions->results() as $res){
-                                    //    print_r($res);
-                                    //    echo"<br>";
-                                    //}
-                                    if(!$Alltransactions->count()){
-                                        echo 'No transactions';
-                                    }else{
-                                    ?>
-                                    <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>Date</th>
-                                        <th>Time</th>
-                                        <th>Transaction ID</th>
-                                        <th>PayerID</th>
-                                        <th>Payment type</th>
-                                        <th>Status</th>
-                                        <th>Amount</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <?php
-                                    $counter = 0;
-                                    foreach($Alltransactions->results() as $t){
-//                                    print_r($t);
-//                                    echo'<br>';
-                                        $counter+=1;
-                                        echo"<tr>";
-                                        echo "<td>".$counter."</td>";
-                                        echo "<td>".$t->date."</td>";
-                                        echo "<td>".$t->time."</td>";
-                                        echo "<td>".$t->transactionID."</td>";
-                                        echo "<td>".$t->payerID."</td>";
-                                        echo "<td>".$t->paymentType."</td>";
-                                        echo "<td>".$t->statusDescription."</td>";
-                                        echo "<td>".$t->amount."</td>";
-                                        echo "</tr>";
-                                    }
-                                    }
-                                    ?>
-                                    </tbody>
-                                </table>
+                <div id="at" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+<!--                        -->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h3 class="modal-title">All transaction history</h3>
                             </div>
-
+                            <div class="modal-body">
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-bordered table-hover">
+                                        <?php
+                                        $Alltransactions = DB::getInstance()->get('transaction',array(1,'=',1));
+                                               //foreach($Alltransactions->results() as $res){
+                                               //    print_r($res);
+                                               //    echo"<br>";
+                                               //}
+                                        if(!$Alltransactions->count()){
+                                            echo 'No transactions';
+                                        }else{
+                                        ?>
+                                        <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Date</th>
+                                            <th>Time</th>
+                                            <th>Transaction ID</th>
+                                            <th>PayerID</th>
+                                            <th>Payment type</th>
+                                            <th>Status</th>
+                                            <th>Amount</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <?php
+                                        $counter = 0;
+                                        foreach($Alltransactions->results() as $t){
+            //                                   print_r($t);
+            //                                   echo'<br>';
+                                            $counter+=1;
+                                            echo"<tr>";
+                                            echo "<td>".$counter."</td>";
+                                            echo "<td>".$t->date."</td>";
+                                            echo "<td>".$t->time."</td>";
+                                            echo "<td>".$t->transactionID."</td>";
+                                            echo "<td>".$t->payerID."</td>";
+                                            echo "<td>".$t->paymentType."</td>";
+                                            echo "<td>".$t->statusDescription."</td>";
+                                            echo "<td>".$t->amount."</td>";
+                                            echo "</tr>";
+                                        }
+                                        }
+                                        ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
                         </div>
                     </div>
                 </div>
 <!--                All transactions end-->
+            <div id="mtform" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h3 class="modal-title">Enter Month & Year</h3>
+                        </div>
+                        <div class="modal-body">
+                            <form action="admin_transaction_month.php" method="post" class="form-horizontal">
+                                <div class="gap">
+                                    <div class="col-lg-3">
+                                        <input class="form-control" id="month" name="month" type="number" placeholder="Enter Month"  required value="<?php echo Input::get('month')?>">
+                                    </div>
+
+                                    <div class="col-lg-3">
+                                        <input class="form-control" id="year" name="year" type="number" placeholder="Enter Year" required value="<?php echo Input::get('year')?>">
+                                    </div>
+
+                                </div>
+
+                                <div class="gap">
+                                    <input class="btn btn-default" type="submit"  value="Search">
+<!--                                    <a data-toggle="modal" data-target="#mt"><button class="btn btn-default">Open</button></a>-->
+                                </div>
+
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
 <!--                monthly transactions end-->
+                <div id="dtform" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h3 class="modal-title">Enter Date, Month & Year</h3>
+                            </div>
+                            <div class="modal-body">
+                                <form action="admin_transaction_date.php" method="post" class="form-horizontal">
+                                    <div class="col-lg-3 ">
+                                        <input class="form-control" id="date" name="date" type="number" placeholder="Enter Date"  required value="<?php echo Input::get('date') ?>">
+                                    </div>
+                                    <div class="col-lg-3 ">
+                                        <input class="form-control" id="month" name="month" type="number" placeholder="Enter Month" required   value="<?php echo Input::get('month')?>">
+                                    </div>
+                                    <div class="col-lg-3 ">
+                                        <input class="form-control" id="year" name="year" type="number" placeholder="Enter Year" required  value="<?php echo Input::get('year')?>">
+                                    </div>
+                                    <div class="gap">
+                                        <input class="btn btn-default" type="submit" value="Search">
+                                    </div>
+
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 <!--                daily transactions end-->
 
-            </div>
+
         </div>
     </div>
 </div>
 </div>
+    </div>
 <?php
 include "footer.php";
 ?>

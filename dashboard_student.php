@@ -11,38 +11,18 @@ if($_SESSION['admin']){
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>User Dashboard</title>
-<!--    <!-- BOOTSTRAP STYLES-->
-<!--    <link href="assets/css/bootstrap.css" rel="stylesheet" />-->
-<!--    <!-- FONTAWESOME STYLES-->
-<!--    <link href="assets/css/font-awesome.css" rel="stylesheet" />-->
-<!--    <!-- MORRIS CHART STYLES-->
-<!--    <link href="assets/js/morris/morris-0.4.3.min.css" rel="stylesheet" />-->
-<!--    <!-- CUSTOM STYLES-->
-<!--    <link href="assets/css/custom.css" rel="stylesheet" />-->
-<!--    <!-- GOOGLE FONTS-->
-<!--    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />-->
-    <link href="css/customCss.css" rel="stylesheet">
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
-
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous">
-
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+    <?php include 'headerScript.php'?>
 </head>
+
 <body>
 <div id="wrapper">
     <?php
     include "header.php";
     ?>
 </div>
-<div class="backgroundImg">
+<div class="backgroundImg container-fluid">
 <!--<div style="color: white;padding: 15px 50px 5px 50px;-->
 <!--float: right;-->
 <!--font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="logout.php" class="btn btn-danger square-btn-adjust">Logout</a> </div>-->

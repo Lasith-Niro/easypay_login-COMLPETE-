@@ -19,73 +19,29 @@ if($_SESSION['student']){
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Transaction | Page</title>
-    <link href="css/customCss.css" rel="stylesheet">
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
-
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous">
-
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
-
-    <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
-    <script type="text/javascript" src="js/functions.js"></script>
+    <?php include 'headerScript.php'?>
 </head>
+
 <body>
 <div id="wrapper">
 
     <?php
     include "header.php";
     ?>
-
 </div>
-<div class="backgroundImg">
+<div class="backgroundImg container-fluid">
 
+    <?php
+    include "adminSidebar.php";
+    ?>
 
-<?php
-include "adminSidebar.php";
-?>
+    <div id="page-wrapper" class="container col-lg-9" >
+        <br>
+        <div class="">
 
-<div id="page-wrapper" class="container col-lg-9">
-    <div id="page-inner">
-        <div class="row">
-            <div class="col-md-12">
-                <h2>Admin Dashboard</h2>
-            </div>
-        </div>
-
-        <hr />
-
-        <div class="col-md-9 col-sm-12 col-xs-12">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h4>Search by month</h4>
-                </div>
-                <!--                -->
-                <form action="" method="post" class="form-horizontal">
-                    <div class="gap">
-                        <div class="col-lg-3">
-                            <input class="form-control" id="month" name="month" type="number" placeholder="Enter Month"  required value="<?php echo Input::get('month')?>">
-                        </div>
-
-                        <div class="col-lg-3">
-                            <input class="form-control" id="year" name="year" type="number" placeholder="Enter Year" required value="<?php echo Input::get('year')?>">
-                        </div>
-
-                    </div>
-
-                    <div class="gap">
-                        <input class="btn btn-default" type="submit" value="Search">
-                    </div>
-
-                </form>
-                <a href="admin_transaction_all.php"><button class="btn btn-default">Back</button></a>
-                <?php
-                if(Input::exists()){
+            <?php
+if(Input::exists()){
                     if($y = Input::get('year')){
                         $year = $y;
 //            echo "Year: $y<br>";
@@ -96,7 +52,7 @@ include "adminSidebar.php";
                     }
                     ?>
                     <!--    -->
-                    <div id="mt" class="panel panel-default">
+                    <div class="panel panel-default">
                         <div class="panel-heading">
                             Monthly Transaction History Table
                         </div>
@@ -153,21 +109,16 @@ include "adminSidebar.php";
                     </div>
                     <!--    -->
                 <?php
-                }
+                }else{
+    echo "No data received";
+}
                 ?>
-
-                <!--             -->
             </div>
-        </div>
     </div>
 </div>
-</div>
-<?php
-include "footer.php";
-?>
-
 </body>
 </html>
+
 
 
 

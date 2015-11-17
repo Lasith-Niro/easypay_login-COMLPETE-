@@ -19,29 +19,17 @@ if($_SESSION['student']){
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Transaction | Page</title>
-    <link href="css/customCss.css" rel="stylesheet">
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
-
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous">
-
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
-
-    <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
-    <script type="text/javascript" src="js/functions.js"></script>
+    <?php include 'headerScript.php'?>
 </head>
+
 <body>
 <div id="wrapper">
     <?php
     include "header.php";
     ?>
 </div>
-<div class="backgroundImg">
+<div class="backgroundImg container-fluid">
 
 
 <?php
@@ -49,117 +37,85 @@ include "adminSidebar.php";
 ?>
 <div id="page-wrapper" class="container col-lg-9">
     <div id="page-inner">
-        <div class="row">
-            <div class="col-md-12">
-                <h2>Admin Dashboard</h2>
-            </div>
-        </div>
+        <br>
 
-        <hr />
-
-        <div class="col-md-9 col-sm-12 col-xs-12">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h4>Search by date</h4>
-                </div>
-<!--                -->
-                <form action="" method="post" class="form-horizontal">
-                    <div class="col-lg-3 ">
-                        <input class="form-control" id="date" name="date" type="number" placeholder="Enter Date"  required value="<?php echo Input::get('date') ?>">
-                    </div>
-                    <div class="col-lg-3 ">
-                        <input class="form-control" id="month" name="month" type="number" placeholder="Enter Month" required   value="<?php echo Input::get('month')?>">
-                    </div>
-                    <div class="col-lg-3 ">
-                        <input class="form-control" id="year" name="year" type="number" placeholder="Enter Year" required  value="<?php echo Input::get('year')?>">
-                    </div>
-                    <div class="gap">
-                        <input class="btn btn-default" type="submit" value="Search">
-                    </div>
-
-                </form>
-                <a href="admin_transaction_all.php"><button class="btn btn-default">Back</button></a>
-                <?php
-                if(Input::exists()){
-                if($y = Input::get('year')){
+        <?php
+        if(Input::exists()){
+            if($y = Input::get('year')){
 //        echo "Year: $y<br>";
-                }
-                if($m = Input::get('month')){
-                    $month = "$m";
+            }
+            if($m = Input::get('month')){
+                $month = "$m";
 //        echo "Month: $month<br>";
 //        echo "<script type='text/javascript'src='js/functions.js'> showElement('mt')</script>";
-                }
-                if($d = Input::get('date')){
+            }
+            if($d = Input::get('date')){
 //            echo $date;
-                    $date = "$y-$m-$d";
+                $date = "$y-$m-$d";
 //        echo "Date: $date<br>";
-                }
-                ?>
-                <!--    -->
-                <div id="mt" class="panel panel-default">
-                    <div class="panel-heading">
-                        Transactions on <?php echo $date?> History Table
-                    </div>
-                    <div class="panel-body">
-                        <div class="table-responsive">
-                            <table class="table table-striped table-bordered table-hover">
-                                <?php
-                                $DayTra = DB::getInstance()->get('transaction',array('date','=',$date));
+            }
+            ?>
+            <!--    -->
+            <div id="mt" class="panel panel-default">
+                <div class="panel-heading">
+                    Transactions on <?php echo $date?>
+                </div>
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered table-hover">
+                            <?php
+                            $DayTra = DB::getInstance()->get('transaction',array('date','=',$date));
                                 //foreach($MonthTra->results() as $res){
                                 //    print_r($res);
                                 //    echo"<br>";
-                                //}
-                                if(!$DayTra->count()){
-                                    echo 'No transactions';
-                                }else{
-                                ?>
-                                <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Date</th>
-                                    <th>Time</th>
-                                    <th>Transaction ID</th>
-                                    <th>PayerID</th>
-                                    <th>Payment type</th>
-                                    <th>Status</th>
-                                    <th>Amount</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <?php
-                                $counter = 0;
-                                foreach($DayTra->results() as $t){
-//                                        print_r($t);
+                               //}
+                            if(!$DayTra->count()){
+                                echo 'No transactions';
+                            }else{
+                            ?>
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Transaction ID</th>
+                                <th>PayerID</th>
+                                <th>Payment type</th>
+                                <th>Status</th>
+                                <th>Amount</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <?php
+                            $counter = 0;
+                            foreach($DayTra->results() as $t){
+//                                       print_r($t);
 //                                        echo'<br>';
-                                    $counter+=1;
-                                    echo"<tr>";
-                                    echo "<td>".$counter."</td>";
-                                    echo "<td>".$t->date."</td>";
-                                    echo "<td>".$t->time."</td>";
-                                    echo "<td>".$t->transactionID."</td>";
-                                    echo "<td>".$t->payerID."</td>";
-                                    echo "<td>".$t->paymentType."</td>";
-                                    echo "<td>".$t->statusDescription."</td>";
-                                    echo "<td>".$t->amount."</td>";
-                                    echo "</tr>";
-                                }
-                                }
-                                ?>
-                                </tbody>
-                            </table>
-                        </div>
+                                $counter+=1;
+                                echo"<tr>";
+                                echo "<td>".$counter."</td>";
+                                echo "<td>".$t->date."</td>";
+                                echo "<td>".$t->time."</td>";
+                                echo "<td>".$t->transactionID."</td>";
+                                echo "<td>".$t->payerID."</td>";
+                                echo "<td>".$t->paymentType."</td>";
+                                echo "<td>".$t->statusDescription."</td>";
+                                echo "<td>".$t->amount."</td>";
+                                echo "</tr>";
+                            }
+                            }
+                            ?>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
-                <?php
-                }
-                ?>
-<!--             -->
             </div>
-        </div>
+        <?php
+        }
+        ?>
+<!--             -->
     </div>
 </div>
-
-
 </div>
 <?php
 
