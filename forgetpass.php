@@ -13,19 +13,8 @@ require 'Files/accessFile.php';
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <header></header>
     <title>Login | page</title>
-    <!--    <link rel="stylesheet" href=--><?php //echo $temp_var?><!-- >-->
-    <!--    <link href="home/css/bootstrap.min.css" rel="stylesheet">-->
-    <link href="css/customCss.css" rel="stylesheet">
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
-
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous">
-
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+    <?php include 'headerScript.php'?>
 </head>
 <body>
 <div>
@@ -33,7 +22,7 @@ require 'Files/accessFile.php';
     include "header.php";
     ?>
 </div>
-<div id="mainWrapper" class="container backgroundImg">
+<div id="mainWrapper" class="backgroundImg container-fluid">
     <br>
     <div id="ForgotPassword" class="jumbotron col-lg-6 col-lg-offset-3">
 <?php
@@ -49,16 +38,18 @@ if(Input::exists()){
 
     $uname = Input::get('name');
     if($validation->passed()){
-        $user = new User();
-        if($user->find($uname)){
+        $user1 = new User();
+        if($user1->find($uname)){
 //            echo "User exist";
+            echo "User Found";
         ?>
-            <p> <a href="forgetpassCheckPoint.php"> <?php echo escape($user->data()->username); ?> </a> </p>
+            <p> <a href="forgetpassCheckPoint.php"> <?php echo escape($user1->data()->username); ?> </a> </p>
         <?php
-            $_SESSION['phone'] = $user->data()->phone;
-            $_SESSION['id'] = $user->data()->id;
+            $_SESSION['phone'] = $user1->data()->phone;
+            $_SESSION['id'] = $user1->data()->id;
+            $_SESSION['flag'] = 1;
         } else {
-            echo "User Not Found";
+            echo "User Not Found<br>";
         }
     } else {
         foreach ($validation->errors() as $er) {

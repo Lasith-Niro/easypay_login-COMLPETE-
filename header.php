@@ -13,7 +13,7 @@ require_once 'core/init.php';
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -21,16 +21,16 @@ require_once 'core/init.php';
             </button>
             <a href="homePage.php"><img id="img" src="images/logo.png" width="150px" ></a>
         </div>
-        <div class=" navbar-collapse collapse"  id="navbar" >
+        <div class="collapse navbar-collapse"  id="navbar-1" >
             <ul class="nav navbar-nav">
                 <li>
                     <a href="homePage.php">HOME</a>
                 </li>
                 <li>
-                    <a href="#">ABOUT</a>
+                    <a href="about.php">ABOUT</a>
                 </li>
                 <li>
-                    <a href="#">CONTACT</a>
+                    <a href="contact.php">CONTACT</a>
                 </li>
                 <?php
                 if(!isset($_SESSION['isLoggedIn'])|| $_SESSION['isLoggedIn']==false){

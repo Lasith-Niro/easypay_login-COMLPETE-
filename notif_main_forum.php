@@ -5,20 +5,8 @@ require_once 'core/init.php';
     <html lang="en">
 
     <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Notification | Page</title>
-        <link href="css/customCss.css" rel="stylesheet">
-        <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
-
-        <!-- Optional theme -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous">
-
-        <!-- Latest compiled and minified JavaScript -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
-        <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
-        <script type="text/javascript" src="js/functions.js"></script>
+        <?php include 'headerScript.php'?>
     </head>
 <body>
 <div id="wrapper">
@@ -26,19 +14,19 @@ require_once 'core/init.php';
     include "header.php";
     ?>
 </div>
-<div class="backgroundImg">
+<div class="backgroundImg container-fluid">
 
 
 <?php
 include "adminSidebar.php";
 ?>
     <br>
-<div class="col-md-9 col-sm-12 col-xs-12">
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h4>Notification Forum</h4>
-            <a class="col-lg-offset-9" href="notif_add_topic.php"><strong>Create New Notification</strong></a>
-        </div>
+    <div class="col-md-9 col-sm-12 col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4>Notification Forum</h4>
+                <a class="col-lg-offset-9" href="notif_add_topic.php"><strong>Create New Notification</strong></a>
+            </div>
 
 <?php
 
@@ -81,8 +69,8 @@ if ($user->hasPermission('admin')) {
         echo "<td width=20% align=center bgcolor=#E6E6E6>".$t->detail."</td>";
         echo "<td width=5% align=center bgcolor=#E6E6E6>".$t->datetime."</td>";
         $_SESSION['dID'] = $t->nID;
-        echo "<td width=5% align=center bgcolor=#E6E6E6 data-color='red'><a href=notif_delete.php>Clear</a><BR>
-                                                        <a href=notif_assign_users.php>Assign users</a>
+        echo "<td width=5% align=center bgcolor=#E6E6E6 data-color='red'><a href=notif_delete.php>Clear</a><br>
+                                                        <a href='#' data-toggle='modal' data-target='#assignUser'>Assign users</a>
         </td>";
         echo "</tr>";
     }
@@ -94,7 +82,25 @@ if ($user->hasPermission('admin')) {
 
 
 </table>
-</div>
+        </div>
+    </div>
+    <div id="assignUser" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Select Users</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Some text in the modal.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+            </div>
+        </div>
     </div>
 </div>
 <?php

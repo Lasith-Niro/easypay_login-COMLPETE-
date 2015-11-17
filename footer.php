@@ -8,7 +8,7 @@
 ?>
 <footer class="">
     <div class="container" style="text-align: center">
-        <span class="copyright">Copyright &copy; easypaysl.com 2015</span>
+        <span class="copyright">Copyright &copy; easypaysl.com</span>
         <div>
             <a href="#">Privacy Policy</a>
             <a href="#">Terms of Use</a>

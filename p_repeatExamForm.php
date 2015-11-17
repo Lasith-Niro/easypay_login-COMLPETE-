@@ -8,26 +8,15 @@ require 'Files/accessFile.php';
     <html lang="en">
     <head>
         <title>Payment | Page</title>
-        <!--    <link rel="stylesheet" href=--><?php //echo $temp_var?><!-- >-->
-        <!--    <link href="home/css/bootstrap.min.css" rel="stylesheet">-->
-        <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
-        <script type="text/javascript" src="js/functions.js"></script>
-        <link href="css/customCss.css" rel="stylesheet">
-        <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+        <?php include 'headerScript.php'?>
 
-        <!-- Optional theme -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous">
-
-        <!-- Latest compiled and minified JavaScript -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
     </head>
 <body>
 
 <?php
 include "header.php";
 ?>
-<div class="container backgroundImg">
+<div class="backgroundImg container-fluid">
     <br>
     <div class="jumbotron col-lg-5 col-lg-offset-3">
 <?php
@@ -73,20 +62,18 @@ $_SESSION['deID'] = $de_transactionID;
 
 if(Input::exists()) {
     if (Token::check(Input::get('token'))) {
-
-        /////////////////////////// getting form details////////////////////
-        $semester   = Input::get('examSem');
-        $index      = Input::get('indexNo');
-        $init_name  = Input::get('initName');
-        $full_name  = Input::get('fullName');
-        $mobilePhone = Input::get('mobileNo');
-        $fixedPhone = Input::get('fixedNo');
-        $subCode = Input::get('subjectCode');
-        $subName = Input::get('subjectName');
-        $assignmentComplete = Input::get('assignmentCom');
-        $gradeFirst = Input::get('l1Grade');
-        $gradeSecond= Input::get('l2Grade');
-        $gradeThird = Input::get('l3Grade');
+            $semester = Input::get('examSem');
+            $index = Input::get('indexNo');
+            $init_name = Input::get('initName');
+            $full_name = Input::get('fullName');
+            $mobilePhone = Input::get('mobileNo');
+            $fixedPhone = Input::get('fixedNo');
+            $subCode = Input::get('subjectCode');
+            $subName = Input::get('subjectName');
+            $assignmentComplete = Input::get('assignmentCom');
+            $gradeFirst = Input::get('l1Grade');
+            $gradeSecond = Input::get('l2Grade');
+            $gradeThird = Input::get('l3Grade');
 
 
 ////////////////////// creating a associative array for each subject//////////////////
@@ -156,6 +143,7 @@ if(Input::exists()) {
                 <select class="form-control" name="examSem" required="true">
                     <option id="FYS1" value="<?php echo escape("FYS1"); ?>">First year - Semester I</option>
                     <option id="SYS1" value="<?php echo escape("SYS1"); ?>">Second year - Semester I</option>
+                    <option id="TYS1" value="<?php echo escape("TYS1"); ?>">Third year - Semester I</option>
                 </select>
             </div>
         <?php
@@ -166,6 +154,7 @@ if(Input::exists()) {
                 <select class="form-control" name="examSem" required="true" >
                     <option id="FYS2" value="<?php echo escape("FYS2"); ?>">First year - Semester II</option>
                     <option id="SYS2" value="<?php echo escape("SYS2"); ?>">Second year - Semester II</option>
+                    <option id="TYS2" value="<?php echo escape("TYS2"); ?>">Third year - Semester II</option>
                 </select>
             </div>
         <?php
@@ -215,54 +204,49 @@ if(Input::exists()) {
                         <h4>Grades Obtained</h4>
                     </div>
                     <div>
-                        <label for="firstShy">First shy</label>
+                        <label for="firstShy">First attempt</label>
                         <select class="form-control" name="l1Grade[]" value="<?php echo Input::get('l1Grade'); ?>">
                             <option>-</option>
-                            <option>A+</option>
-                            <option>A</option>
-                            <option>A-</option>
-                            <option>B+</option>
-                            <option>B</option>
-                            <option>B-</option>
                             <option>C+</option>
                             <option>C</option>
                             <option>C-</option>
+                            <option>D+</option>
+                            <option>D</option>
+                            <option>D-</option>
+                            <option>ab</option>
                         </select>
 <!--                        <div>-->
 <!--                            <input class="form-control" type="text" name="l1Grade[]" required="true" value="--><?php //echo Input::get('l1Grade'); ?><!--">-->
 <!--                        </div>-->
                     </div>
                     <div>
-                        <label for="secondShy">Second shy</label>
+                        <label for="secondShy">Second attempt</label>
                         <select class="form-control" name="l2Grade[]" value="<?php echo Input::get('l2Grade'); ?>">
                             <option>-</option>
-                            <option>A+</option>
-                            <option>A</option>
-                            <option>A-</option>
-                            <option>B+</option>
-                            <option>B</option>
-                            <option>B-</option>
                             <option>C+</option>
                             <option>C</option>
                             <option>C-</option>
+                            <option>D+</option>
+                            <option>D</option>
+                            <option>D-</option>
+                            <option>ab</option>
                         </select>
 <!--                        <div>-->
 <!--                            <input class="form-control" type="text" name="l2Grade[]" required="true" value="--><?php //echo Input::get('l2Grade'); ?><!--">-->
 <!--                        </div>-->
                     </div>
                     <div>
-                        <label for="thirdShy">Third shy</label>
+                        <label for="thirdShy">Third attempt</label>
                         <select class="form-control" name="l3Grade[]" value="<?php echo Input::get('l3Grade'); ?>">
                             <option>-</option>
-                            <option>A+</option>
-                            <option>A</option>
-                            <option>A-</option>
-                            <option>B+</option>
-                            <option>B</option>
-                            <option>B-</option>
                             <option>C+</option>
                             <option>C</option>
                             <option>C-</option>
+                            <option>D+</option>
+                            <option>D</option>
+                            <option>D-</option>
+                            <option>ab</option>
+
                         </select>
 <!--                        <div>-->
 <!--                            <input class="form-control" type="text" name="l3Grade[]" required="true" value="--><?php //echo Input::get('l3Grade'); ?><!--">-->
