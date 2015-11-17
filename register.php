@@ -5,27 +5,15 @@ require_once 'browser/browserconnect.php';
 <!DOCTYPE html>
 <html>
 <head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
     <title>Register | page</title>
-    <!--    <link rel="stylesheet" href=--><?php //echo $temp_var?><!-->
-    <link href="css/customCss.css" rel="stylesheet">
-    <link href="home/css/full-width-pics.css" rel="stylesheet">
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
-
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous">
-
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+    <?php include 'headerScript.php'?>
 </head>
 <body>
 
 <?php
 include 'header.php';
 ?>
-<div class="container backgroundImg" >
+<div class="backgroundImg container-fluid" >
     <br>
     <div id="regForm" class="jumbotron col-lg-5 col-lg-offset-3">
 <?php
@@ -83,10 +71,15 @@ if(Input::exists()){
             $_SESSION['year']     = Input::get('year');
             Redirect::to('registerConfirm.php');
         } else {
+            $str = "";
             foreach ($validation->errors() as $error) {
-                echo $error, '</ br>';
+//                echo $error, '</ br>';
+                $str .= $error;
+                $str .= '\n';
+//                echo '<script type="text/javascript">alert("' . $error . '")</script>';
 //                echo "<div class='alert alert-danger'> $error</div>";
             }
+            echo '<script type="text/javascript">alert("' . $str . '")</script>';
         }
     }
 }

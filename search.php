@@ -11,19 +11,21 @@ require_once 'core/init.php';
 if(isset($_POST['searchVal'])){
     $searchUser = $_POST['searchVal'];
     $userDet = DB::getInstance();
-    $userDet->get('users',array('username','LIKE',"%$searchUser%"));
+    if($searchUser!=null){
+        $userDet->get('users',array('username','LIKE',"%$searchUser%"));
+    }
     if(!$userDet->count()){
         $output = 'No match found<br>';
         echo $output;
     }else{
         foreach($userDet->results() as $res){
             $output = $res->username;
-            echo "$output<br>";
+//            echo "$output<br>";
+            echo "<li><a href='admin_searchUserResults.php?searchUser=$output'>$output</a></li>";
         }
     }
 
 }
-
 
 
 

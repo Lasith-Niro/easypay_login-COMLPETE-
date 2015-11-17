@@ -10,29 +10,18 @@ require_once 'core/init.php';
  require_once 'browser/browserconnect.php';
  ?>
  <!DOCTYPE html>
- <html lang="en" xmlns="http://www.w3.org/1999/html">
+ <html lang="en">
  <head>
      <title>Update | Page</title>
-     <!--    <link rel="stylesheet" href=--><?php //echo $temp_var?><!-- >-->
-     <!--    <link href="home/css/bootstrap.min.css" rel="stylesheet">-->
-     <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
-     <script type="text/javascript" src="js/functions.js"></script>
-     <link href="css/customCss.css" rel="stylesheet">
-     <!-- Latest compiled and minified CSS -->
-     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
-
-     <!-- Optional theme -->
-     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous">
-
-     <!-- Latest compiled and minified JavaScript -->
-     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+     <?php include 'headerScript.php'?>
  </head>
+
  <body>
 
  <?php
  include "header.php";
  ?>
- <div class="container backgroundImg">
+ <div class="backgroundImg container-fluid">
      <br>
      <div class="jumbotron col-lg-5 col-lg-offset-3">
          <?php
@@ -47,32 +36,37 @@ if(Input::exists()){
     if(Token::check(Input::get('token'))){
         $validate = new Validate();
         $validation = $validate->check($_POST, array(
-           'name' => array(
-               'required' => true,
-               'min' => 2,
-               'max' => 50
+           'username' => array(
+                'required' => true,
+                'min' => 2,
+                'max' => 50
            ),
            'regNumber' => array(
-              'required' => true,
-              'min' => 9
+                'required' => true,
+                'regexRegistrationNumber' => 'regNumber',
+                'min' => 9
             ),
            'fname' => array(
                 'required' => true,
+                'regexString' => 'fname',
                 'min' => 2,
                 'max' => 20
             ),
            'lname' => array(
                 'required' => true,
+                'regexString' => 'lname',
                 'min' => 2,
                 'max' => 20
             ),
            'email' => array(
                 'required' => true,
+                'regexEmail' => 'email',
                 'min' => 2,
                 'max' => 100
             ),
            'nic' => array(
                 'required' => true,
+               'regexNic' => 'nic',
                 'min' => 10
             ),
            'dob' => array(
@@ -80,13 +74,14 @@ if(Input::exists()){
             ),
            'year' => array(
                 'required' => true,
+                'regexInt' => 'year',
                 'min' => 1
            )
         ));
         if($validation->passed()){
             try{
                 $user->update(array(
-                    'username' => Input::get('name'),
+                    'username' => Input::get('username'),
                     'regNumber' => Input::get('regNumber'),
                     'fname' => Input::get('fname'),
                     'lname' => Input::get('lname'),
@@ -139,7 +134,7 @@ if(Input::exists()){
                  <h3><strong>Update</strong></h3>
                  <div class="gap">
                      <label>Username</label>
-                     <input class="form-control" type="text" name="name" disabled value="<?php echo escape($user->data()->username); ?>">
+                     <input class="form-control" type="text" name="username"  value="<?php echo escape($user->data()->username); ?>">
                  </div>
                  <!--    <div class="field">-->
                  <!--        <label for="phone">Phone number</label>-->
